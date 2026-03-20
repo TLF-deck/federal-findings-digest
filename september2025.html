@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: September 2025 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:     #1B3A4B;
+    --accent:   #1A5FA0;
+    --amber:    #A85D1A;
+    --green:    #2E5E4A;
+    --green-bg: #D4EDE4;
+    --amber-bg: #F5E0C8;
+    --blue-bg:  #D4E6F5;
+    --red:      #8B1A2A;
+    --red-bg:   #F0D4D8;
+    --purple:   #4A2E7A;
+    --purple-bg:#EDE4F5;
+    --teal:     #1A6B5A;
+    --teal-bg:  #D0EDE6;
+    --gray:     #6B7C8A;
+    --gray-lt:  #E8EDF1;
+    --body:     #333333;
+    --bg:       #F2F4F6;
+    --white:    #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .research-note strong { color: var(--dark); }
+  .research-note .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .research-note .rn-label:first-child { margin-top: 0; }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.title1  { border-left: 5px solid var(--accent); }
+  .cal-entry.grants  { border-left: 5px solid var(--green); }
+  .cal-entry.perkins { border-left: 5px solid var(--amber); }
+  .cal-entry.ocr     { border-left: 5px solid var(--red); }
+  .cal-entry.oig     { border-left: 5px solid var(--gray); }
+  .cal-entry.hidden  { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .title1  .entry-badge { background: var(--blue-bg);   color: var(--accent); }
+  .grants  .entry-badge { background: var(--green-bg);  color: var(--green);  }
+  .perkins .entry-badge { background: var(--amber-bg);  color: var(--amber);  }
+  .ocr     .entry-badge { background: var(--red-bg);    color: var(--red);    }
+  .oig     .entry-badge { background: var(--gray-lt);   color: var(--gray);   }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .entry-type-badge.dcl      { background: var(--blue-bg);   color: var(--accent); }
+  .entry-type-badge.fr       { background: var(--green-bg);  color: var(--green);  }
+  .entry-type-badge.guidance { background: var(--amber-bg);  color: var(--amber);  }
+  .entry-type-badge.resolution { background: var(--red-bg);  color: var(--red);    }
+  .entry-type-badge.report   { background: var(--gray-lt);   color: var(--gray);   }
+  .entry-type-badge.terminated { background: #FFF0CC; color: #7A5000; border: 1px solid #D4A843; }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); background: var(--blue-bg); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; border-left: 3px solid var(--accent); }
+  .grants  .entry-tlf-note { background: var(--green-bg);  border-left-color: var(--green);  }
+  .perkins .entry-tlf-note { background: var(--amber-bg);  border-left-color: var(--amber);  }
+  .ocr     .entry-tlf-note { background: var(--red-bg);    border-left-color: var(--red);    }
+  .oig     .entry-tlf-note { background: var(--gray-lt);   border-left-color: var(--gray);   }
+ 
+  .termination-alert { background: #FFF8E6; border-left: 4px solid #D4A843; border-radius: 0 4px 4px 0; padding: 12px 16px; margin-bottom: 14px; font-size: 13px; color: #5A3A00; line-height: 1.6; }
+  .termination-alert strong { color: #3A2000; }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '->'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; font-family: monospace; }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">September 2025 &nbsp;·&nbsp; <strong>7 findings</strong></p>
+    <p class="cal-desc">Federal programs and fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity from September 2025. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section translating that implication into concrete steps. Source links point directly to the primary federal document where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Moderate</div>
+    September 2025 featured continued Trump Administration emphasis on state flexibility and education choice through Ed-Flex guidance and new supplemental grant priorities, ongoing OCR resolution agreement enforcement on civil rights compliance, and routine reporting cycles for OIG oversight and Perkins program administration.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No new OSEP Dear Colleague Letters or IDEA guidance were published in September 2025. No McKinney-Vento specific guidance was issued. No major Title IV regulatory changes beyond Ed-Flex applicability. Limited new ESSER audit findings were published in September specifically.
+ 
+    <div class="rn-label">Watch next</div>
+    Monitor Ed-Flex state applications and any resulting waivers that may affect Title I carryover limits and program requirements. Track OCR resolution agreement implementation deadlines occurring in fall 2025 and winter 2026. Review Perkins FY 2026 budget submission requirements. Prepare for transitions related to the November 2025 interagency agreements transferring K-12 program administration to the Department of Labor.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"     onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="title1"  onclick="filterProgram('title1')">Title I / Ed-Flex</div>
+    <div class="f-pill"        data-filter="grants"  onclick="filterProgram('grants')">ED Grants / Policy</div>
+    <div class="f-pill"        data-filter="perkins" onclick="filterProgram('perkins')">Perkins</div>
+    <div class="f-pill"        data-filter="ocr"     onclick="filterProgram('ocr')">OCR</div>
+    <div class="f-pill"        data-filter="oig"     onclick="filterProgram('oig')">OIG</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- TITLE I / ED-FLEX -->
+    <div class="cal-section-label" data-section="title1">Title I / Ed-Flex</div>
+ 
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I / Ed-Flex</div>
+          <div class="entry-type-badge dcl">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Ed-Flex Authority: State Waiver of Federal Requirements Without Prior ED Approval</div>
+            <div class="entry-date">Office of Elementary and Secondary Education · September 17, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OESE sent a Dear Colleague Letter to all chief state school officers informing them that states may apply for Ed-Flex authority under the Education Flexibility Partnership Act of 1999. States with Ed-Flex authority can waive certain federal requirements under Title I Parts A, C, and D; Title II Part A; Title IV Part A; and Perkins, without submitting individual waiver requests to ED for approval. Specific waivers available include the 15 percent carryover limitation for Title I funds. As of the 2023-2024 school year, 11 states hold Ed-Flex authority, and those states reported granting approximately 575 waivers that year. This is the sixth flexibility guidance the current administration has issued on expanding education choice and flexibility under ESEA.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">Ed-Flex authority allows approved SEAs to waive certain ESEA statutory and regulatory requirements for LEAs without prior federal approval. For districts in Ed-Flex states, compliance obligations may differ if the SEA has granted local waivers. The 15 percent Title I carryover limitation is a specific example: a waiver could provide districts with more flexibility in budget planning across fiscal years. Federal programs directors must confirm whether their state holds Ed-Flex authority and monitor state-level waiver announcements. A waiver does not eliminate the underlying statutory goal; it substitutes a waived requirement with a locally designed alternative that must still advance the program's objectives. Maintain documentation of any waivers in effect and the alternative approaches in place.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm whether your state holds Ed-Flex authority. If not, this guidance has no direct compliance impact on your district at this time.</li>
+            <li>If your state holds Ed-Flex authority, contact your SEA to determine whether any waivers have been granted affecting your Title I, Title II, Title IV, or Perkins programs.</li>
+            <li>For any active Ed-Flex waivers, document the waiver, the requirement waived, the alternative approach your district is implementing, and evidence that the alternative advances the program's statutory objectives.</li>
+            <li>Monitor whether additional states apply for Ed-Flex authority in response to this guidance. Eleven states currently hold authority; that number may grow following this reminder.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Primary source:</strong> <a href="https://www.ed.gov/media/document/dear-colleague-letter-information-about-educational-flexibility-program-ed-flex-september-17-2025-112273.pdf" target="_blank">Dear Colleague Letter on Ed-Flex, OESE, September 17, 2025 (PDF) ↗</a>
+          <br>Education Flexibility Partnership Act of 1999 (20 U.S.C. §5891b) · ESEA (20 U.S.C. §6301 et seq.)
+        </div>
+      </div>
+    </div>
+ 
+    <div class="cal-entry grants" data-program="grants">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">ED Grants</div>
+          <div class="entry-type-badge fr">Federal Register Notice</div>
+          <div class="entry-title-block">
+            <div class="entry-title">EIR Expansion Grants: Absolute Priority on Evidence-Based Literacy (Application Deadline Passed)</div>
+            <div class="entry-date">U.S. Department of Education · September 12, 2025 · Application deadline: October 14, 2025 (closed)</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED announced FY 2025 Education Innovation and Research (EIR) Expansion Grants with an absolute priority on promoting evidence-based literacy aligned to the science of reading, drawn from the Supplemental Priorities published September 9, 2025 (90 FR 43514). Two competitive preference priorities include returning education decision-making to states. Applications were available September 12, 2025, with a deadline of October 14, 2025. Grantees must serve high-need students and conduct an independent evaluation. The competition reflects ED's policy direction toward literacy instruction and state autonomy and signals grant competition criteria likely to recur in future discretionary programs.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The October 14 application deadline has passed. This entry is included for its policy signal value: the absolute priority on science-of-reading aligned literacy instruction is now embedded in the Supplemental Priorities framework that governs all ED discretionary grant competitions. Districts developing literacy programs or seeking future competitive grant funding should align with this framework. The competitive preference for returning education to states also signals that proposals emphasizing local and state-level decision-making will be advantaged in future competitions across multiple program areas.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review whether your district's current literacy programs are grounded in science-of-reading evidence bases. Alignment with this framework is increasingly a prerequisite for competitive federal grant eligibility, not just a best practice.</li>
+            <li>Review the Supplemental Priorities published September 9, 2025 (90 FR 43514) for the definitions and frameworks that will govern future ED discretionary competitions. These priorities now shape scoring criteria across Title I, Title III, and other competitive programs.</li>
+            <li>If your district applied and was not selected, request reviewer feedback. The absolute priority criteria are now well-defined and feedback will inform future submissions.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.federalregister.gov/documents/2025/09/12/2025-17671/applications-for-new-awards-education-innovation-and-research-eir-program-expansion-grants" target="_blank">Federal Register, 90 FR 44179, September 12, 2025 ↗</a> · Supplemental Priorities: <a href="https://www.federalregister.gov/documents/2025/09/09/2025-17535/supplemental-priorities-and-definitions-for-discretionary-grants-programs" target="_blank">90 FR 43514, September 9, 2025 ↗</a> · ESEA Title IV Part E (EIR program)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ED POLICY / GRANTS -->
+    <div class="cal-section-label" data-section="grants">ED Policy</div>
+ 
+    <div class="cal-entry grants" data-program="grants">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">ED Policy</div>
+          <div class="entry-type-badge fr">Federal Register: Final Priorities</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Secretary's Supplemental Priorities and Definitions for Discretionary Grants Programs</div>
+            <div class="entry-date">U.S. Department of Education · September 9, 2025 · 90 FR 43514</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED published final Supplemental Priorities and Definitions for Discretionary Grants Programs at 90 FR 43514, replacing the December 10, 2021 supplemental priorities. The three final priorities are: Evidence-Based Literacy (aligned to the science of reading), Educational Choice, and Returning Education to the States. These priorities apply across ED discretionary grant programs and are incorporated as absolute or competitive preference priorities in subsequent grant competitions, including the EIR Expansion Grants announced September 12. They affect Title I, Title III, Title IV, and other ESEA programs where discretionary competitions occur.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">These Supplemental Priorities now govern the scoring and eligibility framework for all ED discretionary grant competitions going forward. Federal programs directors preparing grant applications for any ED discretionary program must align proposals with these three priorities and incorporate the definitions from the September 9 notice. The shift from the 2021 priorities is significant: equity and access framing has been replaced by science-of-reading literacy, school choice, and state autonomy framing. Grant proposals that relied on prior administration priority language should be revised before submission to any future competition.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Read 90 FR 43514 in full before preparing any future ED discretionary grant application. The definitions in this notice are operationally binding in competitions that incorporate these priorities.</li>
+            <li>Audit your existing grant applications and program narratives for language drawn from the 2021 supplemental priorities. Proposals using prior-administration framing will be at a competitive disadvantage and may fail to meet absolute priority criteria.</li>
+            <li>Brief your grant writers and curriculum staff on the science-of-reading definition as operationalized in this notice. Vague references to "evidence-based literacy" are insufficient; alignment must be demonstrable against the specific framework.</li>
+            <li>Note that additional supplemental priorities have been proposed since September 9, including Artificial Intelligence (proposed July 21), Patriotic Education (proposed September 17), Career Pathways and Workforce Readiness (proposed September 25), and Meaningful Learning Opportunities (finalized February 2026). Monitor the Federal Register for any that are finalized and incorporated into programs you apply to.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.federalregister.gov/documents/2025/09/09/2025-17535/supplemental-priorities-and-definitions-for-discretionary-grants-programs" target="_blank">Federal Register, 90 FR 43514, September 9, 2025 ↗</a> · 20 U.S.C. §1221e-3 (Secretary's general authority) · 20 U.S.C. §3474
+        </div>
+      </div>
+    </div>
+ 
+    <!-- PERKINS -->
+    <div class="cal-section-label" data-section="perkins">Perkins</div>
+ 
+    <div class="cal-entry perkins" data-program="perkins">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Perkins</div>
+          <div class="entry-type-badge guidance">Guidance</div>
+          <div class="entry-title-block">
+            <div class="entry-title">FY 2026 Perkins State Plan Revisions and Budget Submission Requirements</div>
+            <div class="entry-date">U.S. Department of Education, Office of Career, Technical, and Adult Education · September 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCTAE announced requirements and instructions for submission of Perkins V State Plan Revisions and Budgets for FY 2026 Grant Awards. States administering Perkins must submit plan revisions following the four-year planning cycle, with many states submitting new or amended plans for FY 2026. Perkins V funds career and technical education programs at approximately $1.4 billion annually. Compliance with FY 2026 state plan submissions affects local subgrant allocations, performance indicators, and program requirements for districts receiving Perkins funds.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">Districts receiving Perkins subgrants must align local applications and CTE programs with state plan priorities and performance measures established in the FY 2026 state submission. CTE directors and federal programs staff should monitor state-level plan revisions to understand how changes in state priorities, performance indicators, or funding formulas may affect local allocations. Any state plan modifications must be reflected in local Perkins applications, budgets, and accountability data systems. Note also that the ED-DOL workforce development integration announced in November 2025 may affect Perkins plan submission procedures; contact your state CTE office for current guidance on any portal or process changes.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Contact your state CTE office to obtain the FY 2026 local application guidance and confirm whether the state plan revision has been submitted and approved.</li>
+            <li>Review your district's current CTE program design against the state's FY 2026 plan priorities and performance indicators. Misalignment between local programs and the state plan is a monitoring flag.</li>
+            <li>Confirm your Perkins accountability data systems are capturing the performance measures required under the FY 2026 state plan. Data gaps discovered during monitoring are harder to remediate than gaps identified proactively.</li>
+            <li>If your state has integrated Perkins into the WIOA portal following the November 2025 ED-DOL partnership, confirm local submission processes and deadlines have not changed.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> Perkins V (20 U.S.C. §2301 et seq.) · 34 CFR Part 99
+          <div class="url-note">Note: A specific URL for the FY 2026 Perkins state plan revision guidance was not available at time of publication. Verify current requirements at <a href="https://cte.ed.gov" target="_blank">cte.ed.gov ↗</a> or by contacting your state CTE office directly.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- OCR -->
+    <div class="cal-section-label" data-section="ocr">OCR</div>
+ 
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title VI</div>
+          <div class="entry-type-badge terminated">Resolution Agreement (Terminated April 1, 2025)</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Resolution Agreement with Rapid City Area School District (SD) on Title VI Racial Discrimination in Discipline and Advanced Learning</div>
+            <div class="entry-date">Office for Civil Rights · Agreement entered May 29, 2024 · September 2025 deadlines active at time of issue · Terminated April 1, 2025</div>
+          </div>
+        </div>
+ 
+        <div class="termination-alert">
+          <strong>Post-publication update:</strong> This resolution agreement was terminated by OCR on April 1, 2025, following President Trump's Executive Order "Ending Illegal Discrimination and Restoring Merit-Based Opportunity," which directed federal agencies to eliminate race-based policies. The agreement's September 2025 implementation deadlines were active when this digest was compiled, but the agreement itself no longer has legal force. It is included here for the signal value of the underlying findings and as context for districts monitoring OCR's Title VI enforcement posture.
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR entered a resolution agreement with Rapid City Area School District in South Dakota on May 29, 2024, following a compliance review opened in 2010. OCR's investigation found that Native American students were disciplined at rates 2.06 times higher than white students for all discipline referrals in 2021-22, and 4.57 to 5.84 times higher for specific categories including suspensions, truancy referrals, law enforcement referrals, and arrests. OCR also found discriminatory barriers in access to advanced learning programs. The agreement required policy revisions by February 2025, hiring of a discipline equity supervisor and advanced learning coordinator, establishment of a Stakeholder Equity Committee, staff training, and annual September reporting on implementation. The agreement was terminated April 1, 2025.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The Rapid City agreement's termination reflects a shift in OCR's Title VI enforcement posture under the current administration. However, the underlying legal obligation under Title VI of the Civil Rights Act of 1964 remains unchanged: districts may not discriminate on the basis of race, color, or national origin. The statistical disparities documented in Rapid City (2.06x overall referral rate, up to 5.84x for arrests) represent the kind of data pattern that can trigger OCR complaints regardless of the current enforcement environment. Districts with significant racial or ethnic enrollment disparities in discipline data should treat that data as a compliance risk, not only as a legal obligation when a resolution agreement is in force.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Pull your district's discipline data disaggregated by race and ethnicity. Calculate referral rate ratios across student groups for all discipline categories. Ratios above 1.5x for any group in any category warrant internal review and documentation of root cause analysis.</li>
+            <li>Review your district's advanced learning program enrollment data by race and ethnicity. Significant underrepresentation of any racial group in honors, AP, or gifted programming is a Title VI risk regardless of current OCR enforcement activity.</li>
+            <li>Confirm that your district has a functioning internal process for reviewing discipline disparities. OCR's ability to enforce agreements has varied by administration, but Title VI private rights of action remain available to affected students and families independent of OCR enforcement.</li>
+            <li>Brief your civil rights coordinator and legal counsel on the termination of this agreement and the underlying disparity data. The risk to the district has not been eliminated; only the federal agreement mechanism has been removed.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://ocrcas.ed.gov/sites/default/files/ocr-letters-and-agreements/07115001-b.pdf" target="_blank">OCR Resolution Agreement, Case No. 07-11-5001, May 29, 2024 ↗</a> · Title VI of the Civil Rights Act of 1964 (42 U.S.C. §2000d) · Executive Order "Ending Illegal Discrimination and Restoring Merit-Based Opportunity" (January 20, 2025)
+        </div>
+      </div>
+    </div>
+ 
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Section 504</div>
+          <div class="entry-type-badge resolution">Resolution Agreement</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Resolution Agreement with Sumter School District (SC) on Section 504 and Title II Compliance</div>
+            <div class="entry-date">Office for Civil Rights · Agreement entered August 26, 2025 · Case No. 11-25-1375</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR entered a resolution agreement with Sumter School District in South Carolina on August 26, 2025 (Case No. 11-25-1375), addressing Section 504 and Title II of the ADA compliance. The agreement requires the district to convene a group by September 30, 2025 to determine whether compensatory services are appropriate for a student who may not have received FAPE between the beginning of the 2024-2025 school year and January 27, 2025. The district must also submit training materials for OCR approval and conduct training for all relevant staff on Section 504 and Title II obligations. A documentation report on compensatory services provided is due to OCR by December 18, 2025.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This agreement addresses a failure to provide timely and appropriate Section 504 services to a student during a portion of a school year, with OCR requiring compensatory services as a remedy. The compensatory services obligation signals that OCR will hold districts accountable for service delivery gaps retroactively, not just prospectively. Section 504 coordinators and special education directors should review procedures for determining eligibility, developing accommodation plans, and monitoring service delivery to ensure students receive required supports without delay. Documentation of service delivery is as important as the delivery itself; undocumented services are treated the same as undelivered services during an OCR review.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's procedures for monitoring Section 504 plan implementation. Confirm that service delivery is documented in real time, not reconstructed after the fact.</li>
+            <li>Audit a sample of active Section 504 plans for evidence of actual service delivery. A plan on file without documentation of implementation is a liability during any OCR review.</li>
+            <li>Confirm your district has a process for identifying and addressing Section 504 service gaps mid-year, before they accumulate into a compensatory services obligation. Gaps identified proactively are far less costly than those identified by OCR.</li>
+            <li>Verify that Section 504 training for relevant staff is current. The Sumter agreement requires OCR-approved training as a remedy; having current training documentation in place makes this a non-issue if your district is ever subject to a complaint.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://ocrcas.ed.gov/sites/default/files/ocr-letters-and-agreements/11251375-b.pdf" target="_blank">OCR Resolution Agreement, Case No. 11-25-1375, August 26, 2025 ↗</a> · Section 504 of the Rehabilitation Act (29 U.S.C. §794) · Title II of the ADA (42 U.S.C. §12132) · 34 CFR Part 104
+        </div>
+      </div>
+    </div>
+ 
+    <!-- OIG -->
+    <div class="cal-section-label" data-section="oig">OIG</div>
+ 
+    <div class="cal-entry oig" data-program="oig">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OIG</div>
+          <div class="entry-type-badge report">Semiannual Report to Congress</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OIG Semiannual Report to Congress No. 91: April through September 2025</div>
+            <div class="entry-date">Office of Inspector General, U.S. Department of Education · Report period April 1 through September 30, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OIG released its statutory semiannual report covering April 1 through September 30, 2025, presenting audit and investigative activities to identify and stop fraud, waste, and abuse in Department programs. The report covers K-12 formula grant oversight, state accountability system implementation, and pandemic relief fund audits. As documented in the December 2025 issue of this digest, OIG also reported that 247 OCR staff were on administrative leave from March through mid-December 2025, with the cost estimated at $28.5 million to $38 million (a figure later confirmed by a GAO report). OIG continued oversight of ESSER spending as closeout deadlines approached.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">OIG's semiannual report period covers the same window when OCR's enforcement capacity was severely diminished due to staffing disruptions. Districts should review the report for audit findings and case studies in their program areas. The continued ESSER oversight signal is particularly important: OIG indicated it would maintain focus on pandemic relief fund spending through and beyond the 2025 closeout period. Questioned costs from ESSER audits remain a live risk regardless of whether grant periods have ended. Documentation practices during the grant period are the primary defense against questioned costs identified in post-closeout audits.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review OIG Semiannual Report No. 91 for audit findings related to your program areas, particularly K-12 formula grants and ESSER. Common findings in the report are strong indicators of what OIG considers high risk.</li>
+            <li>Confirm your district's ESSER closeout documentation is complete and retained. Audit risk does not end at the grant closeout date; OIG can and does conduct post-closeout reviews.</li>
+            <li>Review internal controls for formula grant administration against the risk areas OIG identified during this period. Internal control weaknesses identified in other districts' audits frequently recur across similar-sized and similar-context districts.</li>
+            <li>Brief your CFO and federal programs director on the report's key findings. Document that review as evidence of active compliance monitoring.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> Inspector General Act of 1978 (semiannual report requirement) · <a href="https://www.oversight.gov/inspectors-general/department-education-oig" target="_blank">OIG reports at oversight.gov ↗</a>
+          <div class="url-note">Note: A direct link to Semiannual Report No. 91 was not available at time of publication. Verify at <a href="https://oig.ed.gov/resources/congressional-reports" target="_blank">OIG congressional reports ↗</a>.</div>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">7 findings</div>
+      <div class="cal-stat-lbl">Federal documents reviewed and interpreted for September 2025</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">5 programs</div>
+      <div class="cal-stat-lbl">Title I/Ed-Flex, ED Grants/Policy, Perkins, OCR, and OIG covered</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Your Action</div>
+      <div class="cal-stat-lbl">Every entry includes concrete steps for your team</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Direct links to primary documents where available</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> The Ed-Flex DCL PDF, EIR Federal Register notice, and Supplemental Priorities Federal Register citation (90 FR 43514) are all verified. The Supplemental Priorities direct URL was sourced from multiple Federal Register cross-references. The Rapid City resolution agreement (Case No. 07-11-5001) has been verified and is disclosed as terminated as of April 1, 2025; the termination is documented in news sources and the district's public statement. The Sumter agreement entry date has been corrected from the original (which cited an internal agreement deadline as the agreement date); the actual agreement date is August 26, 2025, verified against OCR resolution records. The Perkins FY 2026 entry lacks a specific verifiable URL; a disclosure note directs readers to the OCTAE website for current guidance. The OIG semiannual report direct URL was not available at time of publication. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · September 2025
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
+ 
