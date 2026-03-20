@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: October 2025 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:     #1B3A4B;
+    --accent:   #1A5FA0;
+    --amber:    #A85D1A;
+    --green:    #2E5E4A;
+    --green-bg: #D4EDE4;
+    --amber-bg: #F5E0C8;
+    --blue-bg:  #D4E6F5;
+    --red:      #8B1A2A;
+    --red-bg:   #F0D4D8;
+    --purple:   #4A2E7A;
+    --purple-bg:#EDE4F5;
+    --teal:     #1A6B5A;
+    --teal-bg:  #D0EDE6;
+    --gray:     #6B7C8A;
+    --gray-lt:  #E8EDF1;
+    --body:     #333333;
+    --bg:       #F2F4F6;
+    --white:    #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .research-note strong { color: var(--dark); }
+  .research-note .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .research-note .rn-label:first-child { margin-top: 0; }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.title1  { border-left: 5px solid var(--accent); }
+  .cal-entry.mv      { border-left: 5px solid var(--teal); }
+  .cal-entry.hidden  { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .title1 .entry-badge { background: var(--blue-bg);  color: var(--accent); }
+  .mv     .entry-badge { background: var(--teal-bg);  color: var(--teal);   }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .entry-type-badge.guidance { background: var(--blue-bg);  color: var(--accent); }
+  .entry-type-badge.state    { background: var(--teal-bg);  color: var(--teal);   }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); background: var(--blue-bg); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; border-left: 3px solid var(--accent); }
+  .mv .entry-tlf-note { background: var(--teal-bg); border-left-color: var(--teal); }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+ 
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">October 2025 &nbsp;·&nbsp; <strong>2 findings</strong></p>
+    <p class="cal-desc">Federal programs &amp; fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity from the October 2025 window. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section translating that implication into concrete steps. Source links point directly to the primary federal or state document where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Low</div>
+    October 2025 was a quiet month for K-12 federal compliance activity. Federal attention was concentrated on postsecondary negotiated rulemaking (the RISE committee convened September 29 through October 3 and October 7–10) on student loan provisions from the One Big Beautiful Bill Act. Most material K-12 guidance was published before or after October 2025. The two entries in this issue reflect the most significant K-12-relevant federal and state activity from this period.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No new Title I guidance, Title III English learner guidance, or OIG K-12 audit reports were published in October 2025. OSEP issued no new Dear Colleague letters or policy guidance. No OCR resolution agreements with K-12 districts were identifiable for October 2025 specifically, though OCR posts resolutions without chronological markers, making October-specific identification unreliable.
+ 
+    <div class="rn-label">Watch next</div>
+    Monitor for forthcoming Federal Register notices implementing Secretary McMahon's supplemental grant priorities, evidence-based literacy, education choice, and returning education to states, which became effective October 9, 2025. Continue monitoring OIG audit releases on ESSER spending, which OIG indicated would continue through 2025, and OCR case resolutions, which are posted irregularly without chronological dating.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"    onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="title1" onclick="filterProgram('title1')">Title I / Ed-Flex</div>
+    <div class="f-pill"        data-filter="mv"     onclick="filterProgram('mv')">McKinney-Vento</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- ═══ TITLE I / ED-FLEX ═══ -->
+    <div class="cal-section-label" data-section="title1">Title I / Ed-Flex</div>
+ 
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I / Ed-Flex</div>
+          <div class="entry-type-badge guidance">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Ed-Flex Authority Dear Colleague Letter to Chief State School Officers</div>
+            <div class="entry-date">Office of Elementary and Secondary Education · September 17, 2025, included in this issue for proximity to the October compliance window</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OESE sent a Dear Colleague Letter to all chief state school officers reminding them that they may apply for authority under the Education Flexibility Partnership Act of 1999 (Ed-Flex Act). States with Ed-Flex authority can waive certain federal ESEA requirements for their districts and schools without first submitting waivers to ED for review and approval. This is the sixth piece of guidance the current administration has issued on expanding education choice and flexibility under ESEA. As of the 2023–2024 school year, 11 states hold Ed-Flex authority, and Ed-Flex states reported granting approximately 575 waivers that year. The Dear Colleague Letter is now flagged as historical content on ED's website.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">Ed-Flex authority allows approved state education agencies to waive certain ESEA statutory and regulatory requirements for LEAs without prior federal approval. For districts in Ed-Flex states, compliance obligations may differ from those in non-Ed-Flex states if the SEA has granted local waivers. Federal programs directors must confirm whether their state currently holds Ed-Flex authority and, if so, whether the state has exercised that authority to waive any requirements applicable to their district. A waiver granted by an Ed-Flex state does not eliminate the underlying statutory goal, it substitutes the waived requirement with a locally designed alternative that must still advance the relevant program's objectives. Districts must maintain documentation of any waivers in effect, what requirements were waived, and what alternative approaches are in place.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm whether your state currently holds Ed-Flex authority. The 11 states with current authority are identified through your SEA. If your state does not hold Ed-Flex authority, this guidance has no direct compliance impact on your district at this time.</li>
+            <li>If your state holds Ed-Flex authority, contact your state education agency to determine whether any waivers have been granted that apply to your district's Title I or other ESEA programs.</li>
+            <li>For any active Ed-Flex waivers affecting your district, document the waiver, the requirement waived, the alternative approach your district is implementing, and evidence that the alternative advances the program's statutory objectives.</li>
+            <li>Note that the Dear Colleague Letter is now marked as historical content on ED's website. Confirm with your SEA whether the guidance remains operative or whether updated Ed-Flex application procedures have been issued.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Primary source:</strong> <a href="https://www.ed.gov/media/document/dear-colleague-letter-information-about-educational-flexibility-program-ed-flex-september-17-2025-112273.pdf" target="_blank">Dear Colleague Letter on Ed-Flex, OESE, September 17, 2025 (PDF) ↗</a>
+          <br><strong>Press release:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-issues-guidance-states-ed-flex-option-encourage-local-innovation" target="_blank">ED Press Release, September 17, 2025 ↗</a> (marked historical)
+          <br>Education Flexibility Partnership Act of 1999 (20 U.S.C. §5891b) · ESEA (20 U.S.C. §6301 et seq.)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ═══ McKINNEY-VENTO ═══ -->
+    <div class="cal-section-label" data-section="mv">McKinney-Vento</div>
+ 
+    <div class="cal-entry mv" data-program="mv">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">McKinney-Vento</div>
+          <div class="entry-type-badge state">State Broadcast Memorandum, New Jersey</div>
+          <div class="entry-title-block">
+            <div class="entry-title">New Jersey McKinney-Vento Education Updates: Credentialing Course Registration and Monthly Office Hours</div>
+            <div class="entry-date">New Jersey Department of Education · October 1, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">The New Jersey Department of Education issued a broadcast memorandum to LEA leads directing district homeless liaisons (DHLs) and other LEA personnel to register for the state-offered McKinney-Vento credentialing course at McKinney-Vento.org. The course is self-paced, on-demand, and free, covering identification, enrollment, dispute resolution, and transportation under the MKV Act. Upon completion, participants earn a certificate counting toward professional development hours. NJDOE also continues hosting optional monthly office hours for DHLs on the fourth Thursday of each month from 8:45–9:45 a.m. The memorandum also announces an updated interactive homeless count map on the NJDOE MKV website showing identification data by county for school years 2021–2024, and lists regional grantee directors for SY 2025–2026. The document routes to a wide audience: district homeless liaisons, registrars, principals, business administrators, special education directors, and Title I directors.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This memorandum is New Jersey-specific. The compliance obligation to register for the credentialing course applies to New Jersey LEAs only. The federal McKinney-Vento Act as reauthorized by ESSA recommends, but does not mandate, professional development for LEA personnel serving students experiencing homelessness (42 U.S.C. §§11432[f][6] &amp; [g][6][A][ix]). New Jersey has translated this recommendation into an affirmative state expectation through a directed memorandum, making professional development a practical compliance consideration for NJ districts. For districts outside New Jersey, this memo is a useful signal: states are increasingly formalizing MKV liaison training expectations that go beyond federal recommendations. Federal programs directors in all states should verify what their state requires or expects of district homeless liaisons regarding training documentation.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li><strong>New Jersey LEAs:</strong> Register your district homeless liaison for the credentialing course at McKinney-Vento.org now if not already completed. Track completion and retain the certificate as documentation of professional development compliance.</li>
+            <li><strong>New Jersey LEAs:</strong> Note that monthly office hours (fourth Thursday, 8:45–9:45 a.m.) are optional, informal sessions, attendance is not required. Participation is encouraged for liaison support and best-practice sharing, but failure to attend does not constitute a compliance gap.</li>
+            <li><strong>New Jersey LEAs:</strong> Confirm your district's regional grantee director contact for SY 2025–2026. Regional grantees provide quarterly technical assistance and coordinate MOAs with service providers, an undocumented relationship with the regional grantee is a gap during monitoring.</li>
+            <li><strong>All states:</strong> Review whether your state education agency has issued similar guidance establishing training expectations for district homeless liaisons beyond the federal recommendation. If not, consider voluntarily documenting liaison professional development as a best practice ahead of any future state mandate.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.nj.gov/education/broadcasts/2025/oct/1/ImportantMcKinneyVentoEducationforHomelessChildrenandYouthUpdates.pdf" target="_blank">NJDOE Broadcast Memorandum, October 1, 2025 (PDF) ↗</a> · McKinney-Vento Homeless Assistance Act as amended by ESSA (42 U.S.C. §§11431–11435) · 42 U.S.C. §§11432[f][6] &amp; [g][6][A][ix] (professional development recommendation)
+          <div class="url-note">Note: This entry reports on New Jersey state guidance. The federal McKinney-Vento professional development provisions are recommendations, not mandates. State-specific compliance obligations vary. Districts outside New Jersey should verify their own state's requirements.</div>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">2 findings</div>
+      <div class="cal-stat-lbl">Material federal and state documents from the October 2025 window</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Low activity</div>
+      <div class="cal-stat-lbl">October 2025 was dominated by postsecondary rulemaking, not K-12 guidance</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Your Action</div>
+      <div class="cal-stat-lbl">Every entry includes concrete steps for your team</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Both sources verified against primary documents</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> Both entries in this issue were verified against primary source documents. The Ed-Flex Dear Colleague Letter PDF and press release are confirmed live on ED's website, though the press release is now marked as historical content. The NJ McKinney-Vento broadcast memorandum was verified directly from the NJDOE PDF. The Ed-Flex entry is dated September 17, 2025; it is included in this October issue as the closest material federal guidance affecting districts in the October compliance window, with that dating made explicit in the entry header. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · October 2025
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
