@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest — November 2025 — The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:     #1B3A4B;
+    --accent:   #1A5FA0;
+    --amber:    #A85D1A;
+    --green:    #2E5E4A;
+    --green-bg: #D4EDE4;
+    --amber-bg: #F5E0C8;
+    --blue-bg:  #D4E6F5;
+    --red:      #8B1A2A;
+    --red-bg:   #F0D4D8;
+    --purple:   #4A2E7A;
+    --purple-bg:#EDE4F5;
+    --gray:     #6B7C8A;
+    --gray-lt:  #E8EDF1;
+    --body:     #333333;
+    --bg:       #F2F4F6;
+    --white:    #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+  .cal-context em { color: var(--dark); font-style: normal; }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .research-note strong { color: var(--dark); }
+  .research-note .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .research-note .rn-label:first-child { margin-top: 0; }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.title1   { border-left: 5px solid var(--accent); }
+  .cal-entry.idea     { border-left: 5px solid var(--purple); }
+  .cal-entry.perkins  { border-left: 5px solid var(--amber); }
+  .cal-entry.oig      { border-left: 5px solid var(--gray); }
+  .cal-entry.grants   { border-left: 5px solid var(--green); }
+  .cal-entry.data     { border-left: 5px solid var(--red); }
+  .cal-entry.hidden   { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .title1  .entry-badge { background: var(--blue-bg);   color: var(--accent); }
+  .idea    .entry-badge { background: var(--purple-bg); color: var(--purple); }
+  .perkins .entry-badge { background: var(--amber-bg);  color: var(--amber);  }
+  .oig     .entry-badge { background: var(--gray-lt);   color: var(--gray);   }
+  .grants  .entry-badge { background: var(--green-bg);  color: var(--green);  }
+  .data    .entry-badge { background: var(--red-bg);    color: var(--red);    }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .entry-type-badge.press    { background: var(--blue-bg);   color: var(--accent); }
+  .entry-type-badge.data-rpt { background: var(--purple-bg); color: var(--purple); }
+  .entry-type-badge.tegl     { background: var(--amber-bg);  color: var(--amber);  }
+  .entry-type-badge.criminal { background: var(--gray-lt);   color: var(--gray);   }
+  .entry-type-badge.fr       { background: var(--green-bg);  color: var(--green);  }
+  .entry-type-badge.fr-data  { background: var(--red-bg);    color: var(--red);    }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); background: var(--blue-bg); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; border-left: 3px solid var(--accent); }
+  .idea    .entry-tlf-note { background: var(--purple-bg); border-left-color: var(--purple); }
+  .perkins .entry-tlf-note { background: var(--amber-bg);  border-left-color: var(--amber);  }
+  .oig     .entry-tlf-note { background: var(--gray-lt);   border-left-color: var(--gray);   }
+  .grants  .entry-tlf-note { background: var(--green-bg);  border-left-color: var(--green);  }
+  .data    .entry-tlf-note { background: var(--red-bg);    border-left-color: var(--red);    }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+ 
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm — Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">November 2025 &nbsp;·&nbsp; <strong>7 findings</strong></p>
+    <p class="cal-desc">Federal programs &amp; fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity published in November 2025. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section translating that implication into concrete steps. Findings are organized by program area. Source links point directly to the primary federal document where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context</div>
+    November 2025 was dominated by the Trump administration's announcement of major interagency restructuring — moving federal K-12 programs including Perkins CTE to the Department of Labor for day-to-day administration while ED retains policy and oversight responsibilities. This represents a significant shift in how districts will interact with federal programs, though ED assured grantees they should not expect programmatic disruptions. The administration's focus on workforce development integration and reducing federal bureaucracy is reshaping the compliance landscape.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No new OCR resolution agreements with K-12 districts were published in November 2025. No new McKinney-Vento specific guidance was issued. No new OIG audit reports of K-12 programs were released, though criminal enforcement actions continued. Title III had no new guidance beyond existing resources.
+ 
+    <div class="rn-label">Watch next</div>
+    Monitor state communications regarding the ED-DOL integration of Perkins and WIOA programs, including potential changes to application portals and timelines for FY 2026. Watch for implementing guidance following the interagency agreements announced in November. Monitor OCR enforcement priorities under the current administration's interpretation of Title IX and civil rights laws.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"     onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="title1"  onclick="filterProgram('title1')">Title I / Agency</div>
+    <div class="f-pill"        data-filter="idea"    onclick="filterProgram('idea')">IDEA</div>
+    <div class="f-pill"        data-filter="perkins" onclick="filterProgram('perkins')">Perkins</div>
+    <div class="f-pill"        data-filter="oig"     onclick="filterProgram('oig')">OIG</div>
+    <div class="f-pill"        data-filter="grants"  onclick="filterProgram('grants')">ED Grants</div>
+    <div class="f-pill"        data-filter="data"    onclick="filterProgram('data')">Data Collection</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- ═══ TITLE I / AGENCY ═══ -->
+    <div class="cal-section-label" data-section="title1">Agency Restructuring</div>
+ 
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Agency</div>
+          <div class="entry-type-badge press">Press Release</div>
+          <div class="entry-title-block">
+            <div class="entry-title">ED Announces Six New Interagency Agreements to Transfer Programs to DOL, DOI, HHS, and State</div>
+            <div class="entry-date">U.S. Department of Education · November 18, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED announced six new interagency agreements with four agencies — DOL, DOI, HHS, and State — to transfer administration of certain education programs. DOL will take on a greater role in administering federal K-12 programs to better align them with workforce and college programs, managing competitions, providing technical assistance, and integrating ED programs with employment and training programs DOL already administers. DOI will administer Indian Education programs. HHS will administer the CCAMPIS child care program and foreign medical accreditation. State will administer Fulbright-Hays international education grants. ED stated that states and grantees should not expect programmatic disruptions and that ED maintains all statutory responsibilities for policymaking and oversight under each agreement.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The six interagency agreements transfer day-to-day administration of specified ED programs to other agencies while ED retains statutory authority and oversight. For K-12 districts, the most consequential is the Elementary and Secondary Education Partnership with DOL, which gives DOL a greater role in administering federal K-12 programs including competitions and technical assistance. Although ED has assured grantees of no programmatic disruptions, any transfer of program administration creates risk of changed guidance, reporting requirements, or monitoring priorities during transition. Federal programs directors must monitor communications from both ED and DOL for any transition-related changes affecting grant programs, submission portals, or compliance expectations.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Identify which of your district's federal programs fall under the ED-DOL Elementary and Secondary Education Partnership. Confirm current grant contacts and confirm whether any submission portals or reporting channels have changed.</li>
+            <li>Monitor both ED and DOL communications channels for transition-related guidance. Do not assume that guidance from one agency is sufficient — both agencies are now part of program administration.</li>
+            <li>Document all communications received regarding program transitions. If guidance from DOL contradicts prior ED guidance, contact both agencies for clarification and document the discrepancy before taking action.</li>
+            <li>Brief your superintendent and board on the restructuring. The shift to DOL administration of K-12 programs is material enough to warrant board-level awareness, particularly for districts with significant federal program budgets.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-announces-six-new-agency-partnerships-break-federal-bureaucracy" target="_blank">ED Press Release, November 18, 2025 ↗</a> · Economy Act (31 U.S.C. §1535) · Elementary and Secondary Education Act · IDEA · Carl D. Perkins CTE Act
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ═══ IDEA ═══ -->
+    <div class="cal-section-label" data-section="idea">IDEA</div>
+ 
+    <div class="cal-entry idea" data-program="idea">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">IDEA</div>
+          <div class="entry-type-badge data-rpt">Data Report</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OSEP Releases Fast Facts Report on 50 Years of IDEA</div>
+            <div class="entry-date">U.S. Department of Education, Office of Special Education Programs · November 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OSEP published Fast Facts commemorating 50 years of IDEA, providing historical context and current national implementation data. The report summarizes key facts related to data collection authorized by IDEA Section 618, including child count, educational environments, discipline, and exiting data. While primarily retrospective, the publication provides baseline national data districts can use for comparing their special education programs and outcomes to national trends.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">OSEP's retrospective Fast Facts report does not impose new requirements, but it offers national baseline data on placement rates, discipline, and outcomes that state monitoring agencies and federal reviewers will have access to. Districts whose LRE placement rates, discipline rates for students with disabilities, or exit data deviate significantly from national patterns should treat that deviation as a monitoring flag. Special education directors should review the report's data and assess whether district practices align with or diverge from national patterns, particularly in areas that are common compliance review targets: least restrictive environment placement rates and disproportionate discipline of students with disabilities.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review the OSEP Fast Facts data on educational environments. Compare your district's LRE placement percentages against the national data. Flag significant divergences for documentation and review.</li>
+            <li>Review discipline data for students with disabilities. If your district's rates of removal, suspension, or alternative placement for students with disabilities exceed national norms, document the justification and confirm procedural safeguard compliance.</li>
+            <li>Confirm your IDEA Section 618 data reporting is accurate and current. The national data in this report originates from district submissions — inaccurate local data affects both your compliance record and the national baseline.</li>
+            <li>Share the report with your special education director as a baseline reference for program self-assessment before the next state monitoring cycle.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://sites.ed.gov/idea/osep-fast-facts/" target="_blank">OSEP Fast Facts, 50 Years of IDEA, November 2025 ↗</a> · IDEA Section 618 (20 U.S.C. §1418) · 34 CFR Part 300
+          <div class="url-note">Note: The OSEP Fast Facts page links to multiple reports. Navigate to the 50th anniversary Fast Facts specifically for the November 2025 publication.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ═══ PERKINS ═══ -->
+    <div class="cal-section-label" data-section="perkins">Perkins</div>
+ 
+    <div class="cal-entry perkins" data-program="perkins">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Perkins</div>
+          <div class="entry-type-badge tegl">Training and Employment Guidance Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">DOL Issues WIOA Waiver Guidance with Recommendations for Integrating Perkins CTE Programs</div>
+            <div class="entry-date">U.S. Department of Labor, Employment and Training Administration · November 25, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">DOL issued a Training and Employment Guidance Letter (TEGL) to governors and workforce boards in collaboration with ED's Office of Career, Technical, and Adult Education regarding available WIOA waiver and flexibility options. The guidance included recommendations for further integrating Perkins career and technical education programs into the public workforce system. States are being encouraged to combine WIOA and Perkins state plans into a single portal, potentially affecting local application timelines and coordination requirements with workforce development boards.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This DOL TEGL, issued in collaboration with ED's OCTAE, encourages states to integrate Perkins V CTE programs into WIOA workforce systems including combining state plans into a single portal. Districts administering Perkins-funded CTE programs should anticipate potential changes to local application timelines, coordination requirements with workforce boards, and state-level planning processes. The guidance operates at the state level — its direct effect on districts will depend on how each state responds. Federal programs directors must monitor state CTE communications for any modifications to Perkins V local application procedures, submission deadlines, or reporting requirements resulting from WIOA integration.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Contact your state CTE office to determine whether the state plans to respond to this TEGL by combining Perkins and WIOA state plans and whether any changes to local application procedures are anticipated.</li>
+            <li>Review your current Perkins application timeline and local needs assessment process. If the state combines portals or planning timelines, local submission deadlines may shift.</li>
+            <li>Document current coordination activities with your local workforce development board. The guidance increases federal expectations for cross-system collaboration — undocumented coordination is a gap that will surface during monitoring.</li>
+            <li>Ensure CTE program staff are aware of the potential for procedural changes and are monitoring state communications.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> DOL/ETA Training and Employment Guidance Letter, November 25, 2025 · Perkins V (20 U.S.C. §2301 et seq.) · WIOA (29 U.S.C. §3101 et seq.)
+          <div class="url-note">Note: A direct URL to the specific TEGL was not available at time of publication. The guidance is documented in the ED/DOL December 5, 2025 press release at <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-labor-celebrate-successful-implementation-of-workforce-development-partnership" target="_blank">ed.gov ↗</a>. Verify the TEGL directly at <a href="https://www.dol.gov/agencies/eta/advisories" target="_blank">DOL ETA advisories ↗</a>.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="cal-entry perkins" data-program="perkins">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Perkins</div>
+          <div class="entry-type-badge press">Press Release / Interagency Coordination</div>
+          <div class="entry-title-block">
+            <div class="entry-title">ED Announces Plans to Integrate Perkins State Plan Portal into WIOA System</div>
+            <div class="entry-date">U.S. Department of Education, Office of Career, Technical, and Adult Education · November 18, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED announced that subsequent efforts following the ED-DOL workforce development partnership will focus on integrating the Perkins state plan portal into the WIOA state plan portal so states with combined WIOA plans can submit information through a single portal. ED and DOL are synchronizing the timeline for submitting 2026 WIOA State Plan modifications and will provide joint feedback on submissions. This is a companion announcement to the November 18 interagency agreements press release.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The integration of the Perkins state plan portal into the WIOA portal is a structural change that will affect how states submit Perkins V information and may alter the timing and process for local applications that flow from state plans. The synchronization of 2026 WIOA State Plan modification timelines with Perkins submissions means that any delays or changes at the state level could shift local application and reporting deadlines. Districts should not treat this as a future concern — state-level planning for combined submissions is already underway and will affect FY 2026 local applications.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm with your state CTE office whether the Perkins portal integration has already changed submission procedures for FY 2026 state plan modifications and whether local application timelines will be affected.</li>
+            <li>Verify that your district's Perkins grant contacts and submission pathways are current. If the state has migrated to DOL's GrantSolutions system, confirm your district has the necessary access and has updated contact information.</li>
+            <li>Flag FY 2026 Perkins local application deadlines for early review. If the state has not yet communicated any changes, request a status update in writing so your district has documentation of the inquiry.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-announces-six-new-agency-partnerships-break-federal-bureaucracy" target="_blank">ED Press Release, November 18, 2025 ↗</a> · Perkins V (20 U.S.C. §2301 et seq.) · WIOA (29 U.S.C. §3101 et seq.)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ═══ OIG ═══ -->
+    <div class="cal-section-label" data-section="oig">OIG</div>
+ 
+    <div class="cal-entry oig" data-program="oig">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OIG</div>
+          <div class="entry-type-badge criminal">Criminal Enforcement</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Former Boone County Schools (WV) Maintenance Supervisor Sentenced for $3.4 Million Fraud Scheme</div>
+            <div class="entry-date">Office of Inspector General, U.S. Department of Education · November 20, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OIG announced the sentencing of a former West Virginia school district maintenance supervisor who was ordered to pay $3.4 million in connection with a fraud scheme involving federal funds. This case demonstrates continued OIG focus on K-12 fraud, particularly in facilities and operations areas where internal controls may be less stringent than in instructional programs. The supervisor had previously pleaded guilty in April 2025.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The Boone County Schools sentencing illustrates that fraud risk exists at every level of federal program administration — not just central office. A maintenance supervisor, not an administrator, executed a $3.4 million scheme involving federal funds. This case signals that OIG actively investigates and prosecutes fraud in facilities and operations areas. Districts must ensure that robust internal controls cover all federal fund expenditures, including maintenance contracts, purchase orders, and vendor payments, with the same segregation of duties and approval requirements applied to instructional program expenditures.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review internal controls for maintenance and facilities expenditures funded with federal dollars. Confirm segregation of duties is in place — the person approving a purchase should not also receive the goods or process payment.</li>
+            <li>Verify that all federal procurement in maintenance and facilities follows Uniform Guidance competitive procedures (2 CFR §200.317–200.327). Sole-source procurements must be documented with specific justification.</li>
+            <li>Conduct or schedule a supervisory review of recent maintenance expenditures charged to federal programs. High-dollar, low-visibility procurement is a primary fraud risk area in K-12 federal programs.</li>
+            <li>Brief your facilities director and CFO on this case. The pattern here — extended fraud by a single employee without detection — is preventable with consistent supervisory review of expenditure documentation.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> Uniform Guidance procurement standards (2 CFR §200.317–200.327) · 18 U.S.C. §666 (theft from programs receiving federal funds)
+          <div class="url-note">Note: The November 20, 2025 sentencing announcement is confirmed on the OIG news page. Verify the specific press release at <a href="https://oig.ed.gov/resources/news-and-updates" target="_blank">OIG news and updates ↗</a> by searching for Boone County Schools.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ═══ ED GRANTS ═══ -->
+    <div class="cal-section-label" data-section="grants">ED Grants</div>
+ 
+    <div class="cal-entry grants" data-program="grants">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">ED Grants</div>
+          <div class="entry-type-badge fr">Federal Register Notice</div>
+          <div class="entry-title-block">
+            <div class="entry-title">FIPSE Special Projects: $167 Million for AI in Education, Civil Discourse, Accreditation Reform, and Short-Term Programs</div>
+            <div class="entry-date">U.S. Department of Education, Office of Postsecondary Education · November 12, 2025 · Application deadline: December 3, 2025 (closed)</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED published a Federal Register notice for FY 2025 FIPSE Special Projects grants totaling $167 million across four priority areas: $50 million for advancing AI in postsecondary education, $60 million for promoting civil discourse on campuses, $7 million for accreditation reform, and $50 million for capacity-building for high-quality short-term programs. The competition is open to institutions of higher education and nonprofit organizations. The application deadline was December 3, 2025. This competition is focused on postsecondary institutions. However, Absolute Priority 2 explicitly invites partnerships with SEAs and LEAs for AI literacy in K-12 and dual enrollment AI coursework.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The FIPSE competition has closed for FY 2025, but its priority areas signal federal grant competition direction that will likely influence future K-12 programs. Notably, Absolute Priority 2 explicitly includes partnerships with SEAs and LEAs for AI literacy in K-12 and dual enrollment opportunities — districts that build AI literacy infrastructure now will be better positioned as sub-recipients or partners in future competitions. Federal programs directors should also note that the $50 million Workforce Pell-aligned short-term program priority has direct implications for Perkins-funded CTE alignment, as these programs must meet Workforce Pell eligibility requirements under the One Big Beautiful Bill Act.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>The December 3, 2025 deadline has passed. If your district was approached as a potential K-12 partner by a postsecondary institution applying under this competition, confirm whether any partnership agreement was formalized and whether your district has sub-recipient obligations.</li>
+            <li>Review your current AI literacy programming against the federal priorities described in Absolute Priorities 1 and 2. Districts that can demonstrate existing AI literacy infrastructure are better positioned as future sub-recipients or partners in federal competitions.</li>
+            <li>Brief your CTE director on the short-term program priority and Workforce Pell alignment requirements. Future Perkins funding discussions may reference these priority areas as an alignment framework.</li>
+            <li>Monitor for future K-12 grant competitions that incorporate these AI literacy and workforce alignment priorities — the federal signal here is clear and likely to recur.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.federalregister.gov/documents/2025/11/12/2025-19843/applications-for-new-awards-fund-for-the-improvement-of-postsecondary-education-special-projects" target="_blank">Federal Register, 90 FR 50861, November 12, 2025 ↗</a> · HEA Section 744 (20 U.S.C. §1138) · Executive Order 14179 (AI leadership) · Executive Order 14277 (AI education for youth) · One Big Beautiful Bill Act, Workforce Pell provisions
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ═══ DATA COLLECTION ═══ -->
+    <div class="cal-section-label" data-section="data">Data Collection</div>
+ 
+    <div class="cal-entry data" data-program="data">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Data Collection</div>
+          <div class="entry-type-badge fr-data">Federal Register Notice</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Agency Information Collection: National Public Education Financial Survey (NPEFS) 2025–2027 Extension</div>
+            <div class="entry-date">U.S. Department of Education, Institute of Education Sciences · November 25, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED proposed extension of the NPEFS data collection for 2025–2027 without change. NPEFS is an annual collection of state-level finance data administered by the U.S. Census Bureau for NCES under interagency agreement, covering revenues, expenditures, and average daily attendance for all publicly funded elementary and secondary schools. The data is used to calculate each state's average per-pupil expenditure, which in turn is used to calculate federal program allocations including Title I, Part A, Impact Aid, and Indian Education. The comment period closed December 26, 2025.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The NPEFS extension without change maintains existing data collection requirements. The critical compliance implication is one that many districts overlook: NPEFS data, which originates from state submissions compiled from district-level financial reports, is used directly to calculate Title I, Part A allocations. Inaccurate district financial reporting to the state affects not only the district's own allocation but the state's overall SPPE calculation. Districts must ensure that expenditure coding by function and fund source is accurate and consistent, as errors in district financial data flow upstream into federal allocation formulas.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's financial reporting practices for accuracy in classifying expenditures by function — instruction, student support, administration, and operations — across all funding sources. Misclassification at the district level affects state NPEFS submissions.</li>
+            <li>Confirm your chart of accounts separates federal, state, and local revenue sources clearly and that expenditures are coded to the correct fund source. This is a prerequisite for accurate NPEFS data flow to the state.</li>
+            <li>Verify your district's fiscal year data submissions to the state are complete and accurate. If you are aware of prior errors or inconsistencies, contact your state education agency to determine whether resubmission is possible.</li>
+            <li>Brief your business official on the NPEFS-to-Title-I connection. The accuracy of financial coding is a compliance issue — not just an accounting preference — because it affects federal allocation calculations.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.federalregister.gov/documents/2025/11/25/2025-20981/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-for" target="_blank">Federal Register, 90 FR 53278, November 25, 2025 ↗</a> · Education Sciences Reform Act of 2002 §153(a)(1)(I) (20 U.S.C. §9543) · ESEA §8101 (SPPE definition) · OMB Control Number 1850-0067
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">7 findings</div>
+      <div class="cal-stat-lbl">Federal documents reviewed and interpreted for November 2025</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">6 programs</div>
+      <div class="cal-stat-lbl">Agency restructuring, IDEA, Perkins, OIG, ED Grants, and Data covered</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Your Action</div>
+      <div class="cal-stat-lbl">Every entry includes concrete steps for your team</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Direct links to primary documents where available</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> Every entry cites a primary source document where a direct link is available. The DOL TEGL entry did not have a direct URL available at time of publication and includes a disclosure note with a search path for independent verification. The ED agency restructuring press release, FIPSE Federal Register notice, and NPEFS Federal Register notice were all verified against primary sources. The OIG Boone County sentencing date and dollar amount are confirmed on the OIG news page. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · November 2025
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
