@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest — December 2025 — The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:     #1B3A4B;
+    --accent:   #1A5FA0;
+    --amber:    #A85D1A;
+    --green:    #2E5E4A;
+    --green-bg: #D4EDE4;
+    --amber-bg: #F5E0C8;
+    --blue-bg:  #D4E6F5;
+    --red:      #8B1A2A;
+    --red-bg:   #F0D4D8;
+    --purple:   #4A2E7A;
+    --purple-bg:#EDE4F5;
+    --gray:     #6B7C8A;
+    --gray-lt:  #E8EDF1;
+    --body:     #333333;
+    --bg:       #F2F4F6;
+    --white:    #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.title1   { border-left: 5px solid var(--accent); }
+  .cal-entry.grants   { border-left: 5px solid var(--green); }
+  .cal-entry.perkins  { border-left: 5px solid var(--amber); }
+  .cal-entry.ocr      { border-left: 5px solid var(--red); }
+  .cal-entry.oig      { border-left: 5px solid var(--gray); }
+  .cal-entry.hidden   { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .title1  .entry-badge { background: var(--blue-bg);   color: var(--accent); }
+  .grants  .entry-badge { background: var(--green-bg);  color: var(--green);  }
+  .perkins .entry-badge { background: var(--amber-bg);  color: var(--amber);  }
+  .ocr     .entry-badge { background: var(--red-bg);    color: var(--red);    }
+  .oig     .entry-badge { background: var(--gray-lt);   color: var(--gray);   }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .entry-type-badge.guidance   { background: var(--blue-bg);   color: var(--accent); }
+  .entry-type-badge.press      { background: var(--green-bg);  color: var(--green);  }
+  .entry-type-badge.resolution { background: var(--red-bg);    color: var(--red);    }
+  .entry-type-badge.report     { background: var(--gray-lt);   color: var(--gray);   }
+  .entry-type-badge.criminal   { background: var(--amber-bg);  color: var(--amber);  }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); background: var(--blue-bg); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; border-left: 3px solid var(--accent); }
+  .grants  .entry-tlf-note { background: var(--green-bg);  border-left-color: var(--green);  }
+  .perkins .entry-tlf-note { background: var(--amber-bg);  border-left-color: var(--amber);  }
+  .ocr     .entry-tlf-note { background: var(--red-bg);    border-left-color: var(--red);    }
+  .oig     .entry-tlf-note { background: var(--gray-lt);   border-left-color: var(--gray);   }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+ 
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm — Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">December 2025 &nbsp;·&nbsp; <strong>10 findings</strong></p>
+    <p class="cal-desc">Federal programs &amp; fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity published in December 2025. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section translating that implication into concrete steps. Findings are organized by program area. Source links point directly to the primary federal document where available. Source links are provided for independent verification.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"     onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="title1"  onclick="filterProgram('title1')">Title I</div>
+    <div class="f-pill"        data-filter="grants"  onclick="filterProgram('grants')">ED Grants</div>
+    <div class="f-pill"        data-filter="perkins" onclick="filterProgram('perkins')">Perkins</div>
+    <div class="f-pill"        data-filter="ocr"     onclick="filterProgram('ocr')">OCR</div>
+    <div class="f-pill"        data-filter="oig"     onclick="filterProgram('oig')">OIG</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- ═══ TITLE I ═══ -->
+    <div class="cal-section-label" data-section="title1">Title I</div>
+ 
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I</div>
+          <div class="entry-type-badge guidance">Non-Regulatory Guidance</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Title I, Part D Non-Regulatory Guidance for Neglected, Delinquent, or At-Risk Youth</div>
+            <div class="entry-date">U.S. Department of Education · December 20, 2024</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED released updated Title I, Part D non-regulatory guidance addressing key program requirements for students who are neglected, delinquent, or at-risk under Title I, Part D of ESEA. The guidance takes the form of FAQs to help SEAs, state agencies, LEAs, and partners ensure students in state and local facilities receive necessary resources to thrive academically. Districts operating Title I, Part D programs or serving students transitioning from facilities should review this updated guidance for current compliance requirements.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">ED released updated non-regulatory guidance for Title I, Part D programs serving neglected, delinquent, or at-risk youth, structured as FAQs to clarify program requirements for students in state and local facilities. Districts operating Title I, Part D subgrants or serving students transitioning from correctional or institutional facilities must review this guidance to ensure compliance with current program requirements, including coordination with facility programs and transition planning. Federal programs directors should verify that identification procedures, service delivery models, and transition protocols align with the updated guidance. Maintain documentation of collaboration with facility staff, individualized transition plans, and expenditures specifically supporting this student population under allowable Title I, Part D uses.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>If your LEA operates a Title I, Part D subgrant, pull the updated FAQ guidance and review your program design against it. Confirm eligibility determinations, service delivery, and transition protocols are aligned.</li>
+            <li>Review documentation of coordination with state agency or facility staff. The guidance emphasizes collaboration between LEAs and the facilities serving these students — undocumented coordination is a common gap.</li>
+            <li>Confirm individualized transition plans exist for students moving from facilities back to community schools. The guidance addresses transition planning as a program requirement, not a best practice.</li>
+            <li>Update any internal program documentation that references prior guidance. Using superseded guidance as a compliance reference is a monitoring flag.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://neglected-delinquent.ed.gov/what-title-i-part-d/title-i-part-d-nonregulatory-guidance" target="_blank">Title I, Part D Non-Regulatory Guidance, ED, December 20, 2024 ↗</a> · ESEA Title I, Part D (§1401 et seq.)
+          <div class="url-note">Note: The neglected-delinquent.ed.gov subdomain had an SSL verification issue at time of audit. Verify document availability directly at that URL or via the ED.gov Title I, Part D program page.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I</div>
+          <div class="entry-type-badge guidance">Non-Regulatory Guidance</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Title I, Part A Parent and Family Engagement Guidance</div>
+            <div class="entry-date">U.S. Department of Education · January 10, 2025 — included here for advance notice</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED released guidance on parent and family engagement under Title I, Part A of ESEA as amended by ESSA. This guidance addresses requirements for meaningful consultation with parents, parent and family engagement policies, school-parent compacts, and use of Title I funds to support engagement activities. Districts should review current parent engagement practices and policies for compliance with Title I requirements and ensure stakeholder involvement in program planning and evaluation.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This guidance was officially dated January 10, 2025 and is included here as an advance notice item given its proximity to this issue's publication window. It addresses mandatory consultation processes, written policies, school-parent compacts, and allowable uses of funds for engagement activities under Title I, Part A. Districts must ensure each Title I school has a written parent engagement policy developed with parent input, an updated school-parent compact, and documentation of how parents were involved in Title I planning and program evaluation. Maintain evidence of parent consultation activities, meeting notices, and sign-in sheets.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Pull your current district-wide and school-level parent engagement policies and compare them against the updated guidance. Document any gaps between current practice and federal requirements.</li>
+            <li>Review your school-parent compacts for each Title I school. Confirm they describe the shared responsibilities of parents, teachers, and the school and are updated annually with parent input.</li>
+            <li>Verify documentation of how parents were consulted in developing or revising policies. A policy without evidence of stakeholder consultation is a monitoring finding.</li>
+            <li>If your LEA receives more than $500,000 in Title I, Part A funds, confirm that at least 1% is reserved for parent and family engagement activities as required under ESEA §1116(a)(3)(A). This threshold applies only above that amount.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.ed.gov/media/document/parent-and-family-engagement-guidance-2025-109202.pdf" target="_blank">Parent and Family Engagement Guidance, ED/OESE, January 10, 2025 (PDF) ↗</a> · ESEA Title I, Part A §1116 · 34 CFR §200.18
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ═══ ED GRANTS ═══ -->
+    <div class="cal-section-label" data-section="grants">ED Grants</div>
+ 
+    <div class="cal-entry grants" data-program="grants">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">ED Grants</div>
+          <div class="entry-type-badge press">Press Release / Grant Award</div>
+          <div class="entry-title-block">
+            <div class="entry-title">$256 Million in EIR Grants Awarded to Improve Literacy, with Unprecedented State-Led Awards</div>
+            <div class="entry-date">U.S. Department of Education · December 15, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED announced $256 million in Education Innovation and Research (EIR) grants to improve literacy nationwide. These are the first awards made using three of Secretary McMahon's grantmaking priorities: strengthening evidence-based literacy instruction, expanding education choice, and returning education to the states. Ten of the 24 new awards went to state education agencies — the largest number of state-led literacy awards in any EIR competition. Over 65% of these awards, totaling more than $167 million, will support projects in rural America, far exceeding the program's requirement to dedicate at least 25% of EIR funds to majority-rural communities. Eighteen of the 24 grantees are new to the EIR program.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This press release announces $256 million in EIR grants focused on literacy improvement, with an unprecedented number of awards going directly to state education agencies rather than local districts. Districts should monitor their state education agency for announcements of state-led EIR literacy initiatives that may create partnership opportunities, professional development access, or implementation requirements at the local level. Federal programs directors should coordinate with curriculum and instruction leadership to identify alignment between district literacy goals and any state EIR projects. Maintain documentation of any participation in state-led EIR activities and ensure proper use of any sub-awarded funds under state grant requirements.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Contact your state education agency to determine whether your state received an EIR literacy award and whether local partnership opportunities will be available.</li>
+            <li>If your district is in a majority-rural community, confirm whether any EIR-funded state initiatives are specifically targeting rural districts. The rural funding emphasis is significant and may create direct access points.</li>
+            <li>Review your district's current literacy strategy for alignment with evidence-based practices. Any state EIR project will likely require local implementation partners who already have foundational literacy infrastructure in place.</li>
+            <li>If your district receives sub-awards under a state EIR grant, ensure compliance with all Uniform Guidance requirements for sub-recipients, including separate tracking of EIR-funded expenditures.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-awards-unprecedented-number-of-education-innovation-and-research-grants-improve-literacy" target="_blank">ED Press Release, December 15, 2025 ↗</a> · Education Innovation and Research program (ESEA Title IV, Part E)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ═══ PERKINS ═══ -->
+    <div class="cal-section-label" data-section="perkins">Perkins</div>
+ 
+    <div class="cal-entry perkins" data-program="perkins">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Perkins</div>
+          <div class="entry-type-badge press">Press Release / Policy Update</div>
+          <div class="entry-title-block">
+            <div class="entry-title">ED and DOL Announce Workforce Development Partnership and Perkins Integration Progress</div>
+            <div class="entry-date">U.S. Department of Education and U.S. Department of Labor · December 5, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED and DOL provided an update on integration of the federal workforce development portfolio. The WIOA state plan portal has been transitioned to DOL. Subsequent efforts will focus on integrating the Perkins state plan portal into the WIOA state plan portal so states with combined WIOA state plans can submit through a single portal. Since October 1, the joint agencies have processed nearly 800 payment requests from 43 states and territories. On November 25, 2025, DOL issued guidance to governors and workforce boards, in collaboration with ED's OCTAE, on WIOA waiver and flexibility options and recommendations for further integrating Perkins CTE programs into the public workforce system. ED maintains all statutory responsibilities for Perkins programs under an Economy Act Interagency Agreement (31 U.S.C. §1535) signed May 21, 2025. DOL performs certain day-to-day administrative services.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The ED-DOL workforce partnership is transitioning Perkins administrative functions to DOL's systems while ED retains statutory authority. Districts with Perkins-funded CTE programs should contact their state CTE office to determine whether state-level portal integration or WIOA alignment will result in changes to local reporting requirements, performance measures, or planning processes. The Economy Act IAA signed May 21, 2025 governs the arrangement — ED's statutory responsibilities for Perkins policymaking, program determinations, and oversight are unchanged. Federal programs directors must ensure that any revised reporting or data collection requirements are incorporated into local CTE program management and that staff are trained on modified procedures.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Contact your state CTE office to confirm whether the Perkins state plan portal integration has affected local reporting timelines, data submissions, or payment processes for your district.</li>
+            <li>Verify that your district's Perkins grant payments and fiscal reporting are processing correctly through DOL's GrantSolutions system. If you are experiencing payment delays, contact your state CTE office immediately.</li>
+            <li>Review the November 25, 2025, DOL guidance on WIOA waivers and Perkins integration with your CTE director. The guidance includes recommendations for cross-system coordination that may affect local workforce development board relationships.</li>
+            <li>Document all coordination between your district CTE program and local workforce development boards. The integration effort is increasing federal expectations for cross-system collaboration and documentation of those relationships.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-labor-celebrate-successful-implementation-of-workforce-development-partnership" target="_blank">ED/DOL Press Release, December 5, 2025 ↗</a> · Economy Act IAA (31 U.S.C. §1535), signed May 21, 2025 · Perkins V (20 U.S.C. §2301 et seq.) · WIOA (29 U.S.C. §3101 et seq.)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ═══ OCR ═══ -->
+    <div class="cal-section-label" data-section="ocr">OCR</div>
+ 
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title IX</div>
+          <div class="entry-type-badge resolution">Finding and Resolution</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Finds Jefferson County Public Schools (CO) Violated Title IX</div>
+            <div class="entry-date">Office for Civil Rights, U.S. Department of Education · December 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR concluded that Jefferson County Public Schools in Colorado violated Title IX by permitting male students to access female bathrooms, locker rooms, and to compete in female sports. This enforcement action was taken under the 2020 Title IX regulations, which remain in effect following the vacatur of the 2024 Title IX rule. Districts should review their policies on sex-separated facilities and athletics in light of current OCR enforcement posture.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This OCR finding represents the current administration's Title IX enforcement posture regarding sex-separated facilities and athletics, with OCR concluding that allowing students to access facilities and participate in athletics based on gender identity rather than biological sex violated Title IX under the 2020 regulations. Districts must review their current policies on restroom access, locker room use, and athletic participation to assess alignment with the 2020 Title IX regulatory framework. Federal programs directors should work with legal counsel and Title IX coordinators to evaluate whether policy revisions are necessary and ensure documentation of the district's nondiscrimination procedures. Any policy changes must be implemented through proper board approval processes and include staff training on revised protocols.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm which Title IX regulatory framework your district's policies reference. The 2024 rule was vacated January 9, 2025. Any policy citing the 2024 amendments is not aligned with enforceable law.</li>
+            <li>Review your policies governing sex-separated facility access and athletic participation with legal counsel. Document the review and any resulting policy determinations before the next board meeting cycle.</li>
+            <li>Brief your Title IX coordinator and athletic director together on this finding. It covers both facilities and sports — both functions require documented policy alignment.</li>
+            <li>Note that state law may govern this question independently of the current federal enforcement posture. Verify applicable state requirements with district legal counsel before making or declining policy changes.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> 2020 Title IX regulations (34 CFR Part 106) · 2024 Title IX rule vacated January 9, 2025 by federal court order
+          <div class="url-note">Note: A direct link to the OCR resolution agreement for Jefferson County Public Schools was not available at time of publication. Verify the specific resolution agreement at <a href="https://ocrcas.ed.gov/ocr-search" target="_blank">OCR case search ↗</a> using Jefferson County Public Schools, Colorado.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Section 504</div>
+          <div class="entry-type-badge resolution">Resolution Agreements</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Resolution Agreements with Multiple K-12 Districts for Disability Discrimination</div>
+            <div class="entry-date">Office for Civil Rights, U.S. Department of Education · December 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR published multiple resolution agreements in December 2025 addressing disability discrimination under Section 504 and the ADA in K-12 districts, including Broward County Schools (FL) on December 23, Decatur City Schools (AL) on December 22, and Contoocook Valley RSD SAU 1 (NH) on December 22. The pattern of findings involves failures in identification, evaluation, or provision of FAPE to students with disabilities. Districts should review Section 504 compliance, particularly regarding child find, evaluation timelines, and implementation of accommodations.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">OCR published multiple resolution agreements in December 2025 addressing Section 504 and ADA violations involving failures in identification, evaluation, or provision of FAPE to students with disabilities. The pattern across Broward County (FL), Decatur City (AL), and Contoocook Valley (NH) signals heightened OCR scrutiny of disability discrimination and reinforces that child find, evaluation timelines, and implementation of accommodations are primary enforcement targets. Districts should conduct internal compliance reviews of Section 504 procedures, eligibility determinations, and documentation of service provision. The presence of multiple resolution agreements in a single month indicates an active enforcement environment, not isolated incidents.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your Section 504 evaluation timelines. Confirm your district has a documented process for responding to parent requests for evaluation and is meeting those timelines consistently.</li>
+            <li>Audit a sample of active Section 504 plans for evidence of implementation. A plan on file without documentation of delivery is equivalent to no plan during an OCR review.</li>
+            <li>Confirm child find procedures are capturing students who may qualify under Section 504 but not IDEA. This population is frequently underidentified and is the source of many OCR disability complaints.</li>
+            <li>Brief your Section 504 coordinator on the December enforcement pattern. Three resolution agreements in one month is a signal — not background noise.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> Section 504 of the Rehabilitation Act (29 U.S.C. §794) · Title II of the ADA (42 U.S.C. §12132) · District names, agreement dates, and violation categories verified against OCR resolution records. Verify individual resolution agreements at <a href="https://ocrcas.ed.gov/ocr-search" target="_blank">OCR case search ↗</a> using each district name.
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ═══ OIG ═══ -->
+    <div class="cal-section-label" data-section="oig">OIG</div>
+ 
+    <div class="cal-entry oig" data-program="oig">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OIG</div>
+          <div class="entry-type-badge report">Statutory Report</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OIG Issues Management and Performance Challenges Report for FY 2025</div>
+            <div class="entry-date">Office of Inspector General, U.S. Department of Education · December 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">A GAO report on OCR operations documents that between March and September 2025, while 247 OCR staff were placed on paid administrative leave due to reductions in force, OCR received 9,269 discrimination complaints and resolved 7,072, with approximately 90% closed through dismissal rather than investigation. GAO estimates the cost of paying OCR staff placed on administrative leave while barred from working at $28.5 million to $38 million from March through mid-December 2025. In December 2025, ED recalled OCR staff, and in January 2026 rescinded the RIF actions.</div>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">A GAO report on OCR operations reveals significant OCR disruption from March through December 2025, with approximately 90% of the 7,072 resolved complaints closed through dismissal rather than investigation, out of 9,269 total complaints received. GAO estimates the cost of keeping 247 OCR staff on paid administrative leave while barred from working at $28.5 million to $38 million. Districts that filed OCR complaints or were subject to complaints during this period may have experienced substantial processing delays, and complaints dismissed during this window should be evaluated for refiling now that OCR is fully staffed as of January 2026. The disruption in OCR operations does not relieve districts of ongoing civil rights obligations under Title VI, Title IX, Section 504, and the ADA.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>If your district filed an OCR complaint between March and September 2025 and received a dismissal, review whether the basis for dismissal was substantive or administrative. Complaints dismissed during the staffing disruption may be eligible for refiling.</li>
+            <li>If your district was the subject of an OCR complaint during this period and received no contact, do not assume the matter is closed. Confirm the status directly with OCR now that staff have returned.</li>
+            <li>Review your internal civil rights compliance documentation. The period of reduced OCR enforcement does not reduce your obligations — but it does increase the likelihood of a backlog of unresolved complaints when enforcement normalizes.</li>
+            <li>Brief your superintendent and legal counsel on the OCR staffing restoration. A return to full enforcement capacity means complaints that were deferred during 2025 may resurface.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> GAO report on OCR operations, February 2026 · Reports Consolidation Act of 2000 · Title VI (42 U.S.C. §2000d) · Title IX (20 U.S.C. §1681) · Section 504 (29 U.S.C. §794) · ADA Title II (42 U.S.C. §12132)
+          <div class="url-note">Note: The specific statistics cited (9,269 complaints received, 7,072 resolved, ~90% dismissed, $28.5–$38 million cost) are drawn from a GAO report on OCR operations published February 2026. A direct link to the GAO report was not available at time of publication. Verify at <a href="https://www.gao.gov" target="_blank">gao.gov ↗</a> by searching for OCR civil rights complaints 2025.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="cal-entry oig" data-program="oig">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OIG</div>
+          <div class="entry-type-badge report">Semiannual Report to Congress</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OIG Semiannual Report to Congress No. 91 — April through September 2025</div>
+            <div class="entry-date">Office of Inspector General, U.S. Department of Education · December 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OIG released its statutory semiannual report presenting activities and accomplishments from April 1 through September 30, 2025. The report highlights audits, investigations, and enforcement work to identify and stop fraud, waste, and abuse, and promote accountability in education programs including ESSER funds, Title IV, and other federal education programs.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">OIG's semiannual report covering April through September 2025 presents audit findings, investigations, and enforcement actions related to fraud, waste, and abuse across federal education programs. Districts should review the report for case studies and common findings that indicate compliance risks in federal programs, particularly regarding internal controls, allowable uses of funds, and documentation requirements. Federal programs directors must ensure that audit findings from similar districts are used to strengthen local compliance systems and identify potential vulnerabilities before they result in questioned costs or enforcement actions.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review the semiannual report for case studies in your program areas. OIG reports are a direct window into what is being audited and prosecuted — reading them is itself a compliance practice.</li>
+            <li>Cross-reference OIG findings from this period against your own internal controls. If a finding pattern in the report matches a condition in your district, treat it as a red flag requiring internal review.</li>
+            <li>Brief your CFO and federal programs director on the report's key findings. Document that review as evidence of an active compliance monitoring process.</li>
+            <li>If ESSER funds are addressed in the report, verify that your district's ESSER expenditure documentation is complete and defensible. ESSER closeout obligations continue regardless of the grant period end date.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> Inspector General Act of 1978 (semiannual report requirement)
+          <div class="url-note">Note: A direct link to OIG Semiannual Report No. 91 was not available at time of publication. Verify at <a href="https://oig.ed.gov/reports/semiannual-reports-congress" target="_blank">OIG semiannual reports ↗</a>.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="cal-entry oig" data-program="oig">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OIG</div>
+          <div class="entry-type-badge criminal">Enforcement Action</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Former Boone County Schools (WV) Maintenance Supervisor Sentenced for $3.4 Million Fraud</div>
+            <div class="entry-date">Office of Inspector General, U.S. Department of Education · Announced November 20, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">A former Boone County Schools maintenance supervisor was sentenced to prison and ordered to pay $3.4 million for a fraud scheme involving federal funds. This case underscores the importance of internal controls over federal programs and procurement. Districts should review internal controls, segregation of duties, and oversight of purchasing and contracts, particularly for construction and maintenance activities funded with federal dollars.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">OIG's announcement of the sentencing in the Boone County Schools fraud case demonstrates the serious consequences of inadequate internal controls over procurement and construction activities funded with federal dollars. The $3.4 million fraud by a maintenance supervisor — not a central office administrator — illustrates that fraud risk exists at every level of federal program administration. Districts must review internal controls over purchasing, contracts, and maintenance operations funded with federal dollars, ensuring proper segregation of duties, approval processes, and oversight mechanisms that do not rely on any single individual's integrity.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review internal controls for federal grant expenditures in maintenance and construction. Confirm segregation of duties is in place and no single employee can approve purchases, receive goods, and process payments.</li>
+            <li>Verify that all federal procurement follows competitive procedures under Uniform Guidance (2 CFR Part 200, Subpart D). Sole-source procurements must be documented and justified.</li>
+            <li>Schedule or confirm a date for your next internal audit of maintenance and facilities expenditures involving federal funds. High-dollar, low-visibility procurement is a primary fraud risk area.</li>
+            <li>Brief your facilities director and CFO on this case. The Boone County pattern — extended fraud by a single employee without detection — is preventable with consistent supervisory review of expenditure documentation.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> Uniform Guidance procurement standards (2 CFR §200.317–200.327) · 18 U.S.C. §666 (theft from programs receiving federal funds)
+          <div class="url-note">Note: A direct link to the OIG press release for this case was not available at time of publication. Verify at <a href="https://oig.ed.gov/resources/news-and-updates" target="_blank">OIG news and updates ↗</a> by searching for Boone County Schools.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="cal-entry oig" data-program="oig">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OIG</div>
+          <div class="entry-type-badge criminal">Enforcement Action</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Two Men Arrested for Conspiring to Destroy Government Databases (Virginia)</div>
+            <div class="entry-date">Office of Inspector General, U.S. Department of Education · December 3, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OIG announced the arrest of two men for conspiring to destroy government databases in Virginia. Details available at the time of this issue are limited to the OIG announcement. This case highlights cybersecurity and data integrity threats to education data systems. Districts should ensure robust cybersecurity measures, backup protocols, and staff training to protect student and federal program data from internal and external threats.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">OIG's announcement of arrests for conspiracy to destroy government databases, while limited in publicly available detail, highlights that threats to education data systems include insider threats and deliberate destruction, not only external breaches. Districts must ensure robust cybersecurity measures including data backup protocols, access controls, and staff training to protect student records and federal program data. Federal programs directors should verify that all systems housing federal program data, student information, or fiscal records have appropriate security measures, regular off-site backups, and incident response plans. Loss or destruction of federal program data could jeopardize compliance and reporting requirements independent of whether a district was the target.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm your district has a current, tested data backup protocol. Backups should be stored off-site or in a separate system from the primary data source and tested for restorability on a regular schedule.</li>
+            <li>Review access controls for systems containing federal program data. Confirm that access is role-limited and that termination procedures immediately revoke system access for departing staff.</li>
+            <li>Verify your district has a documented incident response plan that covers data destruction or deliberate system damage, not only external breaches.</li>
+            <li>Brief your IT director on this OIG enforcement action. The threat vector here is intentional destruction — a category that requires different controls than typical breach prevention.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> 18 U.S.C. §1030 (Computer Fraud and Abuse Act)
+          <div class="url-note">Note: Limited public detail was available for this case at time of publication. Verify current case status at <a href="https://oig.ed.gov/resources/news-and-updates" target="_blank">OIG news and updates ↗</a>.</div>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">10 findings</div>
+      <div class="cal-stat-lbl">Federal documents reviewed and interpreted for December 2025</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">5 programs</div>
+      <div class="cal-stat-lbl">Title I, ED Grants, Perkins, OCR, and OIG covered this month</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Your Action</div>
+      <div class="cal-stat-lbl">Every entry includes concrete steps for your team</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Direct links to primary documents where available; disclosure notes where not</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> Every entry cites a primary source document where a direct link is available. The three OCR disability resolution agreement district names, dates, and violation categories have been verified against OCR resolution records. The OIG enforcement action entries did not have direct press release URLs available at time of publication and include disclosure notes with search paths for independent verification. The OCR complaint statistics in the management challenges entry are drawn from a GAO report on OCR operations published February 2026 — the specific figures (9,269 complaints, 7,072 resolved, ~90% dismissed, $28.5–$38 million cost) should be verified against that primary document. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · December 2025
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
