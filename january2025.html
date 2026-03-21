@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: January 2025 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:      #1B3A4B;
+    --accent:    #1A5FA0;
+    --amber:     #A85D1A;
+    --green:     #2E5E4A;
+    --green-bg:  #D4EDE4;
+    --amber-bg:  #F5E0C8;
+    --blue-bg:   #D4E6F5;
+    --red:       #8B1A2A;
+    --red-bg:    #F0D4D8;
+    --purple:    #4A2E7A;
+    --purple-bg: #EDE4F5;
+    --gray:      #6B7C8A;
+    --gray-lt:   #E8EDF1;
+    --body:      #333333;
+    --bg:        #F2F4F6;
+    --white:     #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .rn-label:first-child { margin-top: 0; }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.title1 { border-left: 5px solid var(--accent); }
+  .cal-entry.idea   { border-left: 5px solid var(--purple); }
+  .cal-entry.ocr    { border-left: 5px solid var(--red); }
+  .cal-entry.hidden { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .title1 .entry-badge { background: var(--blue-bg);   color: var(--accent);  }
+  .idea   .entry-badge { background: var(--purple-bg); color: var(--purple);  }
+  .ocr    .entry-badge { background: var(--red-bg);    color: var(--red);     }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; background: var(--gray-lt); color: var(--gray); }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; }
+  .title1 .entry-tlf-note { background: var(--blue-bg);   border-left: 3px solid var(--accent);  }
+  .idea   .entry-tlf-note { background: var(--purple-bg); border-left: 3px solid var(--purple);  }
+  .ocr    .entry-tlf-note { background: var(--red-bg);    border-left: 3px solid var(--red);     }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '->'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; font-family: monospace; }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">January 2025 &nbsp;·&nbsp; <strong>9 findings</strong></p>
+    <p class="cal-desc">Federal programs and fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity from January 2025. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section translating that implication into concrete steps. Source links point directly to primary documents where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Low-to-moderate</div>
+    January 2025 was an unusually active guidance month for the final days of the Biden administration, with four Title I guidance documents and two IDEA Dear Colleague Letters released in the first three weeks. The Trump administration took office January 20, 2025, and the most significant January federal action for K-12 practitioners was a court decision (not an ED guidance document) vacating the 2024 Title IX regulations on January 9. OCR's own confirmatory guidance followed on January 14. The administration transition on January 20 did not immediately halt the guidance already released, but practitioners should expect that some of the January 2025 guidance may be revised or rescinded under the new administration.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No new federal guidance was published in January 2025 for McKinney-Vento homeless education, Perkins V career and technical education, or Title III English learners. OIG activity focused on postsecondary programs. Federal Register K-12 entries were minimal.
+ 
+    <div class="rn-label">Watch next</div>
+    Monitor the new administration's response to Biden-era guidance, including any rescissions or modifications of the January 2025 Title I or IDEA documents. The Title IX reversion to 2020 regulations is now supplemented by an OCR enforcement directive (February 4, 2025) clarifying that sex discrimination under the 2020 regulations does not include discrimination based on sex stereotypes or gender identity.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"    onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="title1" onclick="filterProgram('title1')">Title I</div>
+    <div class="f-pill"        data-filter="idea"   onclick="filterProgram('idea')">IDEA</div>
+    <div class="f-pill"        data-filter="ocr"    onclick="filterProgram('ocr')">OCR / Title IX</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- ===================== TITLE I ===================== -->
+    <div class="cal-section-label" data-section="title1">Title I</div>
+ 
+    <!-- 1: Title II Part A -->
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title II / Part A</div>
+          <div class="entry-type-badge">Non-Regulatory Guidance</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Title II, Part A Non-Regulatory Guidance: Supporting Teachers, Principals, and School Leaders</div>
+            <div class="entry-date">Office of Elementary and Secondary Education · January 2025 · Supersedes October 5, 2006 guidance</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OESE released updated non-regulatory guidance for Title II, Part A of ESEA in January 2025, superseding and replacing the October 5, 2006 guidance document. The updated guidance assists SEAs and LEAs in implementing Title II, Part A programs to support teachers, principals, and other school leaders. It is organized into sections corresponding to SEA grants and LEA subgrants, covering allowable uses of funds for professional development and school leader training, evidence-based standards under ESSA, compliance with EDGAR and the Uniform Guidance (2 CFR Part 200), civil rights requirements, and equitable services for private school personnel. The guidance addresses both State-level activities and LEA subgrant activities, including the distinction between professional development and training activities and the implications for allowable expenditures.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This guidance is the first comprehensive update to Title II Part A implementation direction since 2006 and brings the guidance into alignment with ESSA requirements, the updated Uniform Guidance (2 CFR Part 200), and current evidence standards. For federal programs directors, the most operationally significant updates concern the distinction between allowable professional development and training: stand-alone, one-day workshops are generally not allowable as professional development under ESSA unless part of a structured professional development or school improvement plan. Districts should audit their Title II expenditures to confirm that activities claimed as professional development meet the ESSA definition, not just the pre-ESSA standard.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your current Title II, Part A budget and professional development contracts against the updated allowable use parameters. Pay particular attention to whether any stand-alone one-day trainings are being funded as professional development; if they are not part of a structured plan, they may not meet the ESSA professional development definition.</li>
+            <li>Confirm that your Title II professional development activities are being planned and documented with evidence-base justification. ESSA requires that Title II-funded professional development be supported by evidence; review the evidence tier of each major PD activity in your Title II plan.</li>
+            <li>Verify that your district is complying with equitable services requirements for private school teachers under Title II, Part A. The guidance specifically references the Title VIII equitable services provisions; confirm that private school personnel consultation has occurred and is documented.</li>
+            <li>Update your written procedures for Title II, Part A to reflect the 2025 guidance, particularly if your current procedures still reference 2006 requirements. Monitoring and audit standards will be based on the current guidance.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.ed.gov/media/document/title-ii-part-non-regulatory-guidance-january-2025-109320.pdf" target="_blank">Title II, Part A Non-Regulatory Guidance (ed.gov PDF) ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 2: Parent and Family Engagement -->
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I / Part A</div>
+          <div class="entry-type-badge">Non-Regulatory Guidance</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Parent and Family Engagement under Title I, Part A: Updated Non-Regulatory Guidance</div>
+            <div class="entry-date">U.S. Department of Education · January 10, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">The Department released updated non-regulatory guidance on January 10, 2025 addressing parent and family engagement (PFE) requirements under Title I, Part A as amended by ESSA. The guidance covers LEA and school-level PFE policy requirements, including the requirement that PFE policies be developed jointly with parents and family members; LEA reservation and allowable use of PFE funds (LEAs receiving more than $500,000 in Title I must reserve at least 1 percent for PFE activities); the school-parent compact requirements; professional development for staff on PFE strategies; and the requirement that PFE policies be annually reviewed and revised with meaningful parent involvement. The guidance addresses accessibility requirements for parents with limited English proficiency and parents with disabilities.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The joint development requirement is the most frequently cited compliance gap in Title I PFE monitoring: many districts adopt PFE policies through administrative processes without genuine joint development with parents. This guidance reaffirms that joint development is not satisfied by a comment period or survey; it requires substantive parent involvement in the drafting process. The 1 percent reservation calculation and the 90 percent pass-through to schools are frequently miscalculated or underdocumented. The January 2025 guidance is current authority for Title I monitoring and technical assistance; districts should ensure their PFE policies, reservation calculations, and annual review processes align with it.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your LEA-level PFE policy to confirm it was jointly developed with parents, not just reviewed or approved. If your current policy was adopted administratively without documented parent co-development, initiate a joint revision process before your next Title I consolidated application cycle.</li>
+            <li>Confirm your Title I PFE reservation calculation. If your LEA receives more than $500,000 in Title I funds, at least 1 percent must be reserved for PFE activities, and at least 90 percent of that reservation must flow to participating Title I schools.</li>
+            <li>Verify that your school-parent compacts are updated and jointly developed at each participating Title I school, not copied from prior years. Compacts must be specific to the school's improvement goals and reflect the current year's data and priorities.</li>
+            <li>Review language access for your PFE materials and meetings. The guidance specifically addresses the requirement to provide meaningful opportunities for parents with limited English proficiency and parents with disabilities; confirm that translated materials and interpreter access are documented.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.ed.gov/media/document/parent-and-family-engagement-guidance-2025-109202.pdf" target="_blank">Parent and Family Engagement Guidance, January 10, 2025 (ed.gov PDF) ↗</a>
+          <div class="url-note">Note: The original source link in this entry pointed to the general Title I program page. Direct PDF URL confirmed from ED's Title I guidance document index.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 3: Report Card -->
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I / ESEA</div>
+          <div class="entry-type-badge">Non-Regulatory Guidance</div>
+          <div class="entry-title-block">
+            <div class="entry-title">State and Local Report Card Guidance: Updated Requirements for Disaggregated Public Reporting</div>
+            <div class="entry-date">U.S. Department of Education · January 13, 2025 · Supersedes September 2019 guidance</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">The Department released updated report card guidance on January 13, 2025, revising and replacing the September 2019 guidance on state and local report card requirements under ESEA section 1111(h). The updated guidance adds new questions reflecting stakeholder feedback, changes to the Department's data collections (including EDFacts chronic absenteeism data and per-pupil expenditure reporting), and updated resources and links. Report cards must publicly report disaggregated achievement data, graduation rates, school quality and student success indicators, teacher qualifications, per-pupil expenditures, and Civil Rights Data Collection (CRDC) data. SEAs must maintain at least three years of prior report cards as public records consistent with 2 CFR 200.334. Report card data must be presented in an accessible format and in languages that parents in the community speak.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The January 2025 update adds specificity on two reporting elements that districts frequently mishandle: chronic absenteeism data (EDFacts data must be included annually, using the most recent available year) and per-pupil expenditure reporting (required at the school level, not just the LEA level, with guidance on how to present financial data in a parent-accessible format). The three-year record retention requirement for prior report cards is a compliance element often overlooked when districts update their websites; deleted prior-year report cards violate this requirement.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Audit your current local report card against the January 2025 guidance checklist. Verify that all required ESEA section 1111(h)(2) data elements are present, including current chronic absenteeism data disaggregated by required student groups.</li>
+            <li>Confirm that your district's report card includes school-level per-pupil expenditure data. Per-pupil expenditure reporting is required at the individual school level, not just the LEA level; many districts only report district-level figures.</li>
+            <li>Verify that at least three years of prior local report cards remain publicly accessible on your website or another public platform. If older report cards have been removed or are behind broken links, restore them to comply with the 2 CFR 200.334 retention and public accessibility requirement.</li>
+            <li>Review language accessibility of your report card. If a significant percentage of your community speaks a language other than English, report card data must be made available in those languages. Document your language access approach in your district's Title I consolidated plan.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.ed.gov/media/document/report-card-guidance-2025-109244.pdf" target="_blank">State and Local Report Card Guidance, January 13, 2025 (ed.gov PDF) ↗</a>
+          <div class="url-note">Note: The original source link pointed to the general Title I program page. Direct PDF URL confirmed from the Federal Register and ED guidance index.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 4: School Improvement -->
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I / ESEA</div>
+          <div class="entry-type-badge">Non-Regulatory Guidance</div>
+          <div class="entry-title-block">
+            <div class="entry-title">School Improvement and Related Provisions under Title I, Part A: Comprehensive Support and Targeted Improvement</div>
+            <div class="entry-date">U.S. Department of Education · January 2, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">The Department released updated guidance on January 2, 2025 covering school improvement requirements for Title I schools identified for Comprehensive Support and Improvement (CSI), Targeted Support and Improvement (TSI), and Additional Targeted Support and Improvement (ATSI). The guidance addresses state identification processes and timelines; LEA notification requirements; evidence standards for improvement interventions under ESEA section 1003; the use of section 1003 school improvement funds and section 1003A direct student services funds; supplement-not-supplant requirements as applied to school improvement funds; and state-level reporting and monitoring obligations. The guidance confirms that LEAs must be notified of CSI identification no later than the fall of the subsequent school year, and that ATSI identification must occur at least annually.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The most compliance-sensitive area of this guidance for LEAs is the evidence standard for improvement interventions: ESSA requires that interventions in identified schools be evidence-based, and this guidance clarifies how to align the evidence tier of an intervention to the identification category and the school's context. Districts with schools that have been in CSI or TSI status for multiple years face escalating requirements and should document the evidence basis for each intervention with specificity. The guidance also clarifies that section 1003 school improvement funds are subject to supplement-not-supplant, which is frequently misunderstood in the context of schoolwide program schools.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm that all Title I schools your district has identified for CSI, TSI, or ATSI are operating under improvement plans that specify evidence-based interventions with the appropriate ESSA evidence tier documented. Tier assignment should be documented at the time of plan approval, not added retroactively during monitoring.</li>
+            <li>Review your section 1003 school improvement fund expenditure records to confirm they comply with supplement-not-supplant requirements. Improvement funds cannot supplant state or local funds that would otherwise be spent in identified schools; document the baseline of prior spending and the supplemental nature of each 1003-funded activity.</li>
+            <li>Verify your LEA notification procedures for newly identified schools. This guidance confirms that LEAs must receive CSI identification notification no later than the fall following identification. If your SEA's notification timeline is later, coordinate with your SEA to ensure your improvement planning timelines can still be met.</li>
+            <li>If any of your identified schools are approaching the end of a CSI or TSI improvement cycle, prepare for the state's re-evaluation process. This guidance covers what happens when a school does not exit identification status and the escalating requirements that apply.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.ed.gov/media/document/school-improvement-guidance-109152.pdf" target="_blank">School Improvement and Related Provisions Guidance, January 2, 2025 (ed.gov PDF) ↗</a>
+          <div class="url-note">Note: The original source link pointed to the general Title I program page. Direct PDF URL confirmed from the ED guidance index and document number.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ===================== IDEA ===================== -->
+    <div class="cal-section-label" data-section="idea">IDEA</div>
+ 
+    <!-- 5: OSEP Retention DCL -->
+    <div class="cal-entry idea" data-program="idea">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">IDEA / OSEP</div>
+          <div class="entry-type-badge">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OSEP Dear Colleague Letter: Special Education Personnel Retention and Principal Navigator Tool</div>
+            <div class="entry-date">Office of Special Education Programs · January 13, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OSEP Director Valerie Williams issued a Dear Colleague Letter on January 13, 2025, addressing the critical shortage of qualified special education personnel and announcing over $80 million in fiscal year 2024 IDEA Part D personnel preparation grant funding. The letter identifies key retention challenges: workload, role ambiguity, inadequate administrative support, and burnout. It introduces the Principal Navigator tool, a free resource for building principals and district administrators to support special educator retention through improved supervision, workload management, and professional community. The letter frames special educator retention as a federal compliance issue under IDEA's requirement that states have policies and procedures to ensure adequate supply of qualified special education personnel.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">While this Dear Colleague Letter does not impose new regulatory requirements, it signals OSEP's framing of special educator retention as a systemic compliance concern, not just a human resources issue. IDEA's requirement for an adequate supply of qualified special education personnel is a state obligation that flows down to LEAs through state plans and monitoring; districts with chronic special education vacancies are at heightened risk of state corrective action referrals. The Principal Navigator tool represents OSEP's current recommended approach for principals' role in retention, and familiarity with it positions district leaders to engage constructively with state monitors on staffing adequacy.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's current special education vacancy rate and compare it to your state's personnel adequacy standards under your state's IDEA Part B application. If your district consistently has unfilled special education positions, document your recruitment and retention strategies for your state monitoring file.</li>
+            <li>Access the Principal Navigator tool (available through OSEP's technical assistance network) and share it with building principals who supervise special education staff. The tool provides structured protocols for improving supervision quality, addressing role ambiguity, and reducing workload-related attrition.</li>
+            <li>Review workload assignment practices for your special education teachers, particularly caseload sizes, IEP meeting frequency, and time devoted to non-instructional tasks. OSEP's identification of workload as a primary retention driver means that caseload documentation is now part of the compliance picture, not just an HR concern.</li>
+            <li>Confirm that your district is aware of and, where appropriate, applying for IDEA Part D personnel preparation grant funding. The $80 million in FY 2024 funding includes grants that can support pipeline development, university partnerships, and grow-your-own special education programs.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://sites.ed.gov/idea/idea-files/dear-colleague-letter-on-special-education-personnel-retention-jan-13-2025/" target="_blank">OSEP DCL on Special Education Personnel Retention, January 13, 2025 ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 6: Inclusive Practices DCL -->
+    <div class="cal-entry idea" data-program="idea">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">IDEA / ESEA</div>
+          <div class="entry-type-badge">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OSERS/OESE Joint Dear Colleague Letter: Building and Sustaining Inclusive Educational Practices</div>
+            <div class="entry-date">Office of Special Education and Rehabilitative Services · Office of Elementary and Secondary Education · January 16, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OSERS and OESE issued a joint Dear Colleague Letter on January 16, 2025, reinforcing IDEA's least restrictive environment (LRE) mandate and its alignment with ESEA requirements. The letter notes that nearly 70 percent of students with disabilities spend more than 80 percent of their school day in general education settings, and reaffirms that IEP teams must thoroughly consider supplementary aids and services before determining that removal from general education is necessary. It confirms that general education teachers are required IEP team members. The letter also addresses how ESEA resources, including Title I and Title II professional development funds, can support inclusive practices and co-teaching models. It highlights the joint accountability of both special education and general education systems for student outcomes.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The joint OSERS/OESE framing of this letter is significant: it signals that inclusive placement decisions are not solely a special education compliance matter but an ESEA accountability concern as well. Districts with high rates of restrictive placements and low rates of general education participation for students with disabilities face compliance risk from both IDEA monitoring (LRE) and ESEA accountability (outcomes for the students with disabilities subgroup). The letter's emphasis on supplementary aids and services documentation before removal is a frequent OCR and OSEP monitoring finding; IEP teams must document what aids and services were considered and found insufficient before a more restrictive placement is made.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your IEP template and development process to confirm that supplementary aids and services consideration is explicitly documented before placement decisions are finalized. Documentation should reflect what aids and services were considered, what was tried, what the outcomes were, and why a more restrictive placement is necessary despite supports.</li>
+            <li>Verify that general education teachers are participating as required IEP team members for students in or being considered for general education placements. Teacher absence from IEP meetings is a commonly cited procedural violation; confirm your scheduling and notification practices ensure their participation.</li>
+            <li>Review your ESEA Title II professional development budget for opportunities to fund co-teaching training and inclusive practices professional development. This letter explicitly affirms that Title II funds may be used for these purposes, which gives districts a clear funding mechanism for inclusion-related PD.</li>
+            <li>Compare your district's LRE data (percentage of students with disabilities spending more than 80 percent of the day in general education) to state and national averages. If your district is below the national rate of approximately 70 percent, document the programmatic reasons and your plan for increasing inclusive opportunities where appropriate.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://sites.ed.gov/idea/idea-files/dear-colleague-letter-on-building-and-sustaining-inclusive-educational-practices-january-16-2025/" target="_blank">OSERS/OESE Joint DCL on Inclusive Educational Practices, January 16, 2025 ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ===================== OCR / TITLE IX ===================== -->
+    <div class="cal-section-label" data-section="ocr">OCR / Title IX</div>
+ 
+    <!-- 7: Title IX Vacatur -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title IX</div>
+          <div class="entry-type-badge">Court Decision / Agency Confirmation</div>
+          <div class="entry-title-block">
+            <div class="entry-title">2024 Title IX Final Rule Vacated Nationwide: 2020 Regulations Restored</div>
+            <div class="entry-date">U.S. District Court, E.D. Kentucky · January 9, 2025 (vacatur) · OCR confirmation: January 14, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">On January 9, 2025, the U.S. District Court for the Eastern District of Kentucky vacated the 2024 Title IX Final Rule in its entirety in <em>Tennessee v. Cardona</em>. The court found that the Department exceeded its statutory authority under Title IX by expanding the definition of sex discrimination beyond sex as male or female, that the regulations violated constitutional free speech protections and the Spending Clause, and that the Department failed to provide a reasoned explanation for departing from its long-standing interpretation of Title IX. The court vacated the entire 2024 rule nationwide, not just in the plaintiff states. OCR confirmed the vacatur and the restoration of the 2020 Title IX regulations through its January 14, 2025 online/digital sexual harassment resource document and a subsequent January 31, 2025 Dear Colleague Letter (superseded by a February 4, 2025 DCL). As of the vacatur, no portion of the 2024 Title IX Rule is in effect in any jurisdiction. The 2020 Title IX regulations (85 Fed. Reg. 30026) govern all Title IX enforcement.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The practical implication for K-12 districts depends on when they implemented the 2024 regulations. Districts in the 26 states where injunctions had already blocked the 2024 rule were already operating under the 2020 regulations and need no immediate policy changes. Districts that were operating under the 2024 regulations between August 1, 2024 and January 9, 2025 must immediately revert to 2020 requirements, including reinstating the live hearing with advisor-conducted cross-examination model (for postsecondary; note that K-12 schools are not required to provide live hearings under the 2020 rule), the narrower definition of sexual harassment (severe, pervasive, and objectively offensive), and the mandatory supportive measures obligation. The February 4, 2025 OCR DCL further clarified that sex discrimination under the 2020 regulations does not include discrimination based on sex stereotypes, sex characteristics, or gender identity.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Determine whether your district was operating under the 2020 or 2024 Title IX regulations before January 9, 2025. If you were in one of the 26 enjoined states, no immediate policy change is needed. If you had implemented the 2024 regulations, immediately reinstate your pre-August 2024 Title IX grievance procedures.</li>
+            <li>Confirm the definition of sexual harassment in your Title IX policy reflects the 2020 standard: severe, pervasive, and objectively offensive. The 2024 rule's broader definition of hostile environment harassment is vacated; Title IX coordinators must apply the 2020 standard to all open and new complaints.</li>
+            <li>Review any Title IX complaints opened or resolved between August 1, 2024 and January 9, 2025 with legal counsel. OCR's February 4, 2025 Dear Colleague Letter states that investigations initiated under the 2024 rule "should be immediately reoriented to comport fully with the requirements of the 2020 Title IX Rule." This may require procedural adjustments to pending cases.</li>
+            <li>Update staff training materials to reflect the reinstated 2020 framework. Training materials developed for the 2024 regulations are inaccurate guides to current law and should not be distributed or used.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          Tennessee v. Cardona, No. 2:24-072-DCR (E.D. Ky. Jan. 9, 2025) ·
+          <a href="https://www.ed.gov/media/document/title-ix-enforcement-directive-dcl-109477.pdf" target="_blank">OCR Title IX Enforcement Directive DCL (ed.gov PDF) ↗</a> ·
+          34 CFR Part 106 (2020 regulations, 85 Fed. Reg. 30026)
+          <div class="url-note">Note: The original source link pointed to a law firm client alert. Primary sources are the court decision and OCR's own enforcement directive. The January 31, 2025 OCR DCL was later superseded by the February 4, 2025 DCL; the February 4 version is the current operative enforcement directive.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 8: Online/Digital Sexual Harassment Resource -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title IX</div>
+          <div class="entry-type-badge">Resource Document</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Resource: Online or Digital Sexual Harassment under the 2020 Title IX Regulations</div>
+            <div class="entry-date">Office for Civil Rights · January 14, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR released a resource document titled "Online or Digital Sexual Harassment under the 2020 Title IX Regulations: A Resource for Students, Families, and Educators" on January 14, 2025, five days after the Kentucky court's vacatur of the 2024 rule. The resource explicitly confirms in a footnote that the 2024 regulations were vacated on January 9, 2025 and that the 2020 regulations govern. It addresses how the 2020 Title IX regulatory framework applies to digital and online conduct: sexual harassment perpetrated online or through digital means (such as non-consensual sharing of intimate images, cyberbullying with a sexual nature, or online sexual exploitation) falls within Title IX's scope if it meets the 2020 definition of sexual harassment and creates a hostile educational environment. The resource provides guidance on how schools should respond to online sexual harassment under the 2020 grievance procedure framework.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The timing of this resource is significant: OCR released it within days of the vacatur specifically to signal continued active enforcement under the 2020 framework. The resource confirms that the restoration of the 2020 regulations does not narrow the scope of Title IX with respect to online conduct; OCR's position is that digital sexual harassment can constitute Title IX sexual harassment under the 2020 definition if it is severe, pervasive, and objectively offensive and creates a hostile education environment. Districts that had concluded (incorrectly) that online or off-campus conduct was outside Title IX's scope under the 2020 regulations should review this resource and ensure their Title IX response procedures address digital conduct.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your Title IX policy and grievance procedures to confirm they address online and digital conduct. Many districts' Title IX policies were written before the prevalence of social media harassment; if your policy is silent on digital conduct, update it to reflect OCR's position that online sexual harassment can trigger Title IX obligations under the 2020 framework.</li>
+            <li>Share this resource with your Title IX coordinator and any staff responsible for handling student sexual misconduct complaints. The resource provides practical guidance on how to evaluate digital conduct under the 2020 sexual harassment definition and what investigative steps apply.</li>
+            <li>Confirm that your district's response procedures address the scenario where conduct occurs outside of school property or school-sponsored activities but creates a hostile educational environment at school. OCR's position is that off-campus online conduct can still trigger Title IX response obligations if it has effects at school.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.ed.gov/laws-and-policy/civil-rights-laws/title-ix-and-sex-discrimination/sex-discrimination-overview-of-law" target="_blank">OCR Title IX Regulations page (ed.gov) ↗</a>
+          <div class="url-note">Note: The original source link pointed to a Bowditch law firm client alert. The primary document is the OCR resource itself, accessible from ed.gov's Title IX overview page. The resource is listed as: "Online or Digital Sexual Harassment under the 2020 Title IX Regulations: A Resource for Students, Families, and Educators (2025)."</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 9: Jefferson County Resolution Agreement -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title VI</div>
+          <div class="entry-type-badge">Resolution Agreement (Active Monitoring)</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Jefferson County Public Schools (CO): Title VI Discipline Agreement Under Active OCR Monitoring</div>
+            <div class="entry-date">Office for Civil Rights · Case No. 03-14-5001 · Compliance deadlines: March 10, 2025 and December 1, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR continues active monitoring of Jefferson County Public Schools (Jeffco) in Colorado under a voluntary resolution agreement in Case No. 03-14-5001, which addresses racial disparities in school discipline under Title VI of the Civil Rights Act. The agreement requires the district to revise its Student Support and Behavior Intervention Handbook (beginning November 2024 through May 2025); electronically collect detailed discipline data with narrative offense descriptions; provide annual training to all staff who make disciplinary referrals; administer climate surveys to students, staff, and parents beginning in the 2024-2025 school year; review records for eleven identified African American students who received harsher discipline consequences than similarly situated white students; and submit annual compliance reports to OCR by March 10, 2025 and December 1, 2025. OCR will not close monitoring until all terms are fulfilled.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This agreement is in the January 2025 digest because OCR is actively monitoring it with compliance deadlines falling within the first quarter of 2025. For other districts, the Jeffco case illustrates the full range of remedies OCR requires when Title VI racial disparities in discipline are confirmed: data system improvements, individual student review (including compensatory services for identified students), policy revision, training, climate assessment, and multi-year reporting. The annual climate survey requirement is particularly notable because it establishes an ongoing monitoring mechanism OCR can use to verify whether systemic changes are taking hold, not just whether policy documents have been updated.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's discipline data for racial disparities using your CRDC submissions as a baseline. OCR uses CRDC data to identify districts for compliance reviews; districts with documented disparities in out-of-school suspension rates by race are at elevated risk of directed investigations.</li>
+            <li>Confirm that your district's discipline documentation system captures detailed offense narratives, not just code categories. This agreement requires that offense descriptions in data systems be detailed enough to demonstrate whether the behavior matches the defined offense category; systems that record only a code without description cannot support this requirement.</li>
+            <li>Assess whether your district has systems in place to identify students experiencing disproportionate discipline (for example, students with high annual referral counts) and protocols for proactive review of their supports. OCR's compensatory education requirement for identified students in this case reflects the expectation that excessive discipline may constitute a denial of educational opportunity.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://ocrcas.ed.gov/sites/default/files/ocr-letters-and-agreements/03145001-b.pdf" target="_blank">Resolution Agreement, Case No. 03-14-5001, Jefferson County Public Schools ↗</a> ·
+          Title VI of the Civil Rights Act of 1964 (42 U.S.C. 2000d)
+        </div>
+      </div>
+    </div>
+ 
+  </div><!-- end entries -->
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">9 findings</div>
+      <div class="cal-stat-lbl">Federal documents reviewed and interpreted for January 2025</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">3 programs</div>
+      <div class="cal-stat-lbl">Title I/II, IDEA, and OCR/Title IX covered this month</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">4 new PDFs</div>
+      <div class="cal-stat-lbl">Direct PDF links confirmed for all four Title I guidance documents</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Primary sources replacing law firm blogs and general program pages</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> Four corrections were made from the original. (1) Three Title I guidance entries (Parent and Family Engagement, State and Local Report Card, School Improvement) all used the general Title I program page as their source link. Direct PDF URLs have been confirmed and substituted for all three. (2) The OCR Title IX entry was dated "January 9, 2025" and described as "OCR guidance confirming 2020 Title IX Regulations in effect." January 9 is the date of the court decision (Tennessee v. Cardona, E.D. Ky.) vacating the 2024 rule, not an OCR guidance date. OCR's own confirmation came through the January 14 online/digital harassment resource and the January 31 Dear Colleague Letter (superseded by the February 4, 2025 DCL). The entry now correctly identifies the court decision as the January 9 event and OCR's confirmation as January 14. (3) The OCR Title IX source link pointed to a general OCR regulations page. The primary document is OCR's enforcement directive DCL, confirmed at ed.gov/media/document/title-ix-enforcement-directive-dcl-109477.pdf. (4) The online/digital sexual harassment resource source link pointed to a Bowditch law firm client alert; replaced with the primary OCR resource at ed.gov. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · January 2025
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
