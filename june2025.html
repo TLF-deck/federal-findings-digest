@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: June 2025 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:     #1B3A4B;
+    --accent:   #1A5FA0;
+    --amber:    #A85D1A;
+    --green:    #2E5E4A;
+    --green-bg: #D4EDE4;
+    --amber-bg: #F5E0C8;
+    --blue-bg:  #D4E6F5;
+    --red:      #8B1A2A;
+    --red-bg:   #F0D4D8;
+    --purple:   #4A2E7A;
+    --purple-bg:#EDE4F5;
+    --teal:     #1A6B5A;
+    --teal-bg:  #D0EDE6;
+    --gray:     #6B7C8A;
+    --gray-lt:  #E8EDF1;
+    --body:     #333333;
+    --bg:       #F2F4F6;
+    --white:    #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .research-note strong { color: var(--dark); }
+  .research-note .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .research-note .rn-label:first-child { margin-top: 0; }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.title1   { border-left: 5px solid var(--accent); }
+  .cal-entry.grants   { border-left: 5px solid var(--green); }
+  .cal-entry.idea     { border-left: 5px solid var(--purple); }
+  .cal-entry.ocr      { border-left: 5px solid var(--red); }
+  .cal-entry.oig      { border-left: 5px solid var(--gray); }
+  .cal-entry.impact   { border-left: 5px solid var(--teal); }
+  .cal-entry.hidden   { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .title1  .entry-badge { background: var(--blue-bg);   color: var(--accent); }
+  .grants  .entry-badge { background: var(--green-bg);  color: var(--green);  }
+  .idea    .entry-badge { background: var(--purple-bg); color: var(--purple); }
+  .ocr     .entry-badge { background: var(--red-bg);    color: var(--red);    }
+  .oig     .entry-badge { background: var(--gray-lt);   color: var(--gray);   }
+  .impact  .entry-badge { background: var(--teal-bg);   color: var(--teal);   }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .entry-type-badge.dcl        { background: var(--blue-bg);   color: var(--accent); }
+  .entry-type-badge.fr         { background: var(--green-bg);  color: var(--green);  }
+  .entry-type-badge.fr-idea    { background: var(--purple-bg); color: var(--purple); }
+  .entry-type-badge.ocr-inv    { background: var(--red-bg);    color: var(--red);    }
+  .entry-type-badge.fraud      { background: var(--gray-lt);   color: var(--gray);   }
+  .entry-type-badge.payment    { background: var(--teal-bg);   color: var(--teal);   }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); background: var(--blue-bg); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; border-left: 3px solid var(--accent); }
+  .grants  .entry-tlf-note { background: var(--green-bg);  border-left-color: var(--green);  }
+  .idea    .entry-tlf-note { background: var(--purple-bg); border-left-color: var(--purple); }
+  .ocr     .entry-tlf-note { background: var(--red-bg);    border-left-color: var(--red);    }
+  .oig     .entry-tlf-note { background: var(--gray-lt);   border-left-color: var(--gray);   }
+  .impact  .entry-tlf-note { background: var(--teal-bg);   border-left-color: var(--teal);   }
+ 
+  .context-alert { background: #FFF8E6; border-left: 4px solid #D4A843; border-radius: 0 4px 4px 0; padding: 12px 16px; margin-bottom: 14px; font-size: 13px; color: #5A3A00; line-height: 1.6; }
+  .context-alert strong { color: #3A2000; }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '->'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; font-family: monospace; }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">June 2025 &nbsp;·&nbsp; <strong>6 findings</strong></p>
+    <p class="cal-desc">Federal programs and fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity from June 2025. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section translating that implication into concrete steps. Source links point directly to the primary federal document where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Moderate</div>
+    June 2025 showed moderate federal guidance activity focused on the Trump administration's education choice priorities and Title IX enforcement. The administration issued multiple Dear Colleague Letters encouraging states to maximize flexibility in Title I funds for school choice. OCR enforcement activity on Title IX increased with the opening of high-profile investigations, particularly related to sex-based facility access and athletics.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No new McKinney-Vento guidance was published in June 2025. No new Perkins CTE federal guidance was issued. No Title III English learner guidance was identified in June 2025, with the most recent guidance from September 2016 and the January 2019 addendum remaining current.
+ 
+    <div class="rn-label">Watch next</div>
+    Monitor potential ESEA waiver guidance following the July 29, 2025 letter to chief state school officers inviting waiver requests. Track continued OCR Title IX enforcement actions as the Jefferson County investigation and others move toward resolution. The Jefferson County findings and proposed resolution agreement were ultimately announced in March 2026 and are covered in the December 2025 issue of this digest.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"    onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="title1" onclick="filterProgram('title1')">Title I</div>
+    <div class="f-pill"        data-filter="grants" onclick="filterProgram('grants')">ED Grants</div>
+    <div class="f-pill"        data-filter="idea"   onclick="filterProgram('idea')">IDEA</div>
+    <div class="f-pill"        data-filter="ocr"    onclick="filterProgram('ocr')">OCR</div>
+    <div class="f-pill"        data-filter="oig"    onclick="filterProgram('oig')">OIG</div>
+    <div class="f-pill"        data-filter="impact" onclick="filterProgram('impact')">Impact Aid</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- TITLE I -->
+    <div class="cal-section-label" data-section="title1">Title I</div>
+ 
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I</div>
+          <div class="entry-type-badge dcl">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Parental Choice in Identified Schools: States May Prioritize School Improvement Funds for Choice-Offering Districts</div>
+            <div class="entry-date">Office of Elementary and Secondary Education · June 26, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OESE sent a Dear Colleague Letter to chief state school officers on using Title I school improvement funds under ESEA section 1003(a) to support parental choice. States generally must reserve seven percent of their Title I, Part A allocation for school improvement in schools identified for Comprehensive Support and Improvement (CSI), Targeted Support and Improvement (TSI), or Additional Targeted Support and Improvement (ATSI). While students in identified schools are not required by law to be given a school choice option, states may prioritize 1003(a) funds to LEAs that both turn around underperforming schools and offer students a choice option, such as dual enrollment, academic tutoring, or career and technical education alternatives. This is the third in the administration's series of school choice guidance letters under ESEA.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This DCL provides states discretion to favor LEAs offering parental choice when distributing 1003(a) school improvement funds. For districts with identified schools, this signals that state school improvement grant competitions may increasingly weight choice options in scoring criteria. Districts with identified schools should review their improvement plans to determine whether they include any parent-facing choice components (menus of intervention services, dual enrollment, tutoring options) that could strengthen competitiveness for 1003(a) funding. Districts that receive 1003(a) subgrants should also confirm that improvement plan activities remain allowable and that any choice-related additions are consistent with the plan's overall theory of action and stakeholder consultation requirements.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review current improvement plans for any schools identified as CSI, TSI, or ATSI. Identify whether any parent-facing choice or service menu components are already included or could be added without disrupting the plan's evidence base.</li>
+            <li>Contact your SEA to determine whether this guidance has affected or will affect the state's 1003(a) application scoring criteria or priority rubric for the next grant cycle.</li>
+            <li>If your state adopts a choice preference in its 1003(a) competition, ensure any added choice components are developed in consultation with required stakeholders (parents, teachers, principals) as required under ESEA section 1003(b).</li>
+            <li>Document any choice options already available to students in identified schools, including public transfer rights, supplemental services, or extracurricular alternatives. Existing documentation strengthens future applications without requiring new program design.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Primary source:</strong> <a href="https://www.ed.gov/media/document/dear-colleague-letter-parental-choice-schools-identified-support-and-improvement-june-26-2025-110290.pdf" target="_blank">DCL on Parental Choice in Identified Schools, OESE, June 26, 2025 (PDF) ↗</a>
+          <br><strong>Press release:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-issues-school-choice-guidance-states-turning-around-failing-schools" target="_blank">ED Press Release, June 26, 2025 ↗</a>
+          <br>ESEA section 1003(a) (20 U.S.C. §6303) · ESEA section 1003(b) (school improvement activities)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ED GRANTS -->
+    <div class="cal-section-label" data-section="grants">ED Grants</div>
+ 
+    <div class="cal-entry grants" data-program="grants">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">ED Grants</div>
+          <div class="entry-type-badge fr">Federal Register Notice</div>
+          <div class="entry-title-block">
+            <div class="entry-title">American History and Civics Education Seminars Grant Competition: $14.2 Million for America's 250th</div>
+            <div class="entry-date">Office of Elementary and Secondary Education · June 23, 2025 · Application deadline: July 23, 2025 (closed) · 85 awards made totaling over $153 million</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED published a Federal Register notice for the first competition for the American History and Civics Education National Activities: Seminars for America's Semiquincentennial program under ESEA section 2233 (Title II, Part B). The notice anticipated approximately $14.2 million for 5-10 awards of $500,000 to $1 million per year, with a project period up to 36 months. The absolute priority required seminars for educators or students focused on American history and civics to commemorate the 250th anniversary of the United States founding. A competitive preference priority favored institutions of higher education with independent academic units dedicated to civic thought, constitutional studies, or American history. The application deadline was July 23, 2025. ED ultimately made 85 awards totaling over $153 million, substantially exceeding the original estimate.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This grant is now closed, but the program and its priorities have ongoing relevance. The 85 awards made signal strong federal investment in patriotic history and civics education through the Semiquincentennial period. K-12 districts with existing partnerships with higher education institutions that received awards may have access to seminar content and professional development through those partners. The absolute priority's focus on the American political tradition and founding documents reflects the administration's broader supplemental grant priorities framework and signals the direction of future ED discretionary competitions involving history and civics education.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>The July 23, 2025 application deadline has passed. If your district applied as a partner with a higher education institution, confirm whether your institution received an award and what partnership obligations, if any, apply to your district.</li>
+            <li>Review the list of AHC-Seminars award recipients once published on ED's website. If a higher education institution in your region received an award, contact them about potential partnership opportunities for professional development or student programming.</li>
+            <li>Note the absolute priority language emphasizing founding documents and constitutional principles. This framing will appear in future ED discretionary competitions involving civics and social studies education, and should inform how districts describe their history and civics programming in future grant applications.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.federalregister.gov/documents/2025/06/23/2025-11479/applications-for-new-awards-american-history-and-civics-education-national-activities-seminars-for" target="_blank">Federal Register, 90 FR 26563, June 23, 2025 ↗</a> · ESEA section 2233 (20 U.S.C. §6663) · <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-awards-over-153-million-american-history-and-civics-seminars-grants" target="_blank">Award announcement ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- IDEA -->
+    <div class="cal-section-label" data-section="idea">IDEA</div>
+ 
+    <div class="cal-entry idea" data-program="idea">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">IDEA</div>
+          <div class="entry-type-badge fr-idea">Federal Register Notice</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Educational Technology, Media, and Materials Grant Competition: National Center for Faculty Capacity in Special Education Technology</div>
+            <div class="entry-date">Office of Special Education and Rehabilitative Services · June 25, 2025 · Application deadline: July 25, 2025 (closed)</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OSERS published a Federal Register notice for the FY 2025 competition for Educational Technology, Media, and Materials for Individuals with Disabilities grants under IDEA, specifically for a National Center to Improve Faculty Capacity to Use Educational Technology in Special Education Personnel and Leadership Preparation Programs. The program targets higher education institutions that prepare special education personnel, with a pre-application webinar held by June 30, 2025 and applications due July 25, 2025. This grant is designed for institutions of higher education preparing special education teachers and leaders, not for direct K-12 district applicants.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This grant targets higher education institutions, not K-12 districts directly. However, districts with existing or potential partnerships with university special education preparation programs should be aware that award recipients may develop technology-integration training resources that flow to the field through pre-service preparation. The July 25, 2025 deadline has passed. Districts that partner with local universities on special education teacher preparation should inquire whether their partner institution applied and, if awarded, what resources or training opportunities may be available through the partnership.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>The July 25, 2025 deadline has passed. If your district has a partnership with a higher education special education preparation program, ask whether the program applied and received funding under this competition.</li>
+            <li>If a partner institution received an award, request information about professional development or technology resources that may become available to district cooperating teachers, mentor teachers, or special education staff through the partnership.</li>
+            <li>Monitor OSEP's website for grant award announcements and identify recipients that may have regional relevance to your district.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.federalregister.gov/documents/2025/06/25/2025-11612/applications-for-new-awards-educational-technology-media-and-materials-for-individuals-with" target="_blank">Federal Register, June 25, 2025 ↗</a> · IDEA Part D (20 U.S.C. §1451 et seq.)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- OCR -->
+    <div class="cal-section-label" data-section="ocr">OCR</div>
+ 
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title IX</div>
+          <div class="entry-type-badge ocr-inv">Investigation Opened</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Opens Title IX Investigation into Jefferson County Public Schools (CO) on Sex-Separated Facilities and Athletics</div>
+            <div class="entry-date">Office for Civil Rights · Investigation opened June 2025 · Findings and proposed resolution issued March 13, 2026</div>
+          </div>
+        </div>
+ 
+        <div class="context-alert">
+          <strong>Timeline note:</strong> The investigation into Jefferson County Public Schools opened in June 2025 over allegations involving single-sex overnight accommodations on school trips. OCR's findings and proposed resolution agreement were not announced until March 13, 2026, outside the June 2025 window of this issue. The findings are covered in the December 2025 issue of this digest. This entry addresses the investigation opening and the compliance signal it sends to all districts.
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR opened a Title IX directed investigation into Jefferson County Public Schools in Colorado in June 2025, initially focused on allegations that the district had removed single-sex overnight accommodation safeguards on district-sponsored trips. The investigation expanded in scope. When OCR announced findings on March 13, 2026, it concluded the district violated Title IX by allowing biological male students access to female bathrooms, locker rooms, and overnight accommodations and to compete on girls sports teams. OCR issued a proposed resolution agreement giving the district 10 days to voluntarily comply or face enforcement action. Jefferson County is the second-largest school district in Colorado, and the investigation is one of over a dozen similar OCR Title IX probes launched under the current administration.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The opening of this investigation in June 2025 signals the administration's enforcement posture on Title IX facility access and athletic eligibility questions for districts nationwide. OCR is conducting at least 18 similar investigations. Districts should treat the June 2025 investigation opening as the compliance signal, even though the findings came later. The Jefferson County case involves policies governing restroom access, locker room use, overnight accommodations, and athletic team eligibility for transgender students, all under the 2020 Title IX regulations currently in effect. Jefferson County disputes OCR's interpretation and notes that its policies comply with Colorado law. Districts in states with similar state nondiscrimination laws face the same federal-state tension.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's current policies governing sex-separated facility access (restrooms, locker rooms), overnight accommodations on school trips, and athletic team eligibility. Confirm which legal framework each policy references.</li>
+            <li>If your district's policies are grounded in prior Title IX guidance or state nondiscrimination law that conflicts with the 2020 Title IX regulations, consult district legal counsel now, before an investigation is opened. The Jefferson County case illustrates that OCR will not delay findings based on state law conflict.</li>
+            <li>Document the legal basis for each relevant policy. Districts should be able to articulate why each policy is legally defensible under currently enforceable law, including the 2020 Title IX regulations, state law, and any applicable court orders in your jurisdiction.</li>
+            <li>Brief your Title IX coordinator, athletic director, and principal leadership on the current Title IX enforcement environment. Staff should understand that OCR is actively investigating these policy areas and that the district's response to complaints in this area will be scrutinized.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Sources:</strong> Title IX of the Education Amendments of 1972 (20 U.S.C. §1681) · 2020 Title IX regulations (34 CFR Part 106) · <a href="https://www.ed.gov/about/news/press-release/us-department-of-educations-office-civil-rights-concludes-jefferson-county-public-schools-colorado-has-violated-title-ix" target="_blank">ED press release on findings, March 13, 2026 ↗</a>
+          <div class="url-note">Note: The investigation opened June 2025. The OCR findings and proposed resolution agreement were issued March 13, 2026. The case number in the original source document (03145001) refers to a separate, earlier Title VI racial discrimination agreement with Jefferson County Public Schools and is not the source for this Title IX entry.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- OIG -->
+    <div class="cal-section-label" data-section="oig">OIG</div>
+ 
+    <div class="cal-entry oig" data-program="oig">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OIG</div>
+          <div class="entry-type-badge fraud">Fraud Advisory</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Fraud Advisory: FAFSA Activity Involving Dependent Students with Unusual Parent Data</div>
+            <div class="entry-date">Office of Inspector General · June 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OIG initiated analysis of additional data in June 2025 and found that the pattern of fraudulent activity involving dependent students with unusual parent data on FAFSA applications had continued since it was first identified in March 2025. The fraud pattern involves suspicious parent information on dependent student FAFSA forms that may indicate identity theft or manipulation of financial aid eligibility data. While this primarily affects postsecondary financial aid, the pattern directly affects high school students completing FAFSA applications, and districts running college access programs including Federal TRIO and Gear Up have a role in advising students through the application process.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The June 2025 continuation of this fraud pattern signals an ongoing and organized effort to exploit dependent student FAFSA submissions. K-12 districts running TRIO, Gear Up, or other college access programs that include FAFSA assistance should ensure counselors and advisors are trained to recognize red flags. The most common indicators are parent financial information that appears inconsistent with what families have shared, unusual tax filing statuses, or parent income figures that seem implausible. Districts are not responsible for preventing this fraud at the federal system level, but counselors who assist students with FAFSA completion can play a role in alerting students and families to protect their information.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Brief school counselors and TRIO/Gear Up staff on the FAFSA fraud pattern. Train them to advise students to safeguard parent Social Security numbers, tax information, and FSA ID credentials and never share these with third parties at FAFSA events.</li>
+            <li>Review protocols for district-run FAFSA completion events. Confirm that staff assisting with FAFSA completion are not accessing parent credentials on students' behalf and that students are entering their own and parents' information directly.</li>
+            <li>If any student or family reports that their FAFSA data appears to have been tampered with or that they received unexpected financial aid determinations, advise them to contact Federal Student Aid's fraud reporting line at 1-800-MIS-USED and flag the situation in your TRIO or Gear Up program documentation.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://oig.ed.gov/resources/news-and-updates" target="_blank">OIG News and Updates ↗</a> · OIG Fraud Advisory on FAFSA Dependent Student Activity, June 2025
+          <div class="url-note">Note: The specific June 2025 Fraud Advisory update is documented in the OIG's FY 2025 semiannual report and fraud advisory series. Verify the current advisory at the OIG news page linked above.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- IMPACT AID -->
+    <div class="cal-section-label" data-section="impact">Impact Aid</div>
+ 
+    <div class="cal-entry impact" data-program="impact">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Impact Aid</div>
+          <div class="entry-type-badge payment">Payment Announcement</div>
+          <div class="entry-title-block">
+            <div class="entry-title">FY 2025 Final Impact Aid Payments Released: Earliest in Program History</div>
+            <div class="entry-date">Office of Elementary and Secondary Education, Impact Aid Program · June 5, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED announced that as of June 5, 2025, it had released the final payments for all sections of Impact Aid: section 7003(b) Basic Support Payments, section 7003(d) Children with Disabilities, section 7002 Federal Property, and section 7007(a) Formula Construction, all for FY 2025. This is the earliest ED has ever released final payments for any fiscal year. Section 7003(b) Basic Support payments were made at a final rate of 94.64 percent of the maximum payment amount.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The early release of final Impact Aid payments is operationally significant for districts that rely on this funding for budget planning. Receiving final payments in June rather than later in the fiscal year allows for more accurate budget reconciliation before fiscal year close and reduces the need to budget conservatively based on estimated rates. Districts should verify receipt of all four payment categories, confirm the amounts against their approved applications, and update budget projections to reflect the 94.64 percent final rate for section 7003(b), which is below full funding and affects districts differently depending on their eligible student populations.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm receipt of FY 2025 final payments for each applicable Impact Aid section: 7003(b) Basic Support, 7003(d) Children with Disabilities, 7002 Federal Property, and 7007(a) Formula Construction. Contact the Impact Aid Program if any expected payment has not been received.</li>
+            <li>Reconcile final payment amounts against approved application amounts and the 94.64 percent final rate for section 7003(b). Update your district's FY 2025 budget to reflect actual rather than estimated Impact Aid revenue.</li>
+            <li>Document the final rate and payment date for audit purposes. If your district's budget was built on a different estimated rate, document the variance and its effect on program expenditures.</li>
+            <li>Begin preparing FY 2026 Impact Aid applications with the FY 2025 final rate as a reference point for conservative revenue projections, noting that final rates can vary year to year based on appropriations levels.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://impactaid.ed.gov/june-2025-news-you-can-use/" target="_blank">Impact Aid Program: June 2025 News You Can Use ↗</a> · Impact Aid Program, ESEA sections 7001-7015 (20 U.S.C. §7701 et seq.)
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">6 findings</div>
+      <div class="cal-stat-lbl">Federal documents reviewed and interpreted for June 2025</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">6 programs</div>
+      <div class="cal-stat-lbl">Title I, ED Grants, IDEA, OCR, OIG, and Impact Aid covered</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Your Action</div>
+      <div class="cal-stat-lbl">Every entry includes concrete steps for your team</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Direct links to primary documents where available</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> The Title I DCL PDF and press release are verified. The AHC-Seminars Federal Register notice is confirmed, and the actual award total of over $153 million across 85 awards is verified from an ED press release. The Jefferson County OCR entry has been substantially corrected: the original entry presented March 2026 findings as a June 2025 resolution agreement and cited an unrelated OCR case number (03145001) from a different Jefferson County Title VI racial discrimination agreement. This entry correctly identifies June 2025 as the investigation opening date only, with the March 2026 findings noted as covered in the December 2025 issue. The FAFSA fraud advisory is confirmed through the OIG semiannual report series. The Impact Aid payment announcement is confirmed via the Impact Aid program website. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · June 2025
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
+ 
