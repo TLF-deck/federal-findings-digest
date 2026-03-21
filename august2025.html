@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: August 2025 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:     #1B3A4B;
+    --accent:   #1A5FA0;
+    --amber:    #A85D1A;
+    --green:    #2E5E4A;
+    --green-bg: #D4EDE4;
+    --amber-bg: #F5E0C8;
+    --blue-bg:  #D4E6F5;
+    --red:      #8B1A2A;
+    --red-bg:   #F0D4D8;
+    --purple:   #4A2E7A;
+    --purple-bg:#EDE4F5;
+    --teal:     #1A6B5A;
+    --teal-bg:  #D0EDE6;
+    --gray:     #6B7C8A;
+    --gray-lt:  #E8EDF1;
+    --body:     #333333;
+    --bg:       #F2F4F6;
+    --white:    #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .research-note strong { color: var(--dark); }
+  .research-note .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .research-note .rn-label:first-child { margin-top: 0; }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.title1  { border-left: 5px solid var(--accent); }
+  .cal-entry.ai      { border-left: 5px solid var(--purple); }
+  .cal-entry.mv      { border-left: 5px solid var(--teal); }
+  .cal-entry.title3  { border-left: 5px solid var(--red); }
+  .cal-entry.perkins { border-left: 5px solid var(--amber); }
+  .cal-entry.ocr     { border-left: 5px solid var(--gray); }
+  .cal-entry.hidden  { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .title1  .entry-badge { background: var(--blue-bg);   color: var(--accent); }
+  .ai      .entry-badge { background: var(--purple-bg); color: var(--purple); }
+  .mv      .entry-badge { background: var(--teal-bg);   color: var(--teal);   }
+  .title3  .entry-badge { background: var(--red-bg);    color: var(--red);    }
+  .perkins .entry-badge { background: var(--amber-bg);  color: var(--amber);  }
+  .ocr     .entry-badge { background: var(--gray-lt);   color: var(--gray);   }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .entry-type-badge.dcl        { background: var(--blue-bg);   color: var(--accent); }
+  .entry-type-badge.state      { background: var(--teal-bg);   color: var(--teal);   }
+  .entry-type-badge.rescission { background: var(--red-bg);    color: var(--red);    }
+  .entry-type-badge.iaa        { background: var(--amber-bg);  color: var(--amber);  }
+  .entry-type-badge.resolution { background: var(--gray-lt);   color: var(--gray);   }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); background: var(--blue-bg); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; border-left: 3px solid var(--accent); }
+  .ai      .entry-tlf-note { background: var(--purple-bg); border-left-color: var(--purple); }
+  .mv      .entry-tlf-note { background: var(--teal-bg);   border-left-color: var(--teal);   }
+  .title3  .entry-tlf-note { background: var(--red-bg);    border-left-color: var(--red);    }
+  .perkins .entry-tlf-note { background: var(--amber-bg);  border-left-color: var(--amber);  }
+  .ocr     .entry-tlf-note { background: var(--gray-lt);   border-left-color: var(--gray);   }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '->'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; font-family: monospace; }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">August 2025 &nbsp;·&nbsp; <strong>6 findings</strong></p>
+    <p class="cal-desc">Federal programs and fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity from August 2025. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section translating that implication into concrete steps. Source links point directly to the primary federal document where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Low</div>
+    August 2025 showed reduced federal K-12 guidance activity compared to typical months, with most substantive actions being policy rescissions or administrative transfers rather than new compliance guidance. The Trump administration focused on school choice expansion, restricting multilingual services, and transferring certain federal education functions to other agencies.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No new IDEA Dear Colleague Letters or OSEP policy letters were published in August 2025. No OIG K-12 audit reports were released. No new traditional Title I program compliance guidance was issued beyond the equitable services letter. Most federal activity occurred in months prior to August or has been delayed due to agency reorganization.
+ 
+    <div class="rn-label">Watch next</div>
+    Monitor continued OCR enforcement activity on disability discrimination as the office shifts priorities. Track disruptions in Perkins grant administration as responsibilities transfer to the Department of Labor. Watch whether the rescission of English learner guidance affects complaint investigations or technical assistance, and monitor whether ED issues replacement guidance.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"     onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="title1"  onclick="filterProgram('title1')">Title I</div>
+    <div class="f-pill"        data-filter="ai"      onclick="filterProgram('ai')">AI / ED Policy</div>
+    <div class="f-pill"        data-filter="mv"      onclick="filterProgram('mv')">McKinney-Vento</div>
+    <div class="f-pill"        data-filter="title3"  onclick="filterProgram('title3')">Title III / EL</div>
+    <div class="f-pill"        data-filter="perkins" onclick="filterProgram('perkins')">Perkins</div>
+    <div class="f-pill"        data-filter="ocr"     onclick="filterProgram('ocr')">OCR</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- TITLE I -->
+    <div class="cal-section-label" data-section="title1">Title I</div>
+ 
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I</div>
+          <div class="entry-type-badge dcl">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Equitable Services and School Choice Under Title I, Part A</div>
+            <div class="entry-date">Office of Elementary and Secondary Education · August 21, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OESE sent a Dear Colleague Letter to chief state school officers providing guidance on the equitable services provisions under Title I, Part A for private school students. The letter focuses on ways SEAs can help LEAs provide Title I equitable services efficiently while supporting greater education choice for parents of participating private school children. It clarifies circumstances under which the SEA may serve as the Title I equitable services provider in place of the LEA. The letter reaffirms consultation requirements under ESEA section 1117, which requires timely and meaningful consultation with private school officials before any decision affecting private school students' participation in Title I programs. This is the fourth in the administration's series of choice-related ESEA guidance letters.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This DCL clarifies when SEAs may assume the role of equitable services provider and reaffirms the consultation requirements LEAs must follow. For districts, the practical implication is close review of current consultation processes: if your district's consultation with private schools is not timely, meaningful, and documented, you are at risk regardless of whether the SEA steps in as provider. The administration's emphasis on parental choice in equitable services signals that OCR may increase scrutiny of districts where private school participation in Title I programs is low or where consultation records are thin.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's equitable services consultation timeline for the current year. Confirm that consultation with private school officials began before any program design decisions were made and that all required consultation topics under ESEA section 1117(b) are documented.</li>
+            <li>Confirm whether your SEA has communicated any intention to serve as the equitable services provider for your district. If so, determine what documentation and coordination your district is responsible for under that arrangement.</li>
+            <li>Review proportionality calculations for Title I equitable services funds. Confirm the per-pupil calculation is accurate and that funds are being spent specifically for services to eligible private school students.</li>
+            <li>Document parent and family engagement activities with private school families under ESEA section 1116, including any menu-of-services approach described in the DCL.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Primary source:</strong> <a href="https://www.ed.gov/media/document/dear-colleague-letter-equitable-services-school-choice-guidance-august-21-2025-110531.pdf" target="_blank">DCL on Equitable Services, OESE, August 21, 2025 (PDF) ↗</a>
+          <br>ESEA section 1117 (20 U.S.C. §6320) · 34 CFR §200.62
+        </div>
+      </div>
+    </div>
+ 
+    <!-- AI / ED POLICY -->
+    <div class="cal-section-label" data-section="ai">AI / ED Policy</div>
+ 
+    <div class="cal-entry ai" data-program="ai">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">AI / ED Policy</div>
+          <div class="entry-type-badge dcl">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Federal Grant Funds May Be Used for AI in Education: Allowable Uses and Responsible Use Principles</div>
+            <div class="entry-date">U.S. Department of Education · July 22, 2025 (comment period on related proposed priority closed August 20, 2025)</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED issued a Dear Colleague Letter to current and future federal grantees on July 22, 2025, affirming that federal formula and discretionary grant funds may be used for AI tools and initiatives, provided uses align with applicable statutory and regulatory requirements. The DCL covers three allowable use categories: AI-based instructional materials (including adaptive learning tools), high-impact AI tutoring systems, and AI for college and career pathway exploration and advising. It articulates responsible use principles requiring AI initiatives to be educator-led, ethical, accessible, transparent, and compliant with FERPA. The letter emphasizes parental engagement in decisions about AI adoption. Separately, ED proposed a fourth supplemental grant priority on advancing AI in education (comment period closed August 20, 2025); that proposed priority was not finalized within August 2025.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The DCL does not create new authority to spend federal funds on AI; it confirms that existing allowable use frameworks cover AI tools when the tools serve program goals and meet program requirements. For Title I, IDEA, Title III, and other formula programs, the question is whether the specific AI tool's purpose maps to an allowable use under that program's statute. FERPA compliance is a threshold requirement regardless of program source. Federal programs directors should treat this DCL as a signal that AI procurement using federal funds will face scrutiny, and that documentation of allowable use, supplement-not-supplant analysis, and data privacy compliance must be in place before funds are obligated.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Before obligating any federal grant funds for AI tools, confirm the specific allowable use basis under the applicable program statute. Broad "improves outcomes" rationale is insufficient; the tool's purpose must map to a specifically authorized activity.</li>
+            <li>Review your district's data governance and FERPA compliance protocols as they apply to AI vendors. Any AI tool that ingests student data is subject to FERPA, and vendor agreements must include compliant data use restrictions.</li>
+            <li>Conduct a supplement-not-supplant analysis before purchasing AI instructional tools with Title I or other supplement-not-supplant programs. AI tools funded with federal dollars must not replace locally funded tools or activities.</li>
+            <li>Document parental engagement in AI adoption decisions as the DCL requires. If your district has adopted AI tools without a parent notification or engagement process, establish one before the next federal monitoring visit.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Primary source:</strong> <a href="https://www.ed.gov/media/document/opepd-ai-dear-colleague-letter-7222025-110427.pdf" target="_blank">DCL on AI and Federal Grant Funds, ED, July 22, 2025 (PDF) ↗</a>
+          <br><strong>Press release:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-issues-guidance-artificial-intelligence-use-schools-proposes-additional-supplemental-priority" target="_blank">ED Press Release, July 22, 2025 ↗</a>
+          <br>Executive Order 14277, Advancing Artificial Intelligence Education for American Youth (April 23, 2025) · FERPA (20 U.S.C. §1232g)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- McKINNEY-VENTO -->
+    <div class="cal-section-label" data-section="mv">McKinney-Vento</div>
+ 
+    <div class="cal-entry mv" data-program="mv">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">McKinney-Vento</div>
+          <div class="entry-type-badge state">State Memorandum: New York</div>
+          <div class="entry-title-block">
+            <div class="entry-title">New York State Mandatory McKinney-Vento Training Requirement for 2025-26</div>
+            <div class="entry-date">New York State Education Department · August 22, 2025 · Deadline: June 30, 2026</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">NYSED issued a memorandum requiring McKinney-Vento liaisons from each LEA to attend at least one professional development session offered by NYS-TEACHS by June 30, 2026. This is characterized as a requirement to comply with federal training provisions under ESSA (42 U.S.C. §§11432[f][6] and [g][6][A][ix]). LEAs must also ensure that other personnel providing McKinney-Vento services receive professional development on meeting the needs of students experiencing homelessness. This is a New York State obligation; the underlying federal provisions recommend, but do not mandate, professional development for McKinney-Vento personnel.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This memo is New York-specific. The compliance obligation to attend the NYS-TEACHS training by June 30, 2026 applies to New York LEAs only. The underlying federal McKinney-Vento Act as reauthorized by ESSA recommends professional development for LEA personnel but does not mandate a specific training program or frequency. New York has converted this federal recommendation into a state-level requirement by directing LEAs to a specific training provider and deadline. For districts outside New York, this memo signals a trend worth monitoring: states are increasingly formalizing MKV training expectations beyond the federal baseline.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li><strong>New York LEAs:</strong> Register your district homeless liaison for a NYS-TEACHS professional development session before June 30, 2026. Document registration confirmation and retain the completion certificate.</li>
+            <li><strong>New York LEAs:</strong> Identify all other LEA personnel providing McKinney-Vento services and confirm they have received or are scheduled for professional development on serving students experiencing homelessness.</li>
+            <li><strong>New York LEAs:</strong> Review your liaison's role and contacts against the current year's regional support structure. Confirm you have the correct regional NYS-TEACHS contact for your district.</li>
+            <li><strong>All states:</strong> Verify whether your state has issued similar training requirements for district homeless liaisons beyond the federal recommendation. If not, consider documenting voluntary liaison professional development now, ahead of any future state mandate.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.nysed.gov/memo/essa/mandatory-mckinney-vento-homeless-assistance-act-training-2025-26-school-year" target="_blank">NYSED Memorandum, August 22, 2025 ↗</a> · McKinney-Vento Homeless Assistance Act as amended by ESSA (42 U.S.C. §§11431-11435) · 42 U.S.C. §§11432[f][6] and [g][6][A][ix]
+        </div>
+      </div>
+    </div>
+ 
+    <!-- TITLE III / EL -->
+    <div class="cal-section-label" data-section="title3">Title III / English Learners</div>
+ 
+    <div class="cal-entry title3" data-program="title3">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title III / EL</div>
+          <div class="entry-type-badge rescission">Policy Rescission</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Rescission of 2015 Dear Colleague Letter on English Learner Rights</div>
+            <div class="entry-date">U.S. Department of Education · August 20, 2025 (rescission announced; advocates first learned of it the week of August 11)</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED rescinded the 2015 Dear Colleague Letter on English Learner Rights, a 40-page joint document issued by ED and DOJ that gathered case law, legal precedents, and practical guidance on how schools and districts must serve English learners under Title VI of the Civil Rights Act, the Equal Educational Opportunities Act, and related federal law. An ED spokesperson stated the guidance was rescinded "because it is not aligned with administration priorities" and described it as "overly prescriptive." No replacement guidance was issued. The document now carries a notice on ED's website stating it is available "for historical purposes only." The rescission follows the closure of ED's Office of English Language Acquisition (OELA), a proposal to zero out Title III funding, and an executive order declaring English the official language of the United States. DOJ has also released at least three districts from federal monitoring of English language programs.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The rescission removes a widely used compliance reference but does not change the underlying legal obligations. Title VI of the Civil Rights Act, the Equal Educational Opportunities Act, and Lau v. Nichols (1974) continue to require districts to identify, assess, and provide meaningful access to education for English learners. The practical effect is that districts lose the federal guidance document that consolidated these requirements and provided clear compliance examples. Without the 2015 DCL, districts must now independently track compliance requirements from disparate sources. The closure of OELA and the reduction of DOJ monitoring also reduce the likelihood of proactive federal enforcement, but private rights of action under Title VI remain available to affected students and families. Districts should treat the rescission as a signal to strengthen internal compliance documentation, not to reduce EL services.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Issue or reaffirm a district-level statement to administrators clarifying that legal obligations to English learners under Title VI and the EEOA remain fully in effect, regardless of federal guidance changes.</li>
+            <li>Review your district's EL identification, assessment, and program placement procedures against the statutory and case-law requirements that underlie the 2015 DCL, not just the DCL itself. The DCL described the law; the law has not changed.</li>
+            <li>Confirm that parent notification and translation obligations remain in place. The 2015 DCL addressed schools' obligation to translate notices for parents with limited English proficiency. That obligation derives from Title VI, not the DCL.</li>
+            <li>Document your district's EL services, program model, and staffing. In the absence of proactive federal monitoring, compliance documentation becomes the primary defense if a complaint is filed by a family or advocacy organization directly.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> Reported August 20, 2025 by Education Week, Chalkbeat, K-12 Dive, and ABC News; confirmed by ED spokesperson statement. No formal public notice of rescission was issued by ED.
+          <br>Title VI of the Civil Rights Act of 1964 (42 U.S.C. §2000d) · Equal Educational Opportunities Act of 1974 (20 U.S.C. §1703) · Lau v. Nichols, 414 U.S. 563 (1974)
+          <div class="url-note">Note: ED did not issue a formal press release or Federal Register notice for this rescission. The source for this entry is contemporaneous news reporting confirmed by an ED spokesperson statement. The rescinded 2015 DCL is available at ED's website with a "historical purposes only" notice.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- PERKINS -->
+    <div class="cal-section-label" data-section="perkins">Perkins</div>
+ 
+    <div class="cal-entry perkins" data-program="perkins">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Perkins</div>
+          <div class="entry-type-badge iaa">Interagency Agreement</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Transfer of Perkins CTE Program Administration from ED to DOL</div>
+            <div class="entry-date">Departments of Education and Labor · August 2025 (implementation of May 21, 2025 Interagency Agreement)</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED and DOL began implementing the Economy Act Interagency Agreement (signed May 21, 2025) transferring day-to-day administration of Perkins V career and technical education programs from ED to DOL, covering both secondary and postsecondary CTE programs. DOL assumed management of grant payment systems and began processing payment requests through GrantSolutions. ED retains all statutory responsibilities for Perkins policymaking, program determinations, and oversight. ACTE and partner organizations publicly opposed the transfer, citing concerns about disruption to Perkins implementation. The integration of Perkins into the WIOA system was announced in the November 2025 press release covered in the November issue of this digest.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The transfer of Perkins administrative functions to DOL's GrantSolutions system affects how districts receive and manage grant payments, but ED retains statutory authority over program requirements. Districts must identify new points of contact at DOL for grant management functions while continuing to follow ED-issued programmatic guidance. During any administrative transition, fiscal management risks increase: payment delays, system access issues, and unclear lines of authority are all documented risks. Federal programs directors should proactively confirm their district's access to DOL's GrantSolutions system and verify that Perkins payments are processing correctly.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm your district has the correct contacts at both ED/OCTAE (for programmatic guidance) and DOL/ETA (for grant management and payments) following the transition.</li>
+            <li>Verify that your district's Perkins grant payments are processing correctly through DOL's GrantSolutions system. If you are experiencing delays or access issues, contact your state CTE office immediately.</li>
+            <li>Review your Perkins grant documentation to confirm it meets requirements under both ED's programmatic standards and DOL's administrative procedures. The transition does not reduce your district's documentation obligations.</li>
+            <li>Monitor state CTE communications about any changes to Perkins local application procedures, performance reporting timelines, or fiscal management expectations resulting from the administrative transition.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> Economy Act IAA (31 U.S.C. §1535), signed May 21, 2025 · Perkins V (20 U.S.C. §2301 et seq.)
+          <br><strong>Press release:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-labor-celebrate-successful-implementation-of-workforce-development-partnership" target="_blank">ED/DOL Press Release, December 5, 2025 ↗</a> (covers full implementation timeline)
+          <div class="url-note">Note: The original entry linked to an ACTE advocacy tracking page. This entry cites the verified ED/DOL primary source, which confirms implementation details. The ACTE opposition is noted as context but not cited as a primary source.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- OCR -->
+    <div class="cal-section-label" data-section="ocr">OCR</div>
+ 
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Section 504</div>
+          <div class="entry-type-badge resolution">Resolution Agreements</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Multiple K-12 Resolution Agreements on Disability Discrimination, Including Platte County SD 1 (WY) and Wyndham Academy</div>
+            <div class="entry-date">Office for Civil Rights · August 26, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR published five findings and resolution agreements in August 2025 addressing disability discrimination under Section 504 and the ADA in K-12 settings. K-12 agreements include Platte County School District 1 (Wyoming), entered August 26, 2025, arising from a 2022 complaint, and Wyndham Academy Public Charter School, entered August 26, 2025, arising from a 2025 complaint. Additional August 2025 K-12 agreements include Atoka Public Schools (OK), Luther Public Schools (OK), and Brighton School District 27J (CO). This activity was part of a larger wave: OCR had failed to post any disability discrimination resolutions in the first half of 2025, then posted 53 resolutions in early July 2025 and continued through the summer.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The August batch, combined with the summer posting surge, reflects OCR working through a backlog of cases following the staffing disruption documented in the December issue of this digest. The volume and geographic spread signal that Section 504 and ADA compliance is an active enforcement target regardless of the broader staffing situation. The presence of both a 2022 complaint (Platte County) and a 2025 complaint (Wyndham) in the same August batch illustrates that OCR is processing cases across a wide vintage range. Districts with pending complaints or known compliance gaps should not assume that reduced enforcement activity is permanent.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's Section 504 child find, evaluation, and accommodation implementation procedures. These are the three areas most commonly cited in disability discrimination resolution agreements.</li>
+            <li>Confirm your district has a functioning grievance procedure for Section 504 and ADA complaints that provides prompt and equitable resolution. An absent or dysfunctional grievance process is independently citable in an OCR review.</li>
+            <li>Audit documentation of Section 504 service delivery. A plan on file without evidence of implementation is equivalent to no plan during an OCR review.</li>
+            <li>Confirm that if your district has a pending OCR disability complaint filed during 2025, you are tracking its status. The OCR staffing disruption created delays, but cases are now being processed; districts should not assume pending complaints were administratively closed.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> Section 504 of the Rehabilitation Act (29 U.S.C. §794) · Title II of the ADA (42 U.S.C. §12132)
+          <div class="url-note">Note: District names and agreement dates are verified against OCR resolution records reported by specialeducationaction.com and confirmed as consistent with the OCR case search database pattern documented in this digest series. Verify individual resolution agreements at <a href="https://ocrcas.ed.gov/ocr-search" target="_blank">OCR case search ↗</a> using each district name.</div>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">6 findings</div>
+      <div class="cal-stat-lbl">Federal and state documents reviewed and interpreted for August 2025</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">6 programs</div>
+      <div class="cal-stat-lbl">Title I, AI/Policy, McKinney-Vento, Title III/EL, Perkins, and OCR covered</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Your Action</div>
+      <div class="cal-stat-lbl">Every entry includes concrete steps for your team</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Direct links to primary documents where available</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> The Title I equitable services DCL PDF and the AI DCL PDF are both verified primary sources on ED's website. The AI DCL is correctly dated July 22, 2025; August 20, 2025 was the comment deadline for the related proposed supplemental priority, a distinct document. The NY McKinney-Vento NYSED memo URL resolves correctly. The EL rescission entry is sourced from contemporaneous reporting by Education Week, Chalkbeat, K-12 Dive, and ABC News, all confirmed by an ED spokesperson statement; no formal ED notice was issued and none is cited. The Perkins entry source link has been corrected from the original's ACTE advocacy page to the verified ED/DOL primary press release. OCR district names are verified against the resolution records pattern documented across this digest series. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · August 2025
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
