@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: January 2026 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:      #1B3A4B;
+    --accent:    #1A5FA0;
+    --amber:     #A85D1A;
+    --green:     #2E5E4A;
+    --green-bg:  #D4EDE4;
+    --amber-bg:  #F5E0C8;
+    --blue-bg:   #D4E6F5;
+    --red:       #8B1A2A;
+    --red-bg:    #F0D4D8;
+    --purple:    #4A2E7A;
+    --purple-bg: #EDE4F5;
+    --teal:      #1A6B5A;
+    --teal-bg:   #D4EDE7;
+    --gray:      #6B7C8A;
+    --gray-lt:   #E8EDF1;
+    --body:      #333333;
+    --bg:        #F2F4F6;
+    --white:     #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .rn-label:first-child { margin-top: 0; }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.title1   { border-left: 5px solid var(--accent); }
+  .cal-entry.mkv      { border-left: 5px solid var(--green); }
+  .cal-entry.perkins  { border-left: 5px solid var(--amber); }
+  .cal-entry.ocr      { border-left: 5px solid var(--red); }
+  .cal-entry.oig      { border-left: 5px solid var(--gray); }
+  .cal-entry.data     { border-left: 5px solid var(--teal); }
+  .cal-entry.hidden   { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .title1  .entry-badge { background: var(--blue-bg);   color: var(--accent); }
+  .mkv     .entry-badge { background: var(--green-bg);  color: var(--green);  }
+  .perkins .entry-badge { background: var(--amber-bg);  color: var(--amber);  }
+  .ocr     .entry-badge { background: var(--red-bg);    color: var(--red);    }
+  .oig     .entry-badge { background: var(--gray-lt);   color: var(--gray);   }
+  .data    .entry-badge { background: var(--teal-bg);   color: var(--teal);   }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; background: var(--gray-lt); color: var(--gray); }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; }
+  .title1  .entry-tlf-note { background: var(--blue-bg);   border-left: 3px solid var(--accent); }
+  .mkv     .entry-tlf-note { background: var(--green-bg);  border-left: 3px solid var(--green);  }
+  .perkins .entry-tlf-note { background: var(--amber-bg);  border-left: 3px solid var(--amber);  }
+  .ocr     .entry-tlf-note { background: var(--red-bg);    border-left: 3px solid var(--red);    }
+  .oig     .entry-tlf-note { background: var(--gray-lt);   border-left: 3px solid var(--gray);   }
+  .data    .entry-tlf-note { background: var(--teal-bg);   border-left: 3px solid var(--teal);   }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '->'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; font-family: monospace; }
+ 
+  .alert-resolved { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 10px 14px; margin-bottom: 12px; font-size: 12.5px; color: #1A3A2A; line-height: 1.5; }
+  .alert-resolved strong { color: var(--green); }
+  .alert-vacated  { background: #FFF3CD; border-left: 4px solid var(--amber); border-radius: 0 4px 4px 0; padding: 10px 14px; margin-bottom: 12px; font-size: 12.5px; color: #5a3800; line-height: 1.5; }
+  .alert-vacated strong { color: #7a4f0d; }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">January 2026 &nbsp;·&nbsp; <strong>7 findings</strong></p>
+    <p class="cal-desc">Federal programs and fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity from January 2026. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section. Where significant developments have occurred after January 2026, status alerts are included. Source links point to primary documents where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Moderate</div>
+    January 2026 reflects the Trump administration's continued priorities of maximizing state and local flexibility in federal programs while shifting OCR enforcement focus away from racial harassment and toward anti-DEI enforcement and Title IX athletics. The Consolidated Appropriations Act, 2026 was released in negotiated form January 20 and enacted February 3, largely maintaining current K-12 education funding levels despite earlier proposals for deep cuts. Programmatic guidance emphasized deregulation and schoolwide consolidation options.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No OSEP Dear Colleague Letters or IDEA guidance published in January 2026. No new Title III English learner guidance. No K-12-specific OIG audit reports identified for January 2026 (OIG activity focused on financial statements and postsecondary fraud investigations).
+ 
+    <div class="rn-label">Watch next</div>
+    Monitor whether OCR resumes enforcement of existing resolution agreements. Track state NPEFS data submission processes, as FY 2027 formula grant allocations depend on FY 2025 data submitted through August 2026. Watch for further ED flexibility guidance as the administration continues its deregulation series.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"     onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="title1"  onclick="filterProgram('title1')">Title I</div>
+    <div class="f-pill"        data-filter="mkv"     onclick="filterProgram('mkv')">McKinney-Vento</div>
+    <div class="f-pill"        data-filter="perkins" onclick="filterProgram('perkins')">Perkins</div>
+    <div class="f-pill"        data-filter="ocr"     onclick="filterProgram('ocr')">OCR</div>
+    <div class="f-pill"        data-filter="oig"     onclick="filterProgram('oig')">OIG</div>
+    <div class="f-pill"        data-filter="data"    onclick="filterProgram('data')">Data / Reporting</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- ===================== TITLE I ===================== -->
+    <div class="cal-section-label" data-section="title1">Title I</div>
+ 
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I</div>
+          <div class="entry-type-badge">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Dear Colleague Letter: Maximizing Title I Schoolwide Program Flexibilities to Consolidate Funds</div>
+            <div class="entry-date">Office of Elementary and Secondary Education · January 21, 2026</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OESE issued a Dear Colleague Letter on January 21, 2026, highlighting the existing flexibility under ESEA section 1114 that allows eligible Title I schools to consolidate federal, state, and local funds into a single comprehensive instructional framework through a schoolwide program. The letter explains that a school qualifies if at least 40 percent of its students come from low-income families, and describes how consolidated funding reduces administrative burden and compliance costs by allowing schools to integrate multiple funding streams rather than tracking each separately. The letter notes that supplementary aids and services, professional development, technology, and other activities can be funded from the consolidated pool without separate fund-by-fund documentation. It builds on the administration's prior education choice guidance series (Direct Student Services, School Improvement, Equitable Services, and ESEA Flexibility) as part of a consistent message about maximizing existing ESEA flexibility.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This DCL does not create new authority; ESEA section 1114 schoolwide consolidation has been available since ESSA. What is new is the explicit encouragement from the current administration to use it as a tool to reduce compliance documentation burden. Districts with eligible schools that have not yet adopted schoolwide consolidation should evaluate whether doing so would streamline administration of multiple federal grants. However, consolidation requires a comprehensive schoolwide plan, and districts must still maintain documentation demonstrating that consolidated funds support the schoolwide plan's goals. Supplement-not-supplant no longer applies the same way in schoolwide schools (replaced by a maintenance of effort standard), but the schoolwide plan must be coherent and evidence-based.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Identify which of your Title I schools meet the 40 percent low-income threshold for schoolwide program eligibility. If eligible schools are not currently operating as schoolwide programs, review whether consolidating funds would simplify your compliance and reporting obligations without reducing services.</li>
+            <li>Confirm that any school already operating a schoolwide program has a current, comprehensive schoolwide plan on file. OCR and ED monitoring have focused on whether schoolwide plans are genuine, evidence-based documents, not administrative formalities.</li>
+            <li>Review your fund consolidation practices at existing schoolwide schools. If your district is tracking federal, state, and local funds separately within schoolwide schools, the schoolwide flexibility allows consolidation. Document the decision and ensure your business office understands that consolidated funds do not require separate fund accounting, but the consolidated pool must support the schoolwide plan.</li>
+            <li>Note that this DCL is part of a series. Review the prior letters in the series (March 31, May 7, June 26, August 21, 2025, and July 29, 2025 ESEA flexibility letter) as a package to understand the full scope of the current administration's flexibility guidance for ESEA programs.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.ed.gov/media/document/dear-colleague-letter-guidance-states-schoolwide-program-flexibilities-improve-student-success-january-21-2026-113138.pdf" target="_blank">OESE DCL on Schoolwide Program Flexibilities, January 21, 2026 (ed.gov PDF) ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ===================== McKINNEY-VENTO ===================== -->
+    <div class="cal-section-label" data-section="mkv">McKinney-Vento</div>
+ 
+    <div class="cal-entry mkv" data-program="mkv">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">McKinney-Vento</div>
+          <div class="entry-type-badge">Enacted Appropriations</div>
+          <div class="entry-title-block">
+            <div class="entry-title">FY 2026 McKinney-Vento Funding Maintained at $129 Million: Consolidated Appropriations Act, 2026 Enacted</div>
+            <div class="entry-date">Consolidated Appropriations Act, 2026 · H.R. 7148, P.L. 119-75 · Signed February 3, 2026</div>
+          </div>
+        </div>
+ 
+        <div class="alert-resolved">
+          <strong>Status: Enacted.</strong> The Consolidated Appropriations Act, 2026 (H.R. 7148, P.L. 119-75) was signed by President Trump on February 3, 2026. McKinney-Vento Education for Homeless Children and Youth (EHCY) is funded at $129 million, maintaining the current level. Title I is funded at approximately $19.13 billion, a $20 million increase. The enacted law largely maintains current K-12 education funding levels, in contrast to earlier Trump administration and House committee proposals that would have made significant cuts.
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">The negotiated FY 2026 appropriations package released January 20, 2026, included $129 million for the McKinney-Vento Education for Homeless Children and Youth program and $19.13 billion for Title I, a $20 million increase over prior year. A notable structural feature: the McKinney-Vento EHCY funding level was specified in the bill text itself rather than only in the committee report, providing stronger statutory protection for the appropriation. The package rejected the Trump administration's earlier proposal to block-grant the EHCY program. The enacted law also requires ED to issue guidance on use of EHCY funds for short-term emergency housing on a case-by-case basis, requires ED to release EHCY and other ED funds as soon as available, and maintains a prohibition on ED transferring programs and funds to other agencies without explicit congressional authorization.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The maintenance of McKinney-Vento EHCY funding at $129 million is a significant outcome given the administration's earlier proposals to restructure the program. Placing the funding level in bill text (rather than only in committee report language) gives it stronger protection against executive branch reinterpretation. The new requirement for ED guidance on short-term emergency housing use of EHCY funds may expand allowable uses in ways that benefit districts with high proportions of students experiencing homelessness. The prohibition on ED transferring programs without congressional authorization is directly relevant to the administration's broader effort to close or consolidate the Department of Education.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm with your SEA that FY 2026 EHCY state allocations have been issued. The enacted law requires ED to release EHCY funds as soon as available; if your SEA has not yet communicated allocations, inquire about timing.</li>
+            <li>Monitor ED for forthcoming guidance on use of EHCY funds for short-term emergency housing, which the enacted law directs ED to issue. This could expand allowable uses for districts where housing instability is the primary barrier to school attendance for students experiencing homelessness.</li>
+            <li>Note that Title I at approximately $19.13 billion is a modest increase over the prior year. For planning purposes, your district's specific Title I allocation will depend on state-level formula calculations; contact your SEA for preliminary FY 2026 allocation estimates.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.congress.gov/bill/119th-congress/house-bill/7148" target="_blank">H.R. 7148, Consolidated Appropriations Act, 2026 (congress.gov) ↗</a> ·
+          <a href="https://schoolhouseconnection.org/article/congressional-fy26-deal-key-wins-for-homeless-children-and-youth" target="_blank">SchoolHouse Connection FY2026 Summary ↗</a> ·
+          P.L. 119-75, signed February 3, 2026
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ===================== PERKINS ===================== -->
+    <div class="cal-section-label" data-section="perkins">Perkins</div>
+ 
+    <div class="cal-entry perkins" data-program="perkins">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Perkins</div>
+          <div class="entry-type-badge">Requirements and Instructions</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Perkins V State Plan Revisions and Budgets: FY 2026 Grant Award Requirements</div>
+            <div class="entry-date">Office of Career, Technical, and Adult Education · January 2026</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">The Office of Career, Technical, and Adult Education (OCTAE) released requirements and instructions for states to submit Perkins V State Plan revisions and budgets for FY 2026 grant awards. States must submit comprehensive local needs assessments and updated plans reflecting current CTE program priorities and labor market alignment. Secondary and postsecondary programs are both covered, though OCTAE has noted a primary emphasis on postsecondary alignment with workforce development. The requirements respond to the April 2025 executive order directing review of all federal workforce development programs and the administration's emphasis on apprenticeship pathways.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">State plan revisions for FY 2026 may reflect the administration's emphasis on apprenticeship alignment following EO 14278 (April 23, 2025), which directed the Secretaries of Labor, Commerce, and Education to review all federal workforce development programs and submit plans to reach one million new registered apprentices. Districts receiving Perkins secondary funds should expect that state plan revisions may introduce new or revised expectations around work-based learning, apprenticeship alignment, and labor market data reporting. Coordinate with your SEA CTE director to understand what changes in the state plan affect your local application and needs assessment obligations.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Contact your SEA CTE director to obtain any revised guidance on local application requirements stemming from the FY 2026 Perkins state plan revision. State plan changes often cascade into revised local application templates, updated assurances, or new reporting expectations.</li>
+            <li>Review your local needs assessment for alignment with current labor market data. Perkins V requires that local needs assessments reflect current regional workforce needs; if your last assessment predates the EO 14278 emphasis on apprenticeships and reindustrialization, consider whether an update is warranted.</li>
+            <li>Confirm that your CTE advisory committee composition and meeting documentation is current. State plan assurances typically require evidence of active advisory committee engagement, and monitoring visits frequently examine this documentation.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://cte.ed.gov/" target="_blank">OCTAE / cte.ed.gov ↗</a>
+          <div class="url-note">Note: A specific primary document URL for the FY 2026 Perkins state plan requirements was not identified in available sources. The original entry did not provide a direct document link beyond the cte.ed.gov homepage. Practitioners should search cte.ed.gov for "FY 2026 state plan requirements" or contact OCTAE directly for the current instructions document.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ===================== OCR ===================== -->
+    <div class="cal-section-label" data-section="ocr">OCR</div>
+ 
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title VI</div>
+          <div class="entry-type-badge">Enforcement Pattern (ProPublica Analysis)</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Has Entered Zero New Resolution Agreements in Racial Harassment Cases in Nearly a Year Under Trump</div>
+            <div class="entry-date">Office for Civil Rights · Pattern documented through December 2025; ongoing into January 2026 · Source: ProPublica analysis published December 19, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">A ProPublica analysis published December 19, 2025, based on internal Department of Education data, found that OCR had not entered into a single new resolution agreement involving racial harassment of K-12 students in nearly a year since the Trump administration began in January 2025, despite more than 1,000 open racial harassment investigations. In the same period, OCR opened only 14 new investigations into racial harassment of Black students while receiving over 500 racial harassment complaints. OCR has shifted its enforcement focus to cases alleging discrimination against white students, antisemitism complaints, and Title IX athletics policies. By December 2025, the total number of open OCR investigations had grown from approximately 12,000 at the end of the Biden administration to nearly 24,000. The agency has described its approach as a "dismissal factory" by some former staff, with new complaints and backlogged cases frequently dismissed without investigation.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The absence of new racial harassment resolution agreements does not eliminate districts' Title VI obligations. Title VI of the Civil Rights Act prohibits racial discrimination in all federally funded programs, and that prohibition is statutory, not dependent on OCR enforcement posture. Districts that reduce attention to racial harassment prevention and response because of perceived lack of federal monitoring create two categories of risk: (1) private litigation by affected students and families under Title VI, which remains available independent of OCR enforcement; and (2) exposure if federal enforcement resumes under a future administration and prior non-compliance is documented. Districts with existing OCR resolution agreements must continue implementing their terms; OCR's failure to monitor does not terminate the agreement or the district's compliance obligations.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Maintain your district's racial harassment prevention and response procedures at full operational strength regardless of federal enforcement posture. Title VI's prohibition on race discrimination is statutory; reduced OCR enforcement does not change your legal obligations or eliminate private litigation risk.</li>
+            <li>Continue implementing the terms of any existing OCR resolution agreements. Document all compliance activities, submissions, and good faith efforts to contact OCR for required approvals. Preserve this documentation in the event federal enforcement resumes or a future administration reviews compliance history.</li>
+            <li>Ensure your Title VI grievance procedures are clearly documented, publicized, and functional. If complaints are being filed internally and not resolved, that creates its own compliance record that may be subject to review independent of OCR monitoring.</li>
+            <li>Review whether your state has a civil rights enforcement office that may fill some of the federal monitoring gap. Several states have been considering expanding state-level civil rights oversight in response to reduced federal enforcement; your district's equity coordinator should be aware of any state-level requirements or resources.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.propublica.org/article/trump-education-department-civil-rights-racial-harassment" target="_blank">ProPublica: "Racial Harassment Against Black Students Ignored Under Trump," December 19, 2025 ↗</a>
+          <div class="url-note">Source note: The ProPublica analysis is dated December 19, 2025. The enforcement pattern it documents extends into and through January 2026; the December publication date reflects when the analysis was published, not when the pattern began or ended. ProPublica has filed FOIA lawsuits seeking OCR case records; additional reporting is expected.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Civil Rights</div>
+          <div class="entry-type-badge">Enforcement Gap (Reported)</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Stops Monitoring Existing Resolution Agreements: Emails Bounce, Submissions Go Unreviewed</div>
+            <div class="entry-date">Reports from Pennsylvania and other states · Pattern ongoing since January 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">Multiple school districts report that OCR emails have returned undeliverable since January 2025, required submissions under existing resolution agreements have not been reviewed or acknowledged, and monitoring activities have effectively ceased at districts operating under active compliance agreements. Districts in Pennsylvania, including Norwin School District, have reported that climate surveys, policy reviews, and compensatory education submissions required under their resolution agreements cannot be completed because the steps require OCR review and approval. Some districts that had agreements based on Biden-era equity findings have asked OCR to nullify their agreements given the administration's changed enforcement posture, with at least one district attorney citing the Trump election as making DEI-based findings legally obsolete. States including Pennsylvania are exploring whether state civil rights offices can fill the enforcement gap.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The enforcement gap creates a compliance paradox: districts cannot fulfill agreement terms that require federal approval, yet the agreements remain legally in effect and the underlying civil rights obligations are unchanged. The practical guidance is to document every attempted communication, preserve every substantive compliance deliverable (surveys completed, policies revised, trainings conducted), and continue implementing all agreement obligations that do not require federal approval. If an agreement obligation literally cannot be completed without OCR response (for example, a policy that requires "OCR approval before implementation"), document that the district prepared the deliverable, submitted it to OCR's last known contact, and received no response. This creates a defensible record of good faith compliance if enforcement resumes.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Create and maintain a compliance log for each active OCR resolution agreement showing: the required deliverable, the submission deadline, what was prepared, how and when it was submitted to OCR, and what response (if any) was received. This log is your primary defense if enforcement resumes and prior non-compliance is alleged.</li>
+            <li>Do not interpret OCR's silence as permission to stop. Resolution agreements remain legally binding unless formally terminated by OCR or vacated by a court. The district's obligations under the agreement and the underlying civil rights statutes continue regardless of monitoring activity.</li>
+            <li>If your agreement requires OCR approval before implementing a policy change, send the policy to OCR's regional office contact by email and certified mail. Document the attempt. Then consult legal counsel on whether a good-faith implementation can proceed after a reasonable waiting period with no response.</li>
+            <li>Contact your SEA to determine whether any state-level civil rights monitoring capacity is available to provide guidance or consultation on agreement compliance. Several states are actively developing state-level oversight mechanisms in response to the federal enforcement gap.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.wesa.fm/education/2026-03-19/future-student-civil-rights-enforcement-pennsylvania" target="_blank">WESA: "Future of Student Civil Rights Enforcement in Pennsylvania," March 19, 2026 ↗</a> ·
+          <a href="https://www.propublica.org/article/trump-education-department-civil-rights-racial-harassment" target="_blank">ProPublica, December 19, 2025 ↗</a>
+          <div class="url-note">The WESA article is dated March 19, 2026. It documents a pattern ongoing since January 2025. The Pennsylvania examples reflect conditions that apply broadly; districts in other states with active resolution agreements should assume similar dynamics absent direct OCR communication.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ===================== OIG ===================== -->
+    <div class="cal-section-label" data-section="oig">OIG</div>
+ 
+    <div class="cal-entry oig" data-program="oig">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OIG</div>
+          <div class="entry-type-badge">Annual Management Challenges Report</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OIG Identifies Four Management Challenges Facing the Department of Education for FY 2026</div>
+            <div class="entry-date">Office of Inspector General · FY 2026 Management Challenges Report</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">The OIG released its annual report identifying the four most serious management and performance challenges facing the U.S. Department of Education for FY 2026, as required by the Reports Consolidation Act of 2000. The OIG issues this report annually to help the Department prioritize its management and oversight work. The four challenges are documented at oversight.gov and the OIG's own site at oig.ed.gov. The report is particularly notable given the context of the March 2025 reduction in force and the ongoing restructuring of the Department's core functions.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The OIG's management challenge reports consistently identify risk areas that receive elevated audit attention in subsequent years. Federal programs directors should review the specific four challenges identified to understand what aspects of Department operations OIG views as most vulnerable, as these areas tend to correlate with increased monitoring, audit findings, and corrective action requests at the LEA level. The report's context within a dramatically restructured Department (following the March 2025 RIF and the rescission of OCR RIF actions in early 2026) makes it particularly relevant for understanding how the OIG views operational risk under the current administration's staffing and structural changes.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Download and review the FY 2026 OIG Management Challenges report at oig.ed.gov. Identify which of the four challenges relate to formula grant programs, data quality, or fiscal accountability, as these are the challenge categories most likely to affect LEA-level monitoring and single audit findings.</li>
+            <li>Cross-reference the OIG's identified challenges against your district's most recent single audit findings and corrective action plan. If your district's audit findings overlap with OIG-identified risk areas, treat those overlaps as priority items for the current fiscal year.</li>
+            <li>Share relevant portions of the OIG management challenges report with your business office and federal programs team. Understanding the Department's current management vulnerabilities helps anticipate how oversight emphasis may shift in the near term.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://oig.ed.gov/" target="_blank">OIG homepage: FY 2026 Management Challenges report listed (oig.ed.gov) ↗</a> ·
+          <a href="https://www.oversight.gov/inspectors-general/department-education-oig" target="_blank">oversight.gov: Department of Education OIG ↗</a>
+          <div class="url-note">The four specific management challenges are documented in the FY 2026 Management Challenges report available at oig.ed.gov. The original entry correctly identified four challenges but did not name them; practitioners should retrieve the full report directly for the specific challenge descriptions.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ===================== DATA / REPORTING ===================== -->
+    <div class="cal-section-label" data-section="data">Data / Reporting</div>
+ 
+    <div class="cal-entry data" data-program="data">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Data / NPEFS</div>
+          <div class="entry-type-badge">Federal Register Notice</div>
+          <div class="entry-title-block">
+            <div class="entry-title">NPEFS Collection Opens: States Must Submit FY 2025 Expenditure Data by August 17, 2026, to Determine FY 2027 Title I Allocations</div>
+            <div class="entry-date">National Center for Education Statistics · Collection opened January 29, 2026 · Federal Register published February 9, 2026 · Deadline August 17, 2026</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">NCES opened the National Public Education Financial Survey (NPEFS) collection system on January 29, 2026, for state educational agencies to submit FY 2025 education expenditure, revenue, and attendance data. The Federal Register notice was published February 9, 2026. SEAs must submit initial data by August 17, 2026, with a final revision deadline of September 8, 2026. The data collected through NPEFS is used to calculate federal formula grant allocations, including Title I, for FY 2027. NPEFS data is the primary source for the per-pupil expenditure calculations and attendance figures that drive Title I and other ESEA formula distributions.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">NPEFS is one of the few data collections where LEA-level reporting errors can have a direct and quantifiable effect on future federal funding. If an SEA reports inaccurate expenditure or attendance data because its LEAs submitted incorrect figures, the resulting Title I allocations for FY 2027 will be miscalculated, and corrections after the fact are rarely available. Federal programs directors should treat their district's contribution to NPEFS data (typically submitted through state data systems) as a funding-critical compliance obligation, not a routine administrative task. The most common LEA-level errors are in attendance data (days present vs. days enrolled), special education expenditure categorization, and indirect cost allocations.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm with your business office and data team what financial and attendance data your district must submit to your SEA to support the NPEFS collection. The SEA aggregates district data for its state submission; errors at the district level become errors in the state's federal report.</li>
+            <li>Review your FY 2025 attendance data for accuracy before your SEA's internal data submission deadline. Attendance figures (average daily attendance or membership, depending on your state's reporting method) directly affect your district's weight in the Title I formula calculations.</li>
+            <li>Confirm that your FY 2025 expenditure data correctly categorizes special education, Title I, and other federal program expenditures. Misclassification of expenditures between programs affects both the NPEFS submission and your single audit risk profile.</li>
+            <li>Ask your SEA when it requires local data submissions to meet the August 17, 2026 federal deadline. State internal deadlines are typically 4-8 weeks before federal deadlines; missing a state deadline can cascade into a federal reporting error.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.federalregister.gov/documents/2026/02/09/2026-02523/submission-of-data-by-state-educational-agencies-submission-dates-for-state-revenue-and-expenditure" target="_blank">Federal Register, February 9, 2026: NPEFS Submission Dates for FY 2025 ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+  </div><!-- end entries -->
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">7 findings</div>
+      <div class="cal-stat-lbl">Federal documents reviewed and interpreted for January 2026</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">FY26 enacted</div>
+      <div class="cal-stat-lbl">Consolidated Appropriations Act, 2026 signed February 3: McKinney-Vento at $129M, Title I up to $19.13B</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Zero</div>
+      <div class="cal-stat-lbl">New OCR racial harassment resolution agreements in nearly a year under Trump (ProPublica, Dec. 2025)</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Direct links to primary ED, Congress, OIG, and Federal Register documents</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> Two corrections were made from the original draft. (1) The McKinney-Vento entry presented the $129 million EHCY funding and Title I levels as a "House proposal" still pending. The Consolidated Appropriations Act, 2026 (H.R. 7148, P.L. 119-75) was signed into law on February 3, 2026 before this digest's publication date. The entry has been updated to reflect enacted law, with a green status alert, P.L. citation, and signing date. The enacted law maintains McKinney-Vento at its current $129 million level (not a new increase); the NN4Youth source correctly described it as a maintained level. The SchoolHouse Connection article also confirms the bill requires new ED guidance on EHCY funds for short-term emergency housing and prohibits ED from transferring programs without congressional authorization, both material additions. (2) The unlabeled "1.2" in the original header metadata has been removed. The malformed CSS hex value (#44420, a 5-digit value) on the OIG and Federal Register sections has been corrected. Source links for the OIG entry have been upgraded from the general oversight.gov OIG page to the specific oig.ed.gov management challenges page. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · January 2026
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
