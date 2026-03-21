@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: July 2025 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:     #1B3A4B;
+    --accent:   #1A5FA0;
+    --amber:    #A85D1A;
+    --green:    #2E5E4A;
+    --green-bg: #D4EDE4;
+    --amber-bg: #F5E0C8;
+    --blue-bg:  #D4E6F5;
+    --red:      #8B1A2A;
+    --red-bg:   #F0D4D8;
+    --purple:   #4A2E7A;
+    --purple-bg:#EDE4F5;
+    --gray:     #6B7C8A;
+    --gray-lt:  #E8EDF1;
+    --body:     #333333;
+    --bg:       #F2F4F6;
+    --white:    #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .research-note strong { color: var(--dark); }
+  .research-note .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .research-note .rn-label:first-child { margin-top: 0; }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.title1  { border-left: 5px solid var(--accent); }
+  .cal-entry.perkins { border-left: 5px solid var(--amber); }
+  .cal-entry.ai      { border-left: 5px solid var(--purple); }
+  .cal-entry.oig     { border-left: 5px solid var(--gray); }
+  .cal-entry.hidden  { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .title1  .entry-badge { background: var(--blue-bg);   color: var(--accent); }
+  .perkins .entry-badge { background: var(--amber-bg);  color: var(--amber);  }
+  .ai      .entry-badge { background: var(--purple-bg); color: var(--purple); }
+  .oig     .entry-badge { background: var(--gray-lt);   color: var(--gray);   }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .entry-type-badge.dcl     { background: var(--blue-bg);   color: var(--accent); }
+  .entry-type-badge.funding { background: var(--red-bg);    color: var(--red);    }
+  .entry-type-badge.iaa     { background: var(--amber-bg);  color: var(--amber);  }
+  .entry-type-badge.report  { background: var(--gray-lt);   color: var(--gray);   }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); background: var(--blue-bg); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; border-left: 3px solid var(--accent); }
+  .perkins .entry-tlf-note { background: var(--amber-bg);  border-left-color: var(--amber);  }
+  .ai      .entry-tlf-note { background: var(--purple-bg); border-left-color: var(--purple); }
+  .oig     .entry-tlf-note { background: var(--gray-lt);   border-left-color: var(--gray);   }
+ 
+  .resolved-alert { background: #E6F4EA; border-left: 4px solid #2E5E4A; border-radius: 0 4px 4px 0; padding: 12px 16px; margin-bottom: 14px; font-size: 13px; color: #1A3A2A; line-height: 1.6; }
+  .resolved-alert strong { color: #0E2A18; }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '->'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; font-family: monospace; }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">July 2025 &nbsp;·&nbsp; <strong>5 findings</strong></p>
+    <p class="cal-desc">Federal programs and fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity from July 2025. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section translating that implication into concrete steps. Source links point directly to the primary federal document where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Low</div>
+    July 2025 was an unusually quiet month for traditional K-12 federal compliance guidance. Most Department activity focused on administrative restructuring, higher education policy changes following the One Big Beautiful Bill Act, and the withholding and subsequent release of over $6 billion in formula grant funds. The administration prioritized flexibility and waiver authority over prescriptive compliance guidance.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No new IDEA/OSEP Dear Colleague Letters, McKinney-Vento guidance, or Title III policy documents were published in July 2025. OCR resolution agreements found were dated earlier or later than July 2025. Most federal activity involved funding withholding, administrative transfers to DOL, and higher education policy rather than K-12 program compliance.
+ 
+    <div class="rn-label">Watch next</div>
+    Monitor state waiver proposals following the July 29 DCL, particularly whether your state has submitted or is developing a waiver. Track continued administrative restructuring including transfer of CTE programs to DOL. Monitor OCR enforcement priorities under the reinstated 2020 Title IX regulations. Note: the withheld formula grant funds were released by July 25 and are no longer a live funding risk; see the funding entry below for full context.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"     onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="title1"  onclick="filterProgram('title1')">Title I / ESEA</div>
+    <div class="f-pill"        data-filter="perkins" onclick="filterProgram('perkins')">Perkins</div>
+    <div class="f-pill"        data-filter="ai"      onclick="filterProgram('ai')">AI / ED Policy</div>
+    <div class="f-pill"        data-filter="oig"     onclick="filterProgram('oig')">OIG</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- TITLE I / ESEA -->
+    <div class="cal-section-label" data-section="title1">Title I / ESEA</div>
+ 
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I / ESEA</div>
+          <div class="entry-type-badge dcl">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">States Encouraged to Use Existing ESEA Flexibilities and Seek Waivers</div>
+            <div class="entry-date">Office of Elementary and Secondary Education · July 29, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OESE sent a Dear Colleague Letter to all chief state school officers inviting them to implement existing statutory flexibilities and seek waivers from burdensome statutory and regulatory provisions under ESEA Title VIII waiver authority. The DCL outlines specific existing flexibilities that do not require a waiver (including the innovative assessment demonstration authority and fund transferability) and explains the waiver request process: states must submit a plan identifying affected programs and describing how the waiver will improve student outcomes; ED has 120 days to review and may approve waivers for up to four years. States are encouraged to seek informal pre-submission assistance at OESE.TitleI-A@ed.gov. By the time this digest was compiled, at least three states (Indiana, Iowa, and Oklahoma) had submitted broad waiver requests.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This DCL signals that state-level changes to Title I and other ESEA program requirements may be coming for districts in states that pursue and receive waivers. Waivers granted under ESEA Title VIII can modify requirements including accountability structures, assessment timelines, supplement-not-supplant rules, and consolidated monitoring. For districts, the compliance implication is not immediate: it depends entirely on whether your state submits and receives a waiver, and what the waiver covers. The 120-day review period means waivers requested in fall 2025 could be approved by early 2026. Iowa received the first approved waiver, which included a waiver of the Title I carryover limitation and Title IV content area spending minimums.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Contact your SEA to determine whether your state has submitted, is developing, or intends to submit an ESEA waiver request under this guidance. If yes, request information on which specific requirements would be waived.</li>
+            <li>Review your state's current ESEA consolidated state plan for any flexibility provisions already in use that do not require a waiver. Fund transferability and schoolwide consolidation are available now in most states without a waiver request.</li>
+            <li>Monitor the ED waiver approval announcements. Iowa's approval provides a template for what waivers may look like; other state approvals will follow as requests are reviewed.</li>
+            <li>If your state receives a waiver affecting Title I carryover limitations, Title IV spending minimums, or assessment requirements, update your district's compliance calendar and fiscal procedures accordingly before the waiver takes effect.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Primary source:</strong> <a href="https://www.ed.gov/media/document/dear-colleague-letter-esea-flexibility-and-waivers-july-29-2025-110440.pdf" target="_blank">DCL on ESEA Flexibility and Waivers, OESE, July 29, 2025 (PDF) ↗</a>
+          <br><strong>Press release:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-encourages-states-maximize-opportunity-improve-academic-achievement" target="_blank">ED Press Release, July 29, 2025 ↗</a>
+          <br>ESEA Title VIII waiver authority (20 U.S.C. §7861) · ESEA fund transferability (20 U.S.C. §7305)
+        </div>
+      </div>
+    </div>
+ 
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I / II / III / IV</div>
+          <div class="entry-type-badge funding">Funding Action</div>
+          <div class="entry-title-block">
+            <div class="entry-title">$6.2 Billion in Formula Grant Funds Withheld July 1, Released July 25</div>
+            <div class="entry-date">U.S. Department of Education · Withheld July 1, 2025 · Released July 25, 2025</div>
+          </div>
+        </div>
+ 
+        <div class="resolved-alert">
+          <strong>Resolved July 25, 2025.</strong> All withheld funds were released following two federal lawsuits, bipartisan Congressional pressure, and extensive state and district advocacy. Title IV-B (21st CCLC) was released July 18; all remaining funds were released July 25. Recipients were warned that ED intends to conduct reviews to ensure funds comply with federal law. The funds are now flowing; the compliance risk described below relates to documentation of any disruptions experienced during the 25-day hold.
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">On June 30, 2025, ED notified states it was withholding formula grant funds scheduled for July 1 availability for five programs: Title I-C (migrant education, $375 million), Title II-A (professional development, $2.2 billion), Title III-A (English learners, $890 million), Title IV-A (student support and enrichment, $1.4 billion), and Title IV-B (21st CCLC, $1.3 billion), totaling approximately $6.2 billion. ED stated it was reviewing FY 2025 funding for these programs given the change in administrations, and that decisions had not yet been made concerning submissions and awards. Title I, Part A and IDEA funds were not affected and were released as expected. Two lawsuits were filed. Funds were released July 18 (Title IV-B) and July 25 (all remaining programs).</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The 25-day funding hold created budgetary disruption for districts that had planned summer hiring, contracting, or program delivery against these specific allocations. Now that funds are released, the primary compliance risk is supplement-not-supplant: if your district used local or state funds to cover activities during the hold that are now being funded with federal dollars, you may have a supplanting issue. Districts must also document any programmatic disruptions caused by the hold, as this documentation protects against questions about why certain program activities were delayed. ED's warning that it will review fund use for compliance with "the President's priorities" signals continued scrutiny of how these five programs are administered.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm your district has received its Title II-A, Title III-A, Title IV-A, and Title IV-B subgrant notifications from your SEA and that funds are accessible. If not, contact your SEA immediately.</li>
+            <li>Review any expenditures made from local or state funds during July 1-25 to cover activities normally funded by the five affected programs. Assess whether those expenditures create a supplanting risk and document your analysis before obligating the federal funds to the same activities.</li>
+            <li>Document any programs, contracts, or hiring actions that were delayed by the hold. This documentation serves as evidence that disruptions were caused by federal action, not district mismanagement, in the event of an audit or monitoring visit.</li>
+            <li>Note ED's warning that funds must be used in compliance with "the President's priorities." Review whether any of your district's program descriptions for these five programs use language or frameworks that may attract scrutiny under current administration policies.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> ED notification to states (shared with AASA and reported by NPR and K-12 Dive, July 1, 2025) · <a href="https://www.k12dive.com/news/education-department-withholds-Title-funding-after-school-English-learners-/752116/" target="_blank">K-12 Dive coverage, July 1, 2025 ↗</a>
+          <div class="url-note">Note: ED did not issue a public press release for the withholding. The notification was communicated directly to state education officials and shared with advocacy organizations. The release of funds on July 25 was also not accompanied by a formal press release; it was confirmed through state agency communications and advocacy organization reporting.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- PERKINS -->
+    <div class="cal-section-label" data-section="perkins">Perkins</div>
+ 
+    <div class="cal-entry perkins" data-program="perkins">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Perkins</div>
+          <div class="entry-type-badge iaa">Implementation Announcement</div>
+          <div class="entry-title-block">
+            <div class="entry-title">ED and DOL Implement Workforce Development Partnership for Perkins and WIOA Title II Administration</div>
+            <div class="entry-date">U.S. Departments of Education and Labor · July 15, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED and DOL announced the implementation of the workforce development partnership created under the Economy Act Interagency Agreement signed May 21, 2025 (31 U.S.C. §1535). Under the partnership, DOL provides day-to-day administrative services for Perkins V CTE programs and WIOA Title II adult education programs, while ED maintains all statutory responsibilities including policymaking, program determinations, and oversight. The July 15 announcement confirmed the partnership's operational start. Subsequent steps covered in later issues of this digest include the September 8 launch of an integrated WIOA state plan portal, the September 26 reactivation of FY24 and FY25 Perkins grants through DOL's GrantSolutions, and the November 25 DOL guidance on WIOA waivers and Perkins integration.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The July 15 announcement marks the operational start of Perkins administrative functions shifting to DOL. The statutory framework for Perkins (Perkins V, 20 U.S.C. §2301 et seq.) has not changed; ED retains all policy and oversight authority. For districts, the compliance obligations under Perkins are unchanged. The practical effect is that grant payment systems, technical assistance channels, and state plan portals are migrating to DOL infrastructure. CTE directors should confirm which federal contacts, reporting systems, and technical assistance resources now apply at the DOL level and verify that state-level Perkins processes have been updated to reflect the new administrative structure.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm with your state CTE office which federal contact points (ED/OCTAE versus DOL/ETA) apply for your district's Perkins grant questions and technical assistance needs following the July 15 transition.</li>
+            <li>Verify your district's access to DOL's GrantSolutions payment system for Perkins grant drawdowns. As of September 26, FY24 and FY25 Perkins grants were reactivated through GrantSolutions; confirm your district has completed any necessary system onboarding.</li>
+            <li>Review your Perkins program documentation and ensure it reflects ED's programmatic requirements, not DOL's workforce program standards. ED retains statutory authority; your compliance obligations flow from Perkins V, not WIOA.</li>
+            <li>Monitor state-level communications about the integrated WIOA and Perkins state plan portal and any changes to local application or reporting procedures that may result from the administrative integration.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-and-us-department-of-labor-implement-workforce-development-partnership" target="_blank">ED/DOL Press Release, July 15, 2025 ↗</a> · Economy Act IAA (31 U.S.C. §1535), signed May 21, 2025 · Perkins V (20 U.S.C. §2301 et seq.)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- AI / ED POLICY -->
+    <div class="cal-section-label" data-section="ai">AI / ED Policy</div>
+ 
+    <div class="cal-entry ai" data-program="ai">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">AI / ED Policy</div>
+          <div class="entry-type-badge dcl">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Federal Grant Funds May Be Used for AI in Education: Allowable Uses and Responsible Use Principles</div>
+            <div class="entry-date">U.S. Department of Education · July 22, 2025</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">ED issued a Dear Colleague Letter to current and future federal grantees affirming that formula and discretionary grant funds may be used to support the responsible integration of AI in education, provided uses align with applicable statutory and regulatory requirements. The DCL covers three allowable use categories: AI-based instructional materials (including adaptive and personalized learning tools), high-impact AI tutoring systems, and AI for college and career pathway exploration and advising. Responsible use principles require AI initiatives to be educator-led, ethical, accessible, transparent, and compliant with FERPA. Separately, ED announced a proposed supplemental grant priority on advancing AI in education with a 30-day public comment period ending August 20, 2025. That priority was later finalized and is now part of the supplemental priorities framework governing all ED discretionary grant competitions.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The DCL affirms that existing federal grant programs can fund AI tools when the tool's purpose maps to an allowable use under the specific program's statute. This is a permissive clarification, not new authority. For Title I, IDEA, Title III, and other programs, the allowable use analysis must still be conducted program by program: an AI tutoring tool funded with Title I funds must advance Title I goals for eligible students, meet supplement-not-supplant requirements, and be procured through compliant processes. FERPA compliance is a threshold requirement for any AI tool that processes student data, regardless of funding source. Federal programs directors should treat this DCL as a prompt to review current or planned AI purchases against program-specific allowable use requirements, not as blanket approval for any AI expenditure.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Before obligating any federal grant funds for AI tools, confirm the specific allowable use basis under the applicable program statute. A general reference to "improving outcomes" is insufficient; the tool's purpose must map to a specifically authorized activity under the program.</li>
+            <li>Review your district's data governance and FERPA compliance protocols for AI vendors. Any AI tool processing student data requires a FERPA-compliant data use agreement with the vendor before funds are obligated.</li>
+            <li>Conduct a supplement-not-supplant analysis before purchasing AI instructional tools with Title I or other supplement-not-supplant programs. AI tools funded with federal dollars must not replace locally funded tools or activities the district would have purchased anyway.</li>
+            <li>Document parental engagement in AI adoption decisions as required by the DCL. Establish a parent notification and engagement process for AI tool adoption before the next federal monitoring visit.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Primary source:</strong> <a href="https://www.ed.gov/media/document/opepd-ai-dear-colleague-letter-7222025-110427.pdf" target="_blank">DCL on AI and Federal Grant Funds, ED, July 22, 2025 (PDF) ↗</a>
+          <br><strong>Press release:</strong> <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-issues-guidance-artificial-intelligence-use-schools-proposes-additional-supplemental-priority" target="_blank">ED Press Release, July 22, 2025 ↗</a>
+          <br>Executive Order 14277, Advancing Artificial Intelligence Education for American Youth (April 23, 2025) · FERPA (20 U.S.C. §1232g)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- OIG -->
+    <div class="cal-section-label" data-section="oig">OIG</div>
+ 
+    <div class="cal-entry oig" data-program="oig">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OIG</div>
+          <div class="entry-type-badge report">Audit Report</div>
+          <div class="entry-title-block">
+            <div class="entry-title">FISMA Audit Finds ED Information Security Program Effective: 9 of 10 Domains Meet Standards</div>
+            <div class="entry-date">Office of Inspector General, U.S. Department of Education · July 31, 2025 · Report A25IT0212</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OIG issued its FY 2025 Federal Information Security Modernization Act (FISMA) audit report (A25IT0212) evaluating whether ED's overall information security program and practices are effective. The audit found the Department's information security programs and practices were effective across nine of ten FISMA domains for the five in-scope systems evaluated. FISMA requires annual independent evaluations of federal agency information security programs and reporting to Congress.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This audit addresses ED-level IT security, not local educational agency requirements. However, districts should understand that federal expectations for data security, privacy controls, and system protections extend to LEAs managing federal education data in local systems. FERPA requires districts to protect the confidentiality of student education records; federal grant program requirements impose additional data security obligations on grantees. The FISMA framework, while not directly applicable to districts, reflects the security standards that federal agencies expect their grantees to meet through appropriate data governance and security practices.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's IT security policies for systems that store or process student education records or federal grant program data. Confirm that access controls, audit logging, and breach response procedures are documented and current.</li>
+            <li>Confirm your district has a current, tested data backup protocol for systems containing federal program data. Backups should be stored separately from primary systems and tested for restorability on a regular schedule.</li>
+            <li>Verify that vendor agreements for any system processing student data include FERPA-compliant data use provisions and security standards. This applies to cloud-hosted systems as well as on-premise software.</li>
+            <li>Brief your IT director and federal programs director on FERPA obligations related to data security. Breaches involving student education records have reporting obligations and may trigger federal scrutiny of grant program data management.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.oversight.gov/reports/audit/federal-information-security-modernization-act-2014-fisma-audit-us-department" target="_blank">OIG Audit Report A25IT0212, FISMA, July 31, 2025 ↗</a> · Federal Information Security Modernization Act of 2014 (44 U.S.C. §3551 et seq.) · FERPA (20 U.S.C. §1232g)
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">5 findings</div>
+      <div class="cal-stat-lbl">Federal documents reviewed and interpreted for July 2025</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">4 programs</div>
+      <div class="cal-stat-lbl">Title I/ESEA, Perkins, AI/Policy, and OIG covered this month</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Your Action</div>
+      <div class="cal-stat-lbl">Every entry includes concrete steps for your team</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Direct links to primary documents where available</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> The ESEA waivers DCL PDF is verified at the ED media document URL. The press release is confirmed live. The AI DCL is correctly dated July 22, 2025, with the DCL PDF as the primary source. The Perkins entry uses the verified July 15 ED/DOL press release as its primary source, not the December 5 update used in earlier issues. The funding withholding entry discloses that ED issued no public press release; the source is verified news reporting confirmed by AASA and multiple state agencies. The funding resolution on July 25 is verified across multiple sources. The FISMA audit report is confirmed at oversight.gov. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · July 2025
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
+ 
