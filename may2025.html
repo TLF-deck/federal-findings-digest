@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: May 2025 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:     #1B3A4B;
+    --accent:   #1A5FA0;
+    --amber:    #A85D1A;
+    --green:    #2E5E4A;
+    --green-bg: #D4EDE4;
+    --amber-bg: #F5E0C8;
+    --blue-bg:  #D4E6F5;
+    --red:      #8B1A2A;
+    --red-bg:   #F0D4D8;
+    --purple:   #4A2E7A;
+    --purple-bg:#EDE4F5;
+    --gray:     #6B7C8A;
+    --gray-lt:  #E8EDF1;
+    --body:     #333333;
+    --bg:       #F2F4F6;
+    --white:    #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .research-note strong { color: var(--dark); }
+  .research-note .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .research-note .rn-label:first-child { margin-top: 0; }
+ 
+  /* Context entries (special format for this issue) */
+  .ctx-entries { display: flex; flex-direction: column; gap: 20px; margin-bottom: 8px; }
+ 
+  .ctx-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); animation: fadeUp 0.4s ease both; }
+  .ctx-entry.ocr-type  { border-left: 5px solid var(--red); }
+  .ctx-entry.dei-type  { border-left: 5px solid var(--purple); }
+  .ctx-entry.title1    { border-left: 5px solid var(--accent); }
+ 
+  .ctx-inner { padding: 22px 26px; }
+  .ctx-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .ctx-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .ocr-type  .ctx-badge { background: var(--red-bg);    color: var(--red);    }
+  .dei-type  .ctx-badge { background: var(--purple-bg); color: var(--purple); }
+  .title1    .ctx-badge { background: var(--blue-bg);   color: var(--accent); }
+ 
+  .ctx-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .ctx-type-badge.context  { background: var(--red-bg);    color: var(--red);    }
+  .ctx-type-badge.legal    { background: var(--purple-bg); color: var(--purple); }
+  .ctx-type-badge.dcl      { background: var(--blue-bg);   color: var(--accent); }
+ 
+  .ctx-title-block { flex: 1; min-width: 200px; }
+  .ctx-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .ctx-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .ctx-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .ctx-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .ctx-tlf { font-size: 13px; color: var(--dark); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; }
+  .ocr-type .ctx-tlf { background: var(--red-bg);    border-left: 3px solid var(--red);    }
+  .dei-type .ctx-tlf { background: var(--purple-bg); border-left: 3px solid var(--purple); }
+  .title1   .ctx-tlf { background: var(--blue-bg);   border-left: 3px solid var(--accent); }
+ 
+  .ctx-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .ctx-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .ctx-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .ctx-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .ctx-action ul li::before { content: '->'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; font-family: monospace; }
+ 
+  .ctx-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .ctx-source strong { color: var(--dark); font-weight: 700; }
+  .ctx-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .ctx-source a:hover { text-decoration: underline; }
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .section-header { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">May 2025 &nbsp;·&nbsp; <strong>Special issue: federal context, 1 confirmed K-12 document</strong></p>
+    <p class="cal-desc">Federal programs and fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>About this issue.</strong> May 2025 produced no material new K-12 compliance guidance, enforcement actions, or resolution agreements beyond one confirmed document. This issue explains the federal context for that period and identifies what district administrators should monitor as a result. The three topics covered are: OCR enforcement suspension, the DEI Dear Colleague Letter court injunctions, and the one confirmed May 2025 K-12 document (Unsafe School Choice Option guidance).
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Low</div>
+    May 2025 was one of the lowest-output months for K-12 federal compliance guidance in recent history. The Department of Education was operationally constrained by OCR staffing litigation, the DEI Dear Colleague Letter was enjoined by federal courts, and OSEP and OSERS issued no Dear Colleague letters or Q&A documents. The one confirmed K-12 document was the May 7 Unsafe School Choice Option letter.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    IDEA, McKinney-Vento, Perkins V, Title III, OCR resolutions, OIG audits. Title I had one item (Unsafe School Choice).
+ 
+    <div class="rn-label">Watch next</div>
+    OCR enforcement activity began resuming in late 2025 as staff returned from administrative leave. Districts should monitor the OCR resolution database monthly for new K-12 agreements, particularly in disability and shared ancestry cases.
+  </div>
+ 
+  <div class="ctx-entries">
+ 
+    <div class="section-header">Federal Context: May 2025</div>
+ 
+    <!-- OCR SUSPENSION -->
+    <div class="ctx-entry ocr-type">
+      <div class="ctx-inner">
+        <div class="ctx-top">
+          <div class="ctx-badge">OCR</div>
+          <div class="ctx-type-badge context">Federal Context</div>
+          <div class="ctx-title-block">
+            <div class="ctx-title">OCR Enforcement Effectively Suspended: March through September 2025</div>
+            <div class="ctx-date">U.S. Department of Education, Office for Civil Rights · March 2025 through September 2025</div>
+          </div>
+        </div>
+        <div class="ctx-sublabel">What happened</div>
+        <p class="ctx-body">In March 2025, the Trump administration placed the majority of OCR staff on administrative leave as part of a broader reduction in force. A federal court blocked the layoffs, but staff remained on paid leave and were not performing enforcement work. Between March and September 2025, OCR received 9,269 complaints and resolved 7,072, with approximately 90% resolved through dismissal rather than investigation (figures from a February 2026 GAO report, as documented in the December 2025 issue of this digest). The total number of OCR resolution agreements for all of 2025 was substantially lower than prior years; secondary sources estimate approximately 177 agreements in 2025 compared to 518 in 2024, though these figures have not been verified against a primary source. In December 2025, ED recalled OCR staff, and in January 2026 rescinded the reduction in force.</p>
+        <div class="ctx-sublabel">TLF Interpretation</div>
+        <div class="ctx-tlf">The suspension of OCR enforcement activity does not suspend district compliance obligations. Title VI, Title IX, Section 504, and IDEA civil rights requirements remain in force regardless of OCR's operational capacity. Districts should treat this period as an opportunity to conduct internal compliance reviews, update grievance procedures, and ensure documentation is audit-ready. When OCR enforcement resumes at full capacity, cases that accumulated during the suspension period will require resolution. Districts that deferred compliance work during this window carry elevated risk when enforcement normalizes.</div>
+        <div class="ctx-action">
+          <div class="ctx-action-label">Your Action</div>
+          <ul>
+            <li>Do not treat reduced OCR enforcement as a compliance holiday. Obligations under Title VI, Title IX, Section 504, and IDEA continue. Private rights of action remain available to affected students and families independent of OCR enforcement activity.</li>
+            <li>Conduct an internal review of your district's grievance procedures for civil rights complaints. Confirm procedures are current, that designated coordinators are trained, and that response timelines are being met even when OCR is not actively monitoring.</li>
+            <li>Document any civil rights complaints received by the district during this period and the district's response. This documentation protects the district if those complaints are later referred to OCR after enforcement resumes.</li>
+            <li>Review any OCR complaints your district filed as a complainant during this period. If complaints were dismissed without investigation, evaluate whether refiling is warranted now that OCR is fully staffed.</li>
+          </ul>
+        </div>
+        <div class="ctx-source">
+          <strong>Source:</strong> GAO report on OCR operations, February 2026 (for complaint statistics) · Title VI (42 U.S.C. §2000d) · Title IX (20 U.S.C. §1681) · Section 504 (29 U.S.C. §794)
+          <div class="url-note">Note: The complaint volume and resolution statistics are from a GAO report published February 2026, as documented in the December 2025 issue of this digest. The 177 vs. 518 agreement comparison is from secondary reporting and has not been verified against a primary OCR source.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- DEI INJUNCTIONS -->
+    <div class="ctx-entry dei-type">
+      <div class="ctx-inner">
+        <div class="ctx-top">
+          <div class="ctx-badge">DEI / Title VI</div>
+          <div class="ctx-type-badge legal">Court Orders</div>
+          <div class="ctx-title-block">
+            <div class="ctx-title">DEI Dear Colleague Letter Blocked by Federal Courts; Subsequently Vacated</div>
+            <div class="ctx-date">Multiple federal district courts · April 24, 2025 (injunctions) · Later vacated in 2025</div>
+          </div>
+        </div>
+        <div class="ctx-sublabel">What happened</div>
+        <p class="ctx-body">On February 14, 2025, OCR issued a Dear Colleague Letter asserting that many DEI programs constitute unlawful racial discrimination under Title VI and threatening loss of federal funding for noncompliance. On April 3, 2025, the Department required states and school districts to certify compliance by April 24. Three federal courts issued orders on April 24, 2025. The Maryland court (AFT v. DOE) issued a nationwide stay of the DCL under the Administrative Procedure Act. The New Hampshire court (NEA v. DOE) issued a preliminary injunction limited to the plaintiff organizations and their member entities, finding the DCL likely unconstitutional on First Amendment, Fifth Amendment, and APA grounds. The DC court (NAACP v. DOE) issued a limited injunction on the certification requirement only. As of May 2025, the DCL had no enforceable legal effect. The DCL was subsequently vacated entirely by a federal court later in 2025, as described in later issues of this digest.</p>
+        <div class="ctx-sublabel">TLF Interpretation</div>
+        <div class="ctx-tlf">In May 2025, the DCL had no legal enforcement effect due to the injunctions. However, districts that had already modified equity programs in response to the February letter were operating in a legally unsettled environment. The injunctions were limited to plaintiffs and their members in the NH case, and the legal landscape remained in flux. Districts that changed programming in response to the DCL should have documented those changes with legal review notes indicating the basis for any modifications. The Department continued to assert its underlying legal position even while enjoined, and the risk of future enforcement action if injunctions were lifted required ongoing legal monitoring throughout 2025.</div>
+        <div class="ctx-action">
+          <div class="ctx-action-label">Your Action</div>
+          <ul>
+            <li>Confirm that your district's legal counsel has reviewed the current status of the DEI DCL and the subsequent vacatur. The DCL was ultimately vacated in 2025; however, the administration's underlying Title VI enforcement posture has not changed and continues to affect districts through other enforcement mechanisms.</li>
+            <li>Document any program modifications made in response to the February 14 DCL, including the legal basis for each change, who made the decision, and the date. This documentation is essential if changes are challenged or if the district is audited on program compliance.</li>
+            <li>Ensure your district's Title VI grievance procedure and civil rights coordinator designation remain current and functional regardless of the DCL's status. Title VI compliance obligations are statutory and independent of the DCL.</li>
+            <li>Brief your district counsel on the full timeline: February 14 DCL, April 24 injunctions, subsequent vacatur. Any district program reviews should be based on current enforceable law, not on the vacated guidance.</li>
+          </ul>
+        </div>
+        <div class="ctx-source">
+          <strong>Sources:</strong> AFT v. DOE, D. Maryland, April 24, 2025 (nationwide stay) · NEA v. DOE, D.N.H., April 24, 2025 (preliminary injunction) · NAACP v. DOE, D.D.C., April 24, 2025 (certification injunction) · Title VI of the Civil Rights Act of 1964 (42 U.S.C. §2000d)
+          <div class="url-note">Note: The DCL was subsequently vacated by a federal court later in 2025. Districts should confirm the current legal status of DEI guidance with district counsel, as enforcement activity and legal developments have continued since May 2025.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- UNSAFE SCHOOL CHOICE -->
+    <div class="ctx-entry title1">
+      <div class="ctx-inner">
+        <div class="ctx-top">
+          <div class="ctx-badge">Title I / ESEA</div>
+          <div class="ctx-type-badge dcl">Dear Colleague Letter</div>
+          <div class="ctx-title-block">
+            <div class="ctx-title">Unsafe School Choice Option: States Must Offer Transfer Rights for Students in Persistently Dangerous Schools</div>
+            <div class="ctx-date">Office of Elementary and Secondary Education · May 7, 2025</div>
+          </div>
+        </div>
+        <div class="ctx-sublabel">What it says</div>
+        <p class="ctx-body">OESE sent a Dear Colleague Letter to chief state school officers clarifying the Unsafe School Choice Option under ESEA section 8532. The letter reaffirms that states receiving ESEA funds must maintain statewide policies allowing students to transfer to a safe school when: (1) the student attends a school the state has determined to be persistently dangerous based on state-defined criteria, or (2) the student becomes a victim of a violent criminal offense while at school. The letter emphasizes the wide latitude states have in defining "persistently dangerous" and notes that the number of schools nationally designated as persistently dangerous (25 in 2023-24, zero in 2021-22) appears inconsistently low relative to the 1.2 million violent offenses reported in the CRDC for the same period. States are encouraged to build robust communication protocols and leverage open enrollment policies to satisfy the provision.</p>
+        <div class="ctx-sublabel">TLF Interpretation</div>
+        <div class="ctx-tlf">This letter reaffirms existing ESEA requirements rather than creating new obligations, but it signals the Department's intent to scrutinize state and district implementation of the Unsafe School Choice provision. The explicit comparison between reported violent offenses and persistently dangerous school designations signals that the Department views most states as under-designating unsafe schools. Districts should confirm their state has a current, operational definition of persistently dangerous schools and that the district's safety data is being collected and reported to the state accurately. If the state has not designated any schools as persistently dangerous, districts should understand the criteria and verify whether any of their schools could qualify under the state's definition.</div>
+        <div class="ctx-action">
+          <div class="ctx-action-label">Your Action</div>
+          <ul>
+            <li>Confirm your state's current definition of "persistently dangerous school" and the annual reporting cycle. If your state has not updated its definition in several years, contact your SEA to determine whether a revision is planned in response to this letter.</li>
+            <li>Review your district's procedures for notifying parents if a school is designated as persistently dangerous and for offering transfer options to safe public schools within the LEA. Confirm notification timelines and transfer logistics are documented.</li>
+            <li>Verify that your district's safety data is being accurately collected and reported through the state to meet ESEA section 8532 requirements. Inaccurate or incomplete safety data reporting affects both state designation decisions and federal compliance.</li>
+            <li>For students who have been victims of violent criminal offenses at school, confirm your district has a documented protocol for offering the required transfer option, separate from the persistently dangerous school designation process.</li>
+          </ul>
+        </div>
+        <div class="ctx-source">
+          <strong>Primary source:</strong> <a href="https://www.ed.gov/media/document/dear-colleague-letter-unsafe-school-choice-option-may-7-2025-109969.pdf" target="_blank">DCL on Unsafe School Choice Option, OESE, May 7, 2025 (PDF) ↗</a>
+          <br>ESEA section 8532 (20 U.S.C. §7912) · Civil Rights Data Collection (CRDC)
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">Low output</div>
+      <div class="cal-stat-lbl">May 2025 was one of the lowest-output months for K-12 federal guidance in recent history</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">1 document</div>
+      <div class="cal-stat-lbl">One confirmed K-12 compliance document: the May 7 Unsafe School Choice Option DCL</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">2 context items</div>
+      <div class="cal-stat-lbl">OCR enforcement suspension and DEI injunctions shape the compliance environment</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Your Action</div>
+      <div class="cal-stat-lbl">Every entry includes concrete steps for your team</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> The Unsafe School Choice Option DCL PDF is verified. The DEI injunction entries accurately reflect the three April 24, 2025 court orders: a nationwide stay from Maryland (AFT v. DOE), a plaintiff-limited preliminary injunction from New Hampshire (NEA v. DOE), and a limited certification injunction from the DC court (NAACP v. DOE). The DCL was subsequently vacated entirely later in 2025; that development is noted with a disclosure. The OCR complaint statistics (9,269 complaints, 7,072 resolved, 90% dismissed) are from the GAO report documented in the December 2025 issue; the 177 vs. 518 resolution agreement comparison is from secondary reporting and is disclosed as unverified against a primary source. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · May 2025
+  </div>
+ 
+</div>
+</body>
+</html>
