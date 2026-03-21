@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: February 2025 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:      #1B3A4B;
+    --accent:    #1A5FA0;
+    --amber:     #A85D1A;
+    --green:     #2E5E4A;
+    --green-bg:  #D4EDE4;
+    --amber-bg:  #F5E0C8;
+    --blue-bg:   #D4E6F5;
+    --red:       #8B1A2A;
+    --red-bg:    #F0D4D8;
+    --purple:    #4A2E7A;
+    --purple-bg: #EDE4F5;
+    --gray:      #6B7C8A;
+    --gray-lt:   #E8EDF1;
+    --body:      #333333;
+    --bg:        #F2F4F6;
+    --white:     #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .rn-label:first-child { margin-top: 0; }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.ocr  { border-left: 5px solid var(--red); }
+  .cal-entry.hidden { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .ocr .entry-badge { background: var(--red-bg); color: var(--red); }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; background: var(--gray-lt); color: var(--gray); }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; background: var(--red-bg); border-left: 3px solid var(--red); }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '->'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; font-family: monospace; }
+ 
+  .alert-vacated  { background: #FFF3CD; border-left: 4px solid var(--amber); border-radius: 0 4px 4px 0; padding: 10px 14px; margin-bottom: 12px; font-size: 12.5px; color: #5a3800; line-height: 1.5; }
+  .alert-vacated strong { color: #7a4f0d; }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">February 2025 &nbsp;·&nbsp; <strong>3 findings</strong></p>
+    <p class="cal-desc">Federal programs and fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity from February 2025. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section translating that implication into concrete steps. Where significant legal or policy developments have occurred after February 2025, status alerts are included. Source links point directly to primary documents where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Moderate</div>
+    February 2025 was dominated by OCR's release of the Dear Colleague Letter on Title VI and <em>Students for Fair Admissions</em>, followed two weeks later by a 15-question FAQ elaborating OCR's enforcement approach. These two documents together represent the most significant shift in federal civil rights enforcement posture for K-12 districts in years. Both were subsequently vacated by federal courts; see status alerts on each entry. Other K-12 program guidance was minimal, with the administration focused on civil rights enforcement posture and the transition of Department leadership.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No new McKinney-Vento, Title III English learner, or Perkins CTE guidance was published in February 2025. No K-12-specific OIG audit reports were released. Federal Register activity for K-12 formula grant programs in February 2025 was minimal.
+ 
+    <div class="rn-label">Watch next</div>
+    Monitor for OCR enforcement activity under any replacement guidance following the DCL vacatur. Note that a separate OCR Title VI/discipline resolution agreement with Jefferson County Public Schools (Colorado) under case 03-14-5001 has active deadlines running through 2026; that agreement addresses racial disparities in school discipline, not sex-based policies.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"  onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="ocr"  onclick="filterProgram('ocr')">OCR / Title VI</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <div class="cal-section-label" data-section="ocr">OCR / Title VI</div>
+ 
+    <!-- ENTRY 1: DCL Feb 14 -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title VI</div>
+          <div class="entry-type-badge">Dear Colleague Letter</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Dear Colleague Letter: Title VI in Light of <em>Students for Fair Admissions v. Harvard</em></div>
+            <div class="entry-date">Office for Civil Rights · February 14, 2025 · Vacated August 14, 2025 · Appeal dismissed January 22, 2026</div>
+          </div>
+        </div>
+ 
+        <div class="alert-vacated">
+          <strong>Status: Vacated and Unenforceable.</strong> On August 14, 2025, the U.S. District Court for the District of Maryland vacated this Dear Colleague Letter as unlawful under the Administrative Procedure Act. The government appealed but voluntarily dismissed the appeal on January 22, 2026, leaving the vacatur in effect. The DCL is currently unenforceable. OCR has, however, opened at least one Title VI investigation since the dismissal under a separate interpretation of SFFA, so Title VI enforcement under long-standing principles continues.
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR's Acting Assistant Secretary Craig Trainor issued this Dear Colleague Letter on February 14, 2025, stating it "clarifies and reaffirms" nondiscrimination obligations under Title VI and the Equal Protection Clause. The letter extends the Supreme Court's 2023 decision in <em>Students for Fair Admissions v. Harvard</em> far beyond college admissions, asserting that race-based decisions in K-12 admissions, hiring, promotion, financial aid, scholarships, discipline, housing, graduation ceremonies, and all aspects of school operations violate Title VI. The letter characterizes DEI programs as potential vehicles for racial discrimination, stating schools may not use race as a factor or use facially neutral policies motivated by racial considerations. It warns that OCR will begin assessing compliance based on the letter's interpretation starting 14 days from issuance (by February 28, 2025). The letter does not itself impose a certification requirement; the certification demand came in a separate April 3, 2025 letter. The DCL expressly states it "does not have the force and effect of law and does not bind the public or create new legal standards."</p>
+ 
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The DCL was the opening move in a broader enforcement campaign that included the February 28 FAQ, the April 3 certification requirement, and the April 24 court injunctions (covered in the April 2025 digest). Because the DCL has been vacated, districts are not required to comply with its specific interpretations. However, the vacatur does not eliminate Title VI obligations under established law. Districts should be aware that: (1) OCR retains enforcement authority under Title VI's long-standing interpretation; (2) at least one new Title VI investigation has been opened since the vacatur, suggesting continued enforcement interest; and (3) any district that modified programs or policies specifically in reliance on this DCL should review those changes with legal counsel to confirm whether they remain legally required, appropriate, or may expose the district to other legal risk.</div>
+ 
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Do not treat the DCL vacatur as eliminating Title VI compliance obligations. Title VI prohibits race discrimination in federally funded programs, and OCR retains the authority and stated intent to enforce that prohibition under its long-standing legal interpretation.</li>
+            <li>If your district modified any programs, policies, hiring criteria, scholarship awards, or contractor agreements specifically in response to this DCL, consult legal counsel before treating those modifications as legally required or before reversing them. The vacatur does not automatically restore the prior state of affairs; it means this particular guidance document cannot be the legal basis for enforcement.</li>
+            <li>Monitor OCR for any replacement guidance. The government's decision not to appeal the vacatur does not signal an end to Title VI enforcement; it signals a change in the legal vehicle. New guidance addressing SFFA's application to K-12 remains possible.</li>
+            <li>Confirm your district has functioning grievance procedures for Title VI complaints that align with long-standing OCR requirements, independent of this DCL. OCR's case processing manual and Title VI enforcement authority predate and survive the DCL.</li>
+          </ul>
+        </div>
+ 
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.ed.gov/media/document/dear-colleague-letter-sffa-v-harvard-109506.pdf" target="_blank">DCL Full Text (ed.gov PDF) ↗</a> ·
+          Title VI of the Civil Rights Act of 1964 (42 U.S.C. 2000d) · 34 CFR Part 100 ·
+          AFT v. Dep't of Educ., No. 1:25-cv-00628-SAG (D. Md. Aug. 14, 2025) (vacatur) ·
+          4th Cir. Jan. 22, 2026 (appeal dismissed)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ENTRY 2: FAQ Feb 28 -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title VI</div>
+          <div class="entry-type-badge">FAQ Document</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Frequently Asked Questions: Racial Preferences and Stereotypes Under Title VI</div>
+            <div class="entry-date">Office for Civil Rights · February 28, 2025 · Vacated August 14, 2025 · Appeal dismissed January 22, 2026</div>
+          </div>
+        </div>
+ 
+        <div class="alert-vacated">
+          <strong>Status: Vacated and Unenforceable.</strong> This FAQ accompanied the February 14 DCL and was vacated together with it by the Maryland district court on August 14, 2025. The government's appeal dismissal on January 22, 2026 left the vacatur in effect. The April 24, 2025 court orders had already enjoined enforcement of the FAQ for covered entities prior to the full vacatur.
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR published a 15-question FAQ on February 28, 2025, to elaborate on the February 14 Dear Colleague Letter's interpretation of Title VI. Key clarifications in the FAQ include: schools may not use race as a factor in awarding scholarships, prizes, or financial aid, including scholarships administered for third parties; schools may not craft admissions essay prompts that effectively require applicants to disclose their race, or conduct interviews to assess race; schools may not discriminate based on race when selecting contractors, including providers of after-school programs, substitute teachers, cafeteria services, and special education services; school programs focused on specific cultures, heritages, or areas of the world are permissible so long as they are open to all students and do not engage in racial exclusion; historical and cultural observances such as Black History Month do not by themselves violate Title VI; and Title VI does not restrict rights protected by the First Amendment. The FAQ expressly states it "does not have the force and effect of law and does not bind the public or impose new legal requirements." On April 24, 2025, a New Hampshire federal court enjoined enforcement of the FAQ against NEA members and affiliates; the full vacatur followed on August 14, 2025.</p>
+ 
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The FAQ vacatur is part of the same legal proceeding that vacated the DCL. However, some of the FAQ's guidance reflects positions that were already well-established in Title VI law before this administration: for example, race-based scholarship awards and racially exclusive programming were already legally questionable under prior OCR guidance and case law. The most consequential new positions in the FAQ (using proxies for race as covert discrimination, treating facially neutral policies as Title VI violations based on discriminatory purpose) are the positions that courts found to raise constitutional and APA concerns. Districts reviewing their programs should distinguish between positions in the FAQ that simply restate existing law and positions that represented new or contested interpretations.</div>
+ 
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review any district-administered scholarship programs, including those administered on behalf of third-party donors, to confirm they do not restrict eligibility by race. This obligation exists under long-standing Title VI law independent of this FAQ; the FAQ's vacatur does not make race-restricted scholarships permissible.</li>
+            <li>Confirm that your district's contractor selection process for Title I and other federally funded programs does not include race as a scoring criterion. Race-neutral procurement is a longstanding requirement under Title VI and 2 CFR Part 200; the FAQ's vacatur does not change this baseline.</li>
+            <li>Review any programs or events that use race-specific framing to confirm they are open to all students regardless of race. Historical observances, cultural celebrations, and affinity group programs that are open to all students are permissible under the FAQ's own stated interpretation and under pre-existing guidance.</li>
+            <li>Do not conclude from the vacatur that your district's DEI programs face no legal risk. OCR has continued Title VI enforcement activity, the DOJ issued separate guidance on antidiscrimination obligations in July 2025, and private litigation under Title VI remains a separate risk from federal enforcement.</li>
+          </ul>
+        </div>
+ 
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.ed.gov/media/document/frequently-asked-questions-about-racial-preferences-and-stereotypes-under-title-vi-of-civil-rights-act-109530.pdf" target="_blank">FAQ Full Text (ed.gov PDF) ↗</a> ·
+          AFT v. Dep't of Educ., No. 1:25-cv-00628-SAG (D. Md. Aug. 14, 2025) (vacatur) ·
+          NEA v. U.S. Dep't of Educ., No. 25-CV-091-LM (D.N.H. Apr. 24, 2025) (prior injunction)
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ENTRY 3: Jefferson County Title VI / Discipline -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title VI</div>
+          <div class="entry-type-badge">Resolution Agreement</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Jefferson County Public Schools (CO): Title VI Resolution Agreement on Racial Disparities in School Discipline</div>
+            <div class="entry-date">Office for Civil Rights · Case No. 03-14-5001 · Active compliance deadlines: 2024-2026</div>
+          </div>
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR entered a voluntary resolution agreement with Jefferson County Public Schools in Colorado (Jeffco) in case 03-14-5001, addressing racial disparities in the district's administration of school discipline. OCR's compliance review examined whether Jeffco's discipline policies and practices discriminated against students on the basis of race in violation of Title VI. The agreement requires Jeffco to: review and revise its Student Support and Behavior Intervention Handbook beginning November 2024 through May 2025; electronically collect detailed discipline data with narrative descriptions of offenses; conduct annual training for all personnel who make disciplinary referrals; administer annual climate surveys to students, staff, and parents beginning in the 2024-2025 school year; review discipline records from the 2021-2022 school year for eleven identified African American students who were treated more harshly than similarly situated white students; and submit annual reports to OCR by March 10, 2025 and December 1, 2025. OCR will monitor the agreement until all terms are fulfilled.</p>
+ 
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This agreement is a Title VI racial discrimination case focused on discipline disparities, not a Title IX case. OCR found evidence that specific African American students were subjected to harsher discipline consequences than similarly situated white students, and the agreement requires both systemic policy changes and individual compensatory review for identified students. The combination of individual remedy (reviewing specific students' records for compensatory relief) and systemic requirements (data collection, training, climate surveys, and reporting) is the standard OCR model for racial discipline cases. For other districts, this agreement signals that OCR will require documented data systems capable of identifying disparate treatment at the individual student level, not just aggregate disparity statistics. The handbook review and survey requirements also illustrate OCR's expectation of ongoing self-monitoring, not just one-time corrective action.</div>
+ 
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's discipline data system to confirm it can generate reports showing individual student discipline records with offense descriptions, consequences, and demographic information. OCR's requirement in this agreement for detailed narrative offense descriptions reflects its interest in being able to assess whether similarly situated students of different races received different consequences.</li>
+            <li>Audit your district's discipline policy for subjective offense categories (such as "defiance" or "disrespect") that allow discretionary enforcement. These categories are the most common source of racial disparity findings in OCR discipline reviews because they allow implicit bias to influence referral and consequence decisions.</li>
+            <li>Confirm your district's staff training on nondiscriminatory discipline covers not just the existence of disparities but the decision points (referral, consequence selection, out-of-school suspension decisions) where discriminatory treatment can occur. Annual training is the minimum standard; this agreement requires it as a specific ongoing obligation.</li>
+            <li>If your district's CRDC data on discipline shows a pattern of racial disparity in referrals, out-of-school suspensions, or exclusionary consequences, treat that as a signal of potential OCR compliance review interest and conduct an internal audit before OCR identifies your district as a candidate for a directed investigation.</li>
+          </ul>
+        </div>
+ 
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://ocrcas.ed.gov/sites/default/files/ocr-letters-and-agreements/03145001-b.pdf" target="_blank">Resolution Agreement, Case No. 03-14-5001 (ocrcas.ed.gov PDF) ↗</a> ·
+          Title VI of the Civil Rights Act of 1964 (42 U.S.C. 2000d) · 34 CFR Part 100
+          <div class="url-note">Note: The original draft of this entry incorrectly characterized case 03-14-5001 as a Title IX agreement on sex-based access to facilities and athletics. Case 03-14-5001 is a Title VI racial discrimination/school discipline compliance review. A separate, unrelated OCR Title IX finding against Jeffco regarding transgender student access to facilities and sports teams was announced March 13, 2026 and is covered separately in the March 2026 context. These are two distinct cases under two different civil rights statutes.</div>
+        </div>
+      </div>
+    </div>
+ 
+  </div><!-- end entries -->
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">3 findings</div>
+      <div class="cal-stat-lbl">Federal documents reviewed and interpreted for February 2025</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">2 vacated</div>
+      <div class="cal-stat-lbl">DCL and FAQ vacated August 14, 2025; appeal dismissed January 22, 2026</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">1 active</div>
+      <div class="cal-stat-lbl">Jefferson County Title VI discipline agreement monitored through 2026</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Direct PDF links to all three primary OCR documents</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> Three corrections were made from the original draft. (1) The February 14 DCL entry stated that districts must "certify compliance...by February 28, 2025." The DCL does not contain a certification requirement; February 28 is the date OCR said it would begin assessing compliance. The certification demand came in a separate April 3, 2025 letter. The certification is covered in the April 2025 digest. Both the DCL and FAQ entries have been updated with vacatur alerts reflecting the August 14, 2025 Maryland district court ruling and the January 22, 2026 dismissal of the government's appeal. (2) The February 28 FAQ entry previously carried the source note "Not directly accessed but referenced in multiple sources." The direct PDF URL has been confirmed and is now included. (3) The Jefferson County entry contained a fundamental subject matter error: the original described case 03-14-5001 as a Title IX agreement addressing sex-based access to facilities and athletics. Case 03-14-5001 is a Title VI racial discrimination case addressing disparities in school discipline. A separate OCR Title IX finding against Jeffco on transgender student access to facilities and sports was announced March 13, 2026 and is not part of this digest's period. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · February 2025
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
+ 
