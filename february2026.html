@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: February 2026 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:      #1B3A4B;
+    --accent:    #1A5FA0;
+    --amber:     #A85D1A;
+    --green:     #2E5E4A;
+    --green-bg:  #D4EDE4;
+    --amber-bg:  #F5E0C8;
+    --blue-bg:   #D4E6F5;
+    --red:       #8B1A2A;
+    --red-bg:    #F0D4D8;
+    --purple:    #4A2E7A;
+    --purple-bg: #EDE4F5;
+    --teal:      #1A6B5A;
+    --teal-bg:   #D4EDE7;
+    --gray:      #6B7C8A;
+    --gray-lt:   #E8EDF1;
+    --body:      #333333;
+    --bg:        #F2F4F6;
+    --white:     #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .rn-label:first-child { margin-top: 0; }
+ 
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.title1   { border-left: 5px solid var(--accent); }
+  .cal-entry.perkins  { border-left: 5px solid var(--amber); }
+  .cal-entry.ocr      { border-left: 5px solid var(--red); }
+  .cal-entry.hidden   { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .title1  .entry-badge { background: var(--blue-bg);   color: var(--accent); }
+  .perkins .entry-badge { background: var(--amber-bg);  color: var(--amber);  }
+  .ocr     .entry-badge { background: var(--red-bg);    color: var(--red);    }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; background: var(--gray-lt); color: var(--gray); }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; }
+  .title1  .entry-tlf-note { background: var(--blue-bg);   border-left: 3px solid var(--accent); }
+  .perkins .entry-tlf-note { background: var(--amber-bg);  border-left: 3px solid var(--amber);  }
+  .ocr     .entry-tlf-note { background: var(--red-bg);    border-left: 3px solid var(--red);    }
+ 
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '->'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; font-family: monospace; }
+ 
+  .alert-vacated  { background: #FFF3CD; border-left: 4px solid var(--amber); border-radius: 0 4px 4px 0; padding: 10px 14px; margin-bottom: 12px; font-size: 12.5px; color: #5a3800; line-height: 1.5; }
+  .alert-vacated strong { color: #7a4f0d; }
+  .alert-resolved { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 10px 14px; margin-bottom: 12px; font-size: 12.5px; color: #1A3A2A; line-height: 1.5; }
+  .alert-resolved strong { color: var(--green); }
+ 
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">February 2026 &nbsp;·&nbsp; <strong>7 findings</strong></p>
+    <p class="cal-desc">Federal programs and fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity from February 2026. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section. Where significant developments occurred outside the covered period but are directly relevant to practitioners reading this digest, status notes are included. Source links point to primary documents where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Moderate</div>
+    February 2026 activity centered on administrative restructuring (the ED-State and ED-HHS interagency agreements), routine data collection compliance deadlines, and an Indian Education formula grant competition. The most significant civil rights enforcement action associated with Jefferson County Public Schools was the Title IX finding, announced March 13, 2026, just after this digest's period. It is included here with a status note given its direct relevance to practitioners reviewing February developments.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No OSEP Dear Colleague Letters or IDEA guidance in February 2026. No new McKinney-Vento or Title III federal guidance. No OIG K-12-specific audit reports in February 2026.
+ 
+    <div class="rn-label">Watch next</div>
+    Districts should monitor how the ED-HHS and ED-State interagency agreements affect grant administration for the transferred programs (Project SERV, School Safety National Activities, Ready to Learn, Full-Service Community Schools, Promise Neighborhoods, Statewide Family Engagement Centers). Track OCR's 18-plus active Title IX directed investigations for patterns relevant to your district's policies. Confirm FY 2025 data accuracy for state NPEFS submission by August 17, 2026.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"     onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="title1"  onclick="filterProgram('title1')">Title I / ESEA</div>
+    <div class="f-pill"        data-filter="perkins" onclick="filterProgram('perkins')">Perkins</div>
+    <div class="f-pill"        data-filter="ocr"     onclick="filterProgram('ocr')">OCR</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- ===================== TITLE I / ESEA ===================== -->
+    <div class="cal-section-label" data-section="title1">Title I / ESEA</div>
+ 
+    <!-- 1: Interagency Agreements -->
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">ED Operations</div>
+          <div class="entry-type-badge">Press Release</div>
+          <div class="entry-title-block">
+            <div class="entry-title">ED Announces Interagency Agreements with State and HHS to Transfer Six School Safety and Community Programs</div>
+            <div class="entry-date">U.S. Department of Education · February 23, 2026</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">The Department of Education announced two new interagency agreements (IAAs) on February 23, 2026, with the Departments of State and Health and Human Services (HHS). These follow seven prior IAAs signed in 2025 as part of the administration's effort to dismantle and redistribute ED's functions. The ED-HHS agreement transfers six ESEA programs to HHS's Administration for Children and Families (ACF): School Emergency Response to Violence (Project SERV), School Safety National Activities, Ready to Learn Programming, Full-Service Community Schools, Promise Neighborhoods, and Statewide Family Engagement Centers. Under the agreement, HHS will manage grant competitions, provide technical assistance, and integrate these programs with its existing disaster preparedness and response infrastructure. ED retains oversight. The ED-State agreement focuses on Section 117 foreign gift and contract reporting by universities, which has no direct K-12 operational impact. Congressional Democrats challenged the agreements as unauthorized and potentially illegal, with the enacted FY 2026 appropriations law requiring biweekly briefings to Congress on IAA implementation.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">For K-12 districts, the operationally significant transfer is the six programs moving to HHS. Districts receiving any of these grants should expect that their point of contact for grant administration, technical assistance, and competition announcements may shift from ED/OESE to HHS/ACF. Note that the administration proposed eliminating five of the six transferred programs in its FY 2026 budget request; their continued funding in the enacted appropriations does not guarantee future-year funding. Full-Service Community Schools, Promise Neighborhoods, and Statewide Family Engagement Centers grantees should confirm their current ED grant officer contact information and monitor for any HHS transition guidance.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>If your district holds an active grant under any of the six transferred programs (Project SERV, School Safety National Activities, Ready to Learn, Full-Service Community Schools, Promise Neighborhoods, or Statewide Family Engagement Centers), contact your ED grant officer to confirm current status and whether any transition to HHS administration affects your reporting requirements or points of contact.</li>
+            <li>For new competitive grant rounds under these programs, monitor both ed.gov and HHS/ACF (acf.hhs.gov) for announcements, as competition management is being transferred to HHS while ED retains oversight.</li>
+            <li>Note the Congressional oversight requirement: the enacted FY 2026 law requires biweekly briefings to Congress on IAA implementation. If significant changes to program requirements emerge from these briefings, ED or HHS should communicate them to current grantees. Maintain awareness of any Congressional hearings or reports on IAA implementation.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-announces-additional-partnerships-break-federal-education-bureaucracy" target="_blank">ED Press Release, February 23, 2026 ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 2: Title I data collection FR notice -->
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I</div>
+          <div class="entry-type-badge">Federal Register Notice</div>
+          <div class="entry-title-block">
+            <div class="entry-title">60-Day Comment Period: Extension of Title I, Part A Data Collection and Reporting (ICR 1810-0581)</div>
+            <div class="entry-date">OESE · Federal Register · February 24, 2026 · Comment deadline April 27, 2026</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">The Department published a 60-day comment period notice for extension without changes of currently approved information collection request 1810-0581, which covers State Education Agency, Local Educational Agency, and School Data Collection and Reporting under ESEA Title I, Part A. The collection facilitates compliance with statutory requirements and provides accountability data at the school, LEA, and SEA levels. The proposed extension confirms that current Title I reporting requirements remain in force. Comments on the burden, utility, or accuracy of the collection are due April 27, 2026.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">An ICR extension without changes means the Department is seeking to continue existing data collection obligations, not create new ones. For districts, this confirms that current Title I data reporting obligations (program participation data, service delivery information, student outcome data submitted through state systems) remain unchanged. The comment period is an opportunity for districts or SEAs experiencing significant burden from this collection to provide formal feedback. Federal programs directors should review their current data reporting workflows to confirm they are meeting all statutory Title I accountability reporting requirements under this ICR.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>No immediate compliance action is required from this notice. Current Title I, Part A data reporting requirements remain in effect without change.</li>
+            <li>If your district experiences significant administrative burden from Title I data collection requirements under ICR 1810-0581, consider submitting a comment before April 27, 2026 through regulations.gov. The OMB comment process is the formal mechanism for stakeholders to flag data collection burden.</li>
+            <li>Use this notice as a prompt to confirm your district's Title I data reporting processes are current. Ensure your data coordinator is aware of all SEA submission deadlines for Title I accountability data that feed into the federal collection.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://regulations.justia.com/regulations/fedreg/2026/02/24/2026-03689.html" target="_blank">Federal Register Notice, February 24, 2026, Docket 2026-03689 ↗</a>
+          <div class="url-note">The Justia link is a secondary source for the Federal Register notice. The primary source is federalregister.gov; search document number 2026-03689 for the full text and comment submission link.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 3: NPEFS (carried from January) -->
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I / NCES</div>
+          <div class="entry-type-badge">Federal Register Notice</div>
+          <div class="entry-title-block">
+            <div class="entry-title">NPEFS Published: States Must Submit FY 2025 Expenditure and Attendance Data by August 17, 2026</div>
+            <div class="entry-date">NCES · Federal Register · February 9, 2026 · Deadline August 17, 2026 · Final revision September 8, 2026</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">NCES published the Federal Register notice for the National Public Education Financial Survey (NPEFS) on February 9, 2026, announcing deadlines for SEAs to submit FY 2025 expenditure, revenue, and average daily attendance data on ED Form 2447. The NPEFS collection opened January 29, 2026. SEAs must submit initial data and respond to all clarification requests by August 17, 2026, with a final revision deadline of September 8, 2026. NPEFS data is used to calculate federal formula grant allocations, including Title I, for FY 2027. Accurate and timely state submissions directly affect the per-pupil expenditure and attendance figures that drive Title I and other ESEA formula distributions.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The NPEFS publication in the Federal Register formalizes the deadlines and confirms the collection is proceeding despite the IES restructuring from the March 2025 reduction in force. This collection has a direct funding link for K-12 districts: errors in state-level expenditure or attendance data flowing from district reports to the state, and then from the state to NCES, can result in miscalculated Title I allocations for FY 2027. The most common district-level contribution errors involve attendance data methodology (average daily attendance vs. average daily membership), special education expenditure categorization, and indirect cost allocations.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Confirm with your business office what FY 2025 financial and attendance data your district must submit to your SEA, and when your SEA's internal deadline falls. State deadlines are typically 4-8 weeks before the August 17, 2026 federal deadline.</li>
+            <li>Review your FY 2025 attendance data for accuracy before your state submission deadline. Confirm whether your state uses average daily attendance or average daily membership and that your district is reporting on the correct basis.</li>
+            <li>Verify that your FY 2025 federal program expenditures are correctly categorized in your state's financial reporting system. Misclassification between Title I, special education, and other federal program accounts can propagate into the NPEFS submission and affect your district's position in formula calculations.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.federalregister.gov/documents/2026/02/09/2026-02523/submission-of-data-by-state-educational-agencies-submission-dates-for-state-revenue-and-expenditure" target="_blank">Federal Register, February 9, 2026: NPEFS Submission Dates (federalregister.gov) ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 4: Indian Education formula grants -->
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Indian Education</div>
+          <div class="entry-type-badge">Grant Competition Notice</div>
+          <div class="entry-title-block">
+            <div class="entry-title">FY 2026 Office of Indian Education Formula Grants: Applications Open, $110.4 Million Estimated Available</div>
+            <div class="entry-date">OESE · Federal Register · February 3, 2026 · Part I deadline March 6, 2026 · Part II deadline May 11, 2026</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">The Department published a notice inviting applications for FY 2026 Office of Indian Education Formula Grants to Local Educational Agencies and Tribes on February 3, 2026. Estimated available funds are approximately $110.4 million for FY 2026, subject to congressional appropriation. Applications are submitted through the Electronic Application System for Indian Education (EASIE): Part I opened February 2 and closes March 6, 2026; Part II opens March 30 and closes May 11, 2026. LEAs serving eligible Indian students must document the number of eligible students served, demonstrate consultation with parents of Indian students and tribal representatives, and describe programs addressing the unique educational and culturally related academic needs of Indian students.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">Indian Education Formula Grants are formula-based but require annual application through EASIE. Missing the Part I deadline (March 6, 2026) means an LEA cannot participate in the FY 2026 grant cycle. The consultation requirement is a substantive compliance obligation, not a procedural checkbox: OCR and program monitors have found violations where districts claimed consultation without documenting the process, topics covered, or parent and tribal representative participation. Districts that serve Indian students under a Title VI compliance review or OCR agreement should ensure their Indian Education application documentation demonstrates meaningful consultation.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>If your district serves eligible Indian students, confirm that Part I of the FY 2026 EASIE application has been submitted before the March 6, 2026 deadline. Part I establishes student count and basic eligibility; missing it forfeits the grant year.</li>
+            <li>Document your parent and tribal consultation process before submitting Part II by May 11, 2026. Consultation records should show who was invited, who participated, what was discussed, and how input was incorporated into the program plan.</li>
+            <li>Review your FY 2025 Indian Education grant expenditures for compliance before closing out that grant year. Common findings include funds spent on non-allowable costs, inadequate documentation of services to eligible students, and failure to meet supplement-not-supplant requirements.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.federalregister.gov/documents/2026/02/03/2026-02178/applications-for-new-awards-office-of-indian-education-formula-grants-to-local-educational-agencies" target="_blank">Federal Register, February 3, 2026: Indian Education Formula Grants Notice ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ===================== PERKINS ===================== -->
+    <div class="cal-section-label" data-section="perkins">Perkins</div>
+ 
+    <!-- 5: CTE Month -->
+    <div class="cal-entry perkins" data-program="perkins">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Perkins / CTE</div>
+          <div class="entry-type-badge">Proclamation</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Departments of Education and Labor Jointly Proclaim February 2026 National Career and Technical Education Month</div>
+            <div class="entry-date">U.S. Department of Education · February 27, 2026</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">Secretary McMahon and Secretary of Labor Lori Chavez-DeRemer jointly proclaimed February 2026 as National Career and Technical Education Month, recognizing CTE programs that integrate academic and technical instruction to prepare students for high-demand careers. The proclamation emphasizes alignment between CTE, registered apprenticeships, and workforce development, consistent with the April 2025 executive order (EO 14278) directing review of federal workforce development programs and plans to reach one million registered apprentices. The joint nature of the proclamation reflects the ED-DOL interagency workforce development partnership established in 2025, which transferred administration of Carl D. Perkins CTE programs to DOL under that IAA.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The joint ED-DOL proclamation is consistent with the administration's framing of Perkins CTE as a workforce development tool rather than an education program. The reference to apprenticeship alignment and high-demand careers mirrors EO 14278's emphasis. For Perkins directors, this is a signal to ensure that CTE program descriptions and local application narratives use workforce-aligned framing when communicating with state and federal reviewers, particularly as Perkins state plans may be revised to reflect the DOL workforce development partnership. The practical compliance implication of National CTE Month itself is minimal; the proclamation's value is primarily for stakeholder communication.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Use National CTE Month communications to document and communicate your district's CTE-workforce alignment story. Current federal reviewers and state monitors are looking for evidence of apprenticeship pathways, employer partnerships, and labor market alignment in Perkins programs.</li>
+            <li>Confirm whether your Perkins local application reflects any changes resulting from the ED-DOL workforce development IAA. If DOL has assumed administrative responsibilities for Perkins under the IAA, contact your SEA CTE director to confirm the current point of contact for technical assistance and compliance questions.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://www.ed.gov/about/news/press-release/proclaiming-february-2026-national-career-and-technical-education-month" target="_blank">ED Press Release: National CTE Month Proclamation, February 27, 2026 ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ===================== OCR ===================== -->
+    <div class="cal-section-label" data-section="ocr">OCR</div>
+ 
+    <!-- 6: Jeffco Title IX (announced March 13, 2026) -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title IX</div>
+          <div class="entry-type-badge">Finding of Noncompliance / Proposed Resolution (March 13, 2026)</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Jefferson County Public Schools (CO): OCR Finds Title IX Violation on Transgender Student Access to Facilities and Athletics</div>
+            <div class="entry-date">Office for Civil Rights · Announced March 13, 2026 · Investigation opened June 2025 · 10-day compliance deadline: March 23, 2026</div>
+          </div>
+        </div>
+ 
+        <div class="alert-vacated">
+          <strong>Date note: This finding was announced March 13, 2026, just after this digest's February period.</strong> It is included here given its direct operational relevance to districts reading this digest at publication. The investigation was opened in June 2025 and concluded after approximately nine months. As of this digest's publication date (March 20, 2026), Jeffco had not accepted the proposed resolution agreement and the 10-day compliance deadline of March 23, 2026 had not yet passed.
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR announced on March 13, 2026, that Jefferson County Public Schools (Jeffco) in Colorado violated Title IX by permitting students to access sex-separated facilities (bathrooms, locker rooms, overnight accommodations) and compete on athletic teams based on gender identity rather than biological sex. OCR received athletic rosters indicating male students occupy up to 61 roster positions on girls' sports teams. OCR proposed a resolution agreement requiring Jeffco to: rescind any policies permitting male students access to female-only facilities, overnight accommodations, or female sports teams; issue a public statement adopting biology-based definitions of male and female for all school activities; and confirm that Title IX compliance applies regardless of conflicting state law or regulation. The district has 10 days to accept or face imminent enforcement action. Jeffco publicly called the findings "erroneous," said the proposed resolution conflicts with Colorado law, and stated it intends to maintain its existing policies. OCR is conducting at least 18 similar directed investigations into districts nationwide.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This is the most consequential enforcement action for K-12 practitioners in this digest's timeframe. The Jeffco finding confirms OCR's enforcement posture: the administration's interpretation of Title IX requires biology-based sex classifications for facilities and athletics, overriding conflicting state laws. Districts operating under state laws that protect transgender students' facility and athletic access face the same conflict Jeffco faces. Whether OCR's interpretation is legally correct is contested; Jeffco's own statement notes it conflicts with a recent federal district court ruling on the same policies. Federal programs directors should not treat this finding as settled law, but they must treat it as an active enforcement signal. OCR is conducting 18 or more similar investigations, and districts with open complaints or directed investigations should engage legal counsel immediately to assess their exposure.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's current policies on sex-separated facilities (bathrooms, locker rooms), overnight accommodations, and athletic eligibility. Determine whether your policies use gender identity, biological sex, or a combination as the operative classification. Understand where your state law, district policy, and the current OCR enforcement position diverge.</li>
+            <li>If your district is in a state with a law that protects transgender students' facility or athletic access (Colorado, California, Connecticut, and others), consult legal counsel about your exposure to OCR directed investigation. The Jeffco precedent shows OCR can find a violation, propose a resolution with a 10-day deadline, and threaten enforcement action within a nine-month investigation window.</li>
+            <li>If your district has already received an OCR complaint or notification of a directed investigation related to Title IX and transgender students, treat the timeline as compressed and the enforcement consequences as real, regardless of your view of the legal merits. Engage legal counsel and document your compliance posture.</li>
+            <li>Monitor the Jeffco case. If Jeffco does not accept the proposed resolution, OCR may initiate enforcement action; if it does accept, the agreement terms become a template for what OCR expects nationwide. Either outcome will be informative for other districts facing similar investigations.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.ed.gov/about/news/press-release/us-department-of-educations-office-civil-rights-concludes-jefferson-county-public-schools-colorado-has-violated-title-ix" target="_blank">OCR Press Release, March 13, 2026 (ed.gov) ↗</a> ·
+          Title IX of the Education Amendments of 1972 (20 U.S.C. 1681) · Executive Order 14201, Keeping Men Out of Women's Sports (Feb. 5, 2025)
+          <div class="url-note">The original draft of this entry labeled this finding as "February 2026." All sources confirm the announcement date as March 13, 2026. The investigation was initiated in June 2025 following a complaint about overnight trip accommodation policies; the finding was issued approximately nine months later.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 7: Jeffco Title VI discipline (active monitoring) -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title VI</div>
+          <div class="entry-type-badge">Resolution Agreement (Active Monitoring)</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Jefferson County Public Schools (CO): Title VI Discipline Agreement, Active Compliance Deadlines June 30 and December 1, 2026</div>
+            <div class="entry-date">Office for Civil Rights · Case No. 03-14-5001 · Agreement executed 2023-2024 · 2025-2026 reporting deadlines active</div>
+          </div>
+        </div>
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR continues active monitoring of Jefferson County Public Schools in Colorado under its voluntary resolution agreement in Case No. 03-14-5001, which addresses racial disparities in school discipline under Title VI. This is a separate and distinct case from the Title IX transgender student finding announced March 13, 2026. For the 2025-2026 school year, the agreement requires Jeffco to: continue administering climate surveys to students, staff, and parents; provide annual staff training on nondiscriminatory discipline; submit a compliance report to OCR by June 30, 2026 (covering 2025-2026 survey results and training completion); and submit a follow-up report by December 1, 2026. OCR found that Jeffco disciplined eleven identified African American students more harshly than similarly situated white students for comparable conduct, and the agreement requires review of those students' records and compensatory measures. The agreement remains open until OCR determines full compliance.</p>
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">Districts should carefully distinguish between these two Jefferson County cases: the Title VI discipline agreement (03-14-5001) is an active, multi-year compliance obligation with near-term reporting deadlines, while the Title IX transgender finding is a new proposed resolution as of March 13, 2026 that Jeffco has not yet accepted. The discipline agreement's June 30, 2026 reporting deadline is a compliance event that all districts with similar Title VI discipline agreements should treat as a calendar reminder for their own reporting timelines. The pattern here (finding that specific identified students were treated more harshly, requiring individual review and compensatory measures alongside systemic policy and training changes) is the standard OCR model for racial discipline cases and reflects what other districts can expect if OCR opens a directed discipline review.</div>
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>If your district has an active OCR resolution agreement on any subject with a 2025-2026 reporting deadline, confirm that deadline is calendared and that the required deliverables (surveys, training records, policy documents, student outcome data) are being prepared. OCR monitoring has been inconsistent under the current administration, but agreements remain legally binding.</li>
+            <li>Review your district's discipline data disaggregated by race, disability status, and gender for the current school year. Identify any emerging disparities in out-of-school suspensions, referrals to law enforcement, or expulsions that may indicate a pattern similar to what OCR found at Jeffco.</li>
+            <li>Confirm that your district's annual staff training on nondiscriminatory discipline has been completed and documented for the 2025-2026 school year. This is a requirement in many OCR discipline agreements and a best practice regardless of whether you have an agreement.</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong>
+          <a href="https://ocrcas.ed.gov/sites/default/files/ocr-letters-and-agreements/03145001-b.pdf" target="_blank">Resolution Agreement, Case No. 03-14-5001 (ocrcas.ed.gov) ↗</a> ·
+          Title VI of the Civil Rights Act of 1964 (42 U.S.C. 2000d)
+          <div class="url-note">This is the same case-03145001 agreement covered in previous digests. The February 2026 context is the active 2025-2026 reporting cycle under this agreement, specifically the June 30 and December 1, 2026 compliance report deadlines. This case is entirely separate from the Title IX finding in the preceding entry.</div>
+        </div>
+      </div>
+    </div>
+ 
+  </div><!-- end entries -->
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">7 findings</div>
+      <div class="cal-stat-lbl">Federal documents reviewed and interpreted for February 2026</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">6 programs</div>
+      <div class="cal-stat-lbl">Transferred to HHS under the February 23 interagency agreement</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">March 23</div>
+      <div class="cal-stat-lbl">Jeffco Title IX 10-day compliance deadline; district has stated it will not comply</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Direct links to primary ED, Federal Register, and OCR documents</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> Two corrections were made from the original draft. (1) The Jeffco Title IX entry was labeled "February 2026." All sources confirm the announcement date was March 13, 2026, not February 2026. The entry has been retained given its operational relevance at the time of this digest's publication, but it now carries a clear date note and is framed as a just-announced March 2026 development rather than a February finding. The 10-day compliance deadline of March 23, 2026 had not yet passed as of this digest's publication on March 20, 2026; Jeffco publicly rejected the proposed resolution agreement. (2) The second Jefferson County OCR entry in the original described the Title VI discipline agreement (case 03-14-5001) as if it were newly entered in "February 2026." That agreement was executed in 2023-2024 and has been in active monitoring since. The February 2026 context is the active 2025-2026 reporting cycle with June 30 and December 1, 2026 compliance deadlines. The entry is now correctly framed as active monitoring under an existing agreement, not a new agreement. The unlabeled "2.2" in the original header has been removed. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · February 2026
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter) ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
+ 
