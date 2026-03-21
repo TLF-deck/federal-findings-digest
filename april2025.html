@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Federal Findings Digest: April 2025 | The Language Firm</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark:      #1B3A4B;
+    --accent:    #1A5FA0;
+    --amber:     #A85D1A;
+    --green:     #2E5E4A;
+    --green-bg:  #D4EDE4;
+    --amber-bg:  #F5E0C8;
+    --blue-bg:   #D4E6F5;
+    --red:       #8B1A2A;
+    --red-bg:    #F0D4D8;
+    --purple:    #4A2E7A;
+    --purple-bg: #EDE4F5;
+    --gray:      #6B7C8A;
+    --gray-lt:   #E8EDF1;
+    --body:      #333333;
+    --bg:        #F2F4F6;
+    --white:     #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); font-family: 'DM Sans', sans-serif; color: var(--body); line-height: 1.6; }
+  .cal-wrap { max-width: 960px; margin: 0 auto; padding: 48px 24px 64px; }
+ 
+  /* Header */
+  .cal-header { margin-bottom: 28px; animation: fadeUp 0.5s ease both 0.05s; }
+  .cal-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .cal-eyebrow::before { content: ''; display: inline-block; width: 22px; height: 2px; background: var(--accent); }
+  .cal-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--dark); line-height: 1.15; margin-bottom: 12px; }
+  .cal-title em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .cal-meta { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
+  .cal-desc { font-size: 14.5px; color: var(--gray); max-width: 680px; line-height: 1.7; }
+ 
+  /* Context box */
+  .cal-context { background: var(--white); border-left: 4px solid var(--purple); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13.5px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.1s; }
+  .cal-context strong { color: var(--dark); }
+ 
+  /* Research note */
+  .research-note { background: var(--white); border-left: 4px solid var(--amber); border-radius: 0 6px 6px 0; padding: 18px 20px; margin-bottom: 28px; font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.12s; }
+  .research-note strong { color: var(--dark); }
+  .rn-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--amber); margin-bottom: 6px; margin-top: 12px; }
+  .rn-label:first-child { margin-top: 0; }
+ 
+  /* Filter pills */
+  .cal-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; animation: fadeUp 0.5s ease both 0.15s; }
+  .f-pill { font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 8px 18px; border-radius: 3px; border: 2px solid var(--gray-lt); cursor: pointer; transition: all 0.2s; background: var(--white); color: var(--gray); }
+  .f-pill.active { background: var(--dark); color: var(--white); border-color: var(--dark); }
+  .f-pill:hover:not(.active) { border-color: var(--accent); color: var(--accent); }
+ 
+  /* Section label */
+  .cal-section-label { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); padding: 6px 0; border-bottom: 1px solid var(--gray-lt); margin-bottom: 16px; margin-top: 8px; }
+ 
+  /* Entry cards */
+  .cal-entries { display: flex; flex-direction: column; gap: 16px; }
+  .cal-entry { background: var(--white); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 6px rgba(27,58,75,0.07); transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+  .cal-entry:hover { box-shadow: 0 4px 20px rgba(27,58,75,0.12); transform: translateY(-1px); }
+  .cal-entry.ocr     { border-left: 5px solid var(--red); }
+  .cal-entry.title1  { border-left: 5px solid var(--accent); }
+  .cal-entry.perkins { border-left: 5px solid var(--green); }
+  .cal-entry.hidden  { display: none; }
+ 
+  .entry-inner { padding: 22px 26px; }
+  .entry-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+ 
+  .entry-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+  .ocr    .entry-badge { background: var(--red-bg);   color: var(--red);   }
+  .title1 .entry-badge { background: var(--blue-bg);  color: var(--accent);}
+  .perkins .entry-badge { background: var(--green-bg); color: var(--green); }
+ 
+  .entry-type-badge { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; background: var(--gray-lt); color: var(--gray); }
+ 
+  .entry-title-block { flex: 1; min-width: 200px; }
+  .entry-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.25; margin-bottom: 3px; }
+  .entry-date  { font-size: 12px; font-weight: 700; letter-spacing: 0.3px; color: var(--gray); }
+ 
+  .entry-sublabel { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); margin-bottom: 6px; margin-top: 14px; }
+  .entry-body { font-size: 13.5px; line-height: 1.65; color: #555; margin-bottom: 14px; }
+ 
+  .entry-tlf-note { font-size: 13px; color: var(--dark); border-radius: 3px; padding: 12px 16px; margin-bottom: 14px; line-height: 1.6; }
+  .ocr    .entry-tlf-note { background: var(--red-bg);   border-left: 3px solid var(--red);   }
+  .title1 .entry-tlf-note { background: var(--blue-bg);  border-left: 3px solid var(--accent);}
+  .perkins .entry-tlf-note { background: var(--green-bg); border-left: 3px solid var(--green); }
+ 
+  /* Action block */
+  .entry-action { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 14px 16px; margin-bottom: 12px; }
+  .entry-action-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 8px; }
+  .entry-action ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+  .entry-action ul li { font-size: 13px; color: #1A3A2A; padding-left: 18px; position: relative; line-height: 1.55; }
+  .entry-action ul li::before { content: '->'; position: absolute; left: 0; color: var(--green); font-size: 11px; top: 2px; font-family: monospace; }
+ 
+  /* Alerts */
+  .alert-vacated { background: #FFF3CD; border-left: 4px solid var(--amber); border-radius: 0 4px 4px 0; padding: 10px 14px; margin-bottom: 12px; font-size: 12.5px; color: #5a3800; line-height: 1.5; }
+  .alert-vacated strong { color: #7a4f0d; }
+  .alert-resolved { background: var(--green-bg); border-left: 4px solid var(--green); border-radius: 0 4px 4px 0; padding: 10px 14px; margin-bottom: 12px; font-size: 12.5px; color: #1A3A2A; line-height: 1.5; }
+  .alert-resolved strong { color: var(--green); }
+ 
+  /* Source */
+  .entry-source { font-size: 11.5px; color: var(--gray); line-height: 1.5; margin-top: 10px; }
+  .entry-source strong { color: var(--dark); font-weight: 700; }
+  .entry-source a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .entry-source a:hover { text-decoration: underline; }
+  .url-note { font-size: 11px; color: var(--gray); font-style: italic; margin-top: 6px; padding: 6px 10px; background: var(--gray-lt); border-radius: 3px; line-height: 1.5; }
+ 
+  /* Stat bar */
+  .cal-statbar { display: flex; background: var(--dark); border-radius: 6px; overflow: hidden; margin-top: 40px; animation: fadeUp 0.5s ease both 0.3s; }
+  .cal-stat { flex: 1; padding: 22px 28px; border-right: 1px solid rgba(255,255,255,0.1); }
+  .cal-stat:last-child { border-right: none; }
+  .cal-stat-val { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cal-stat-lbl { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
+ 
+  .cal-footer-note { margin-top: 32px; padding: 20px 24px; background: var(--white); border-radius: 6px; border-left: 4px solid var(--amber); font-size: 13px; color: var(--gray); line-height: 1.65; animation: fadeUp 0.5s ease both 0.35s; }
+  .cal-footer-note strong { color: var(--dark); }
+ 
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+ 
+  @media (max-width: 600px) {
+    .cal-wrap { padding: 32px 16px 48px; }
+    .cal-statbar { flex-direction: column; }
+    .cal-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .cal-stat:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+<div class="cal-wrap">
+ 
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm · Federal Integrity Track</div>
+    <h1 class="cal-title">Federal Findings<br><em>Digest</em></h1>
+    <p class="cal-meta">April 2025 &nbsp;·&nbsp; <strong>6 findings</strong></p>
+    <p class="cal-desc">Federal programs and fiscal compliance intelligence for K-12 federal program directors, fiscal agents, and district administrators.</p>
+  </div>
+ 
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each entry summarizes a federal finding, enforcement action, resolution agreement, guidance document, or regulatory activity from April 2025. Every entry includes a factual summary of the source document, a TLF interpretation of the compliance implication, and a Your Action section translating that implication into concrete steps. Where significant legal or policy developments have occurred after April 2025, status alerts are included. Source links point directly to primary documents where available.
+  </div>
+ 
+  <div class="research-note">
+    <div class="rn-label">This month in context: Federal activity level: Moderate</div>
+    April 2025 saw concentrated federal activity on civil rights enforcement, with the administration prioritizing Title VI compliance certification and accelerated OCR investigations. Traditional program guidance for Title I, IDEA, and McKinney-Vento saw minimal new publications. The enforcement posture shifted dramatically toward rapid timelines, DOJ involvement, and funding consequences for noncompliance. Seven executive orders on education-related topics were signed in a single day (April 23), covering school discipline, workforce development, AI education, HBCUs, and accreditation reform.
+ 
+    <div class="rn-label">Areas with no published material</div>
+    No new Dear Colleague letters, guidance documents, or policy updates were published in April 2025 for IDEA/OSEP, McKinney-Vento homeless education, Title III English learners, or OIG K-12 audits. The administration was focused on civil rights enforcement and executive restructuring rather than traditional formula grant program guidance.
+ 
+    <div class="rn-label">Watch next</div>
+    Monitor for forthcoming school discipline guidance pursuant to the April 23 executive order (required within 30 days). Track ongoing litigation on Title VI certification, including any further enforcement actions. Note that NAEP participation in grades 4 and 8 in reading and math is mandatory for Title I funding receipt; districts selected for the January 26 to March 20, 2026 administration window must prepare now.
+  </div>
+ 
+  <div class="cal-filters">
+    <div class="f-pill active" data-filter="all"     onclick="filterProgram('all')">All programs</div>
+    <div class="f-pill"        data-filter="ocr"     onclick="filterProgram('ocr')">OCR / Civil Rights</div>
+    <div class="f-pill"        data-filter="title1"  onclick="filterProgram('title1')">Title I / NAEP</div>
+    <div class="f-pill"        data-filter="perkins" onclick="filterProgram('perkins')">Perkins</div>
+  </div>
+ 
+  <div class="cal-entries" id="entries">
+ 
+    <!-- ======================== OCR / CIVIL RIGHTS ======================== -->
+    <div class="cal-section-label" data-section="ocr">OCR / Civil Rights</div>
+ 
+    <!-- ENTRY 1: Title VI Certification Letter -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title VI</div>
+          <div class="entry-type-badge">Letter to State Commissioners</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OCR Requires SEAs to Certify Title VI Compliance and Adherence to <em>Students for Fair Admissions v. Harvard</em></div>
+            <div class="entry-date">Office for Civil Rights · April 3, 2025 · Deadline extended to April 24, 2025 · Subsequently vacated August 14, 2025</div>
+          </div>
+        </div>
+ 
+        <div class="alert-vacated">
+          <strong>Status: Vacated and Unenforceable.</strong> On August 14, 2025, the U.S. District Court for the District of Maryland vacated this certification requirement and the February 14, 2025 Dear Colleague Letter as unlawful under the Administrative Procedure Act. The Department appealed but voluntarily dismissed that appeal on January 22, 2026, leaving the vacatur in effect. The DCL, associated FAQs, and certification requirement are currently unenforceable. OCR has, however, opened at least one Title VI investigation since the dismissal under a separate interpretation of SFFA, so Title VI compliance monitoring continues.
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">On April 3, 2025, OCR sent letters to state commissioners overseeing K-12 SEAs requiring them to certify compliance with Title VI of the Civil Rights Act and adherence to the Supreme Court's decision in <em>Students for Fair Admissions v. Harvard</em> (SFFA) as a condition of receiving federal financial assistance. The certification followed OCR's February 14, 2025 Dear Colleague Letter and February 28 FAQs, both of which characterized DEI programs as potential Title VI violations. SEAs were originally given 10 days to return signed certifications; on April 7, ED extended the deadline to April 24. On April 24, three federal courts issued orders providing relief. The DC District Court (NAACP case) granted a nationwide preliminary injunction halting enforcement of the certification requirement specifically. The NH District Court (NEA case) enjoined enforcement of both the DCL and the certification requirement, but only against NEA members and affiliated entities. The Maryland District Court (AFT case) stayed enforcement of the DCL but declined to rule on the certification, finding plaintiffs had not pled facts relating to it. The combined practical effect halted certification enforcement nationally. The DCL and certification were later vacated entirely on August 14, 2025.</p>
+ 
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The original directive required SEAs to collect certifications from LEAs confirming that no district programs or activities use race in ways prohibited by Title VI and SFFA. Three courts intervened on April 24, 2025, providing immediate relief before the deadline expired, and a fourth proceeding concluded in full vacatur in August 2025. Districts should preserve all documentation related to any certification submissions or communications received from their SEA. The vacatur removes the certification obligation, but OCR's Title VI enforcement authority under the underlying statute remains intact, and the agency has signaled continued enforcement activity on race-conscious programming independent of the vacated guidance. Districts should consult legal counsel before modifying any programs or policies that were under review in response to this directive, particularly if changes were made in reliance on the now-vacated DCL.</div>
+ 
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>If your district modified any programs, policies, or practices in response to the February 14 DCL or April 3 certification requirement, consult legal counsel before treating those modifications as legally required. The vacatur means compliance with those documents was not required, but some changes may independently align with Title VI under established principles.</li>
+            <li>Review any certification your district submitted or that your SEA collected. Because the certification requirement has been vacated, no new certification obligations arise from this directive. Confirm with your SEA whether any follow-up is required.</li>
+            <li>Do not treat the vacatur as eliminating Title VI compliance obligations. Title VI remains in full force. OCR's authority to investigate and enforce Title VI under its long-standing interpretation and under SFFA is unaffected by the vacatur of this particular guidance.</li>
+            <li>Track any new OCR guidance on Title VI. The agency has continued enforcement activity, and replacement guidance or rulemaking is possible. Federal programs directors should monitor the OCR policy guidance page for new publications.</li>
+          </ul>
+        </div>
+ 
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.ed.gov/media/document/reminder-of-legal-obligations-undertaken-exchange-receiving-federal-financial-assistance-and-request-certification-under-title-vi-and-sffa-v-harvard-april-3.pdf" target="_blank">April 3, 2025 Certification Letter (ed.gov PDF) ↗</a> ·
+          <a href="https://www.ed.gov/media/document/dear-colleague-letter-sffa-v-harvard-109506.pdf" target="_blank">February 14, 2025 Dear Colleague Letter (ed.gov PDF) ↗</a> ·
+          <a href="https://www.ed.gov/about/news/press-release/ed-requires-k-12-school-districts-certify-compliance-title-vi-and-students-v-harvard-condition-of-receiving-federal-financial-assistance" target="_blank">ED Press Release, April 3, 2025 ↗</a>
+          <div class="url-note">Case citations: NAACP v. U.S. Dep't of Educ., No. 1:25-cv-01120 (D.D.C. Apr. 24, 2025) (nationwide cert. injunction); NEA v. U.S. Dep't of Educ., No. 25-CV-091-LM (D.N.H. Apr. 24, 2025) (DCL + cert. injunction, members/affiliates); AFT v. Dep't of Educ., No. 1:25-cv-00628-SAG (D. Md. Apr. 24, 2025) (DCL stay); vacatur: D. Md. Aug. 14, 2025; appeal dismissed: 4th Cir. Jan. 22, 2026.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ENTRY 2: Title VI Court Orders / Three-Court Injunctions -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Civil Rights</div>
+          <div class="entry-type-badge">Court Orders (Three Jurisdictions)</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Three Federal Courts Issue Orders Halting Title VI Certification Enforcement on April 24, 2025</div>
+            <div class="entry-date">U.S. District Courts (D.D.C., D.N.H., D. Md.) · April 24, 2025 · Certification vacated August 14, 2025</div>
+          </div>
+        </div>
+ 
+        <div class="alert-vacated">
+          <strong>Status: Superseded by Vacatur.</strong> The preliminary injunctions issued on April 24, 2025 were superseded by a full vacatur of the underlying guidance on August 14, 2025. The certification requirement and DCL are unenforceable as a result of the vacatur, not merely enjoined pending litigation. The government's appeal was dismissed January 22, 2026.
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">On April 24, 2025, three federal courts issued orders providing relief from OCR's Title VI certification requirement and related guidance. The courts ruled on distinct grounds and with different scopes. In Washington, D.C. (NAACP v. U.S. Dep't of Educ.), the court granted a nationwide preliminary injunction halting enforcement of the certification requirement specifically, finding the NAACP had standing to challenge it as unconstitutionally vague under the Fifth Amendment; the court declined to enjoin the DCL itself. In New Hampshire (NEA v. U.S. Dep't of Educ.), the court enjoined both the DCL and the certification requirement, but the injunction applied only to NEA, its members, and entities that employ or contract with NEA members, not nationwide. In Maryland (AFT v. Dep't of Educ.), the court stayed enforcement of the DCL pending merits resolution under the Administrative Procedure Act, but declined to act on the certification requirement because plaintiffs had not pled facts related to it. The combined practical effect halted nationwide certification enforcement before the April 24 deadline.</p>
+ 
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The April 24 orders were significant not only for the immediate relief they provided but as an early indicator of the legal vulnerability of the guidance. The DC court's Fifth Amendment vagueness holding on the certification requirement and the Maryland court's APA analysis of the DCL both foreshadowed the August 14 vacatur. For K-12 practitioners, the key lesson from this sequence is that novel, accelerated federal directives with funding conditions are subject to judicial review, and that districts with active legal counsel monitoring these cases had advance notice of the relief that was forthcoming. The divergent scopes of the three orders also illustrate why broad characterizations of "nationwide injunctions" require careful reading: the effective nationwide halt on certification enforcement in April 2025 was assembled from three orders with different plaintiffs, legal theories, and geographic scopes.</div>
+ 
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Understand the vacatur status. As of January 22, 2026, the February 14 DCL, the certification requirement, and the associated FAQs are vacated and unenforceable. No certification submission is required under this directive. Review the specific case outcomes with legal counsel if your district took compliance actions based on these documents.</li>
+            <li>Recognize that OCR's general Title VI enforcement authority is unaffected. The vacatur addresses these specific guidance documents; it does not limit OCR's ability to investigate race discrimination under long-standing Title VI principles.</li>
+            <li>Use this episode to evaluate your district's monitoring process for high-stakes federal directives. The April 24 relief came within hours of the compliance deadline. Districts relying on state agency notification alone may have had insufficient lead time to respond. Federal programs directors should maintain direct monitoring of OCR press releases and major education law developments.</li>
+          </ul>
+        </div>
+ 
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          NAACP v. U.S. Dep't of Educ., No. 1:25-cv-01120 (D.D.C. Apr. 24, 2025) ·
+          NEA v. U.S. Dep't of Educ., No. 25-CV-091-LM (D.N.H. Apr. 24, 2025) ·
+          AFT v. Dep't of Educ., No. 1:25-cv-00628-SAG (D. Md. Apr. 24, 2025)
+          <div class="url-note">Direct docket links are not publicly maintained on ed.gov. The OCR policy guidance page at ed.gov/ocr reflects current enforceability status of OCR guidance documents. The April 3 certification letter remains posted but is noted as enjoined on the OCR page.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ENTRY 3: Maine Title IX -->
+    <div class="cal-entry ocr" data-program="ocr">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">OCR / Title IX</div>
+          <div class="entry-type-badge">Referral to DOJ</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Maine DOE Refuses Resolution Agreement; OCR Refers Title IX Investigation to DOJ</div>
+            <div class="entry-date">Office for Civil Rights · April 11, 2025 (refusal confirmed) · April 12, 2025 (DOJ referral) · DOJ suit filed April 16, 2025</div>
+          </div>
+        </div>
+ 
+        <div class="alert-vacated">
+          <strong>Status: Active federal litigation; USDA funding dispute settled May 2, 2025.</strong> On April 12, 2025, ED referred the Title IX investigation of Maine DOE to the DOJ. On April 16, DOJ filed a civil suit against Maine. A separate USDA funding freeze (over child nutrition programs, not education grants) was challenged by Maine in federal court; on April 7 a TRO ordered USDA to unfreeze those funds. Maine and USDA settled that specific funding dispute on May 2, 2025. The substantive Title IX question of whether Maine's policies violate Title IX under the current administration's interpretation remains in active litigation.
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">OCR launched a directed investigation of Maine's Department of Education on February 21, 2025, following the February 5 executive order "Keeping Men Out of Women's Sports," alleging that Maine's policy permitting student athletes to compete according to their gender identity violates Title IX. OCR concluded the investigation in approximately 26 days (by March 19, 2025), finding Maine DOE in violation and proposing a resolution agreement. The initial resolution agreement deadline was 10 days after findings. After Maine, the Maine Principals Association, and Maine School Administrative District 51 all declined to sign, OCR issued a letter of impasse and extended the final deadline to April 11, 2025. On that date, Maine's Attorney General confirmed the state would not sign. On April 12, ED formally referred the investigation to the DOJ. On April 16, DOJ filed a civil suit against Maine seeking a court order directing the state to prohibit transgender girls from participating in female sports. Federal education funding to Maine was approximately $467 million in 2023-24 (about 16% of total school spending).</p>
+ 
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The Maine case establishes several precedents that all districts with open OCR investigations should internalize. First, investigation-to-finding timelines have compressed drastically: what typically required months or years was completed in 26 days, without interviews. Second, the resolution agreement deadline was initially 10 days after findings, a fraction of the prior standard 90-day window. Third, non-compliance escalated within weeks to DOJ referral, civil suit filing, and (separately) a funding freeze from a different federal agency over unrelated funds. Fourth, the administration demonstrated willingness to use cross-agency funding pressure (USDA freezing child nutrition funds over a Title IX dispute) as an enforcement tool. Whether this specific enforcement approach survives legal challenge is a separate question from what it signals about enforcement posture: districts with any open OCR investigation should treat resolution timelines as highly compressed and consult legal counsel immediately upon receiving any OCR letter.</div>
+ 
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>If your district has any open OCR investigation, regardless of subject matter, do not assume standard 90-day resolution timelines apply in the current enforcement environment. Consult legal counsel and assign a point of contact to respond to any OCR communications within 24 to 48 hours.</li>
+            <li>Review your district's athletic participation policies and any policies related to student facilities access in light of the current administration's interpretation of Title IX as requiring biological sex-based differentiation. Whether your state has a conflicting state law (as Maine does) is a factual and legal question that only your district's counsel can answer for your jurisdiction.</li>
+            <li>Do not rely solely on SEA communications to track these developments. Maine's case moved from investigation opening to DOJ referral in under 50 days. Federal programs directors should monitor OCR press releases and the ED newsroom directly.</li>
+            <li>Assess your district's financial exposure if federal funding were placed at risk. Maine's approximately $467 million in federal funding represented 16% of total school spending. Understanding that proportion for your own district is critical context for any compliance decision under investigation pressure.</li>
+          </ul>
+        </div>
+ 
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.ed.gov/about/offices/list/ocr/frontpage/faq-typed.html" target="_blank">OCR Title IX program page ↗</a> ·
+          Executive Order 14201 "Keeping Men Out of Women's Sports" (Feb. 5, 2025) ·
+          ED press releases on Maine investigation, March 19 and April 12, 2025
+          <div class="url-note">Direct ED press release links for the Maine referral: search "Maine Title IX" at ed.gov/news. The April 12 formal referral letter is not separately posted as a standalone document; the Maine public record and DOJ docket confirm the referral and civil suit filing.</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ======================== TITLE I / NAEP ======================== -->
+    <div class="cal-section-label" data-section="title1">Title I / NAEP</div>
+ 
+    <!-- ENTRY 4: School Discipline EO -->
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I / Civil Rights</div>
+          <div class="entry-type-badge">Executive Order</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Executive Order 14280: Reinstating Common Sense School Discipline Policies</div>
+            <div class="entry-date">White House · April 23, 2025 · EO 14280 · 90 FR 17529 · Guidance due to LEAs/SEAs within 30 days</div>
+          </div>
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">President Trump signed Executive Order 14280 on April 23, 2025, directing the Secretary of Education and the Attorney General to issue new guidance to LEAs and SEAs within 30 days on school discipline and their Title VI obligation not to engage in racial discrimination. The order characterizes prior Obama- and Biden-era discipline guidance (including the 2014 joint ED/DOJ Dear Colleague Letter) as having required schools to impose discipline based on racial characteristics rather than objective behavior. It requires: new guidance within 30 days; the Secretary and Attorney General to begin working with states within 60 days to prevent racial discrimination in discipline; the Department of Defense to issue a revised discipline code for DOD-dependent schools by late July 2025; and a comprehensive report by late August 2025 examining Title VI discipline-related investigations since 2009, the role of nonprofit grantees in promoting equity-ideology-based discipline, and model discipline policies. The order also directs evaluation of whether federal taxpayer funds flow to programs promoting "discriminatory-equity-ideology-based discipline."</p>
+ 
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">This order signals a fundamental shift in federal discipline policy: from disparate impact analysis and disproportionality frameworks toward behavior-only, race-neutral standards. The 30-day guidance requirement means new directives were due by approximately May 23, 2025. Any guidance issued pursuant to this order will likely rescind or revise prior Obama-era and Biden-era discipline Dear Colleague letters and related FAQ documents. Districts that built MTSS frameworks, restorative practices programs, or Title I schoolwide plan components around prior federal guidance on discipline equity should evaluate whether those components remain aligned once new guidance issues. The reference to examining nonprofit grantees also signals potential scrutiny of federal subgrants and contracts with organizations whose programming touches discipline equity, behavior modification, or school climate framing.</div>
+ 
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's current discipline policy for explicit references to equity frameworks, disproportionality goals, or racial gap-reduction targets that were built in response to Obama- or Biden-era federal guidance. Identify which elements are required by state law and which were adopted in response to federal guidance that may be superseded.</li>
+            <li>Monitor ED and DOJ jointly for new school discipline guidance published on or after May 23, 2025. Once issued, update your Title I schoolwide plans and any consolidated plans that include discipline-related school climate goals.</li>
+            <li>Review your district's Title I subgrant agreements and contracts with external providers for discipline, behavior modification, or school climate programs. The EO's focus on nonprofit grantees suggests OCR may review whether federal funds flowing through these contracts support programs characterized as promoting equity-ideology-based discipline.</li>
+            <li>Audit your CRDC discipline data submissions for accuracy. The EO requires a comprehensive inventory of Title VI discipline-related OCR investigations since 2009; CRDC data is a primary source for identifying districts for review.</li>
+          </ul>
+        </div>
+ 
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.whitehouse.gov/presidential-actions/2025/04/reinstating-common-sense-school-discipline-policies/" target="_blank">EO 14280 full text, whitehouse.gov ↗</a> ·
+          <a href="https://www.federalregister.gov/documents/2025/04/28/2025-07371/reinstating-common-sense-school-discipline-policies" target="_blank">Federal Register, 90 FR 17529, April 28, 2025 ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ENTRY 5: NAEP 2026 -->
+    <div class="cal-entry title1" data-program="title1">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Title I / NAEP</div>
+          <div class="entry-type-badge">Press Release</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Secretary McMahon Confirms 2026 NAEP Administration Proceeding as Planned: January 26 to March 20, 2026</div>
+            <div class="entry-date">U.S. Department of Education · April 17, 2025 · NAEP administration: January 26 to March 20, 2026</div>
+          </div>
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">On April 17, 2025, Secretary McMahon released a statement confirming that the 2026 NAEP assessments in reading and math are on track for administration starting in January 2026. This announcement was made in response to widespread concern that NAEP would be cancelled or curtailed following the March 2025 layoffs at the National Center for Education Statistics (NCES), which left the agency with a significantly reduced staff. A letter from NCES sent simultaneously to Chief State School Officers confirmed that the administration window runs from January 26 to March 20, 2026. Approximately 600,000 students across all 50 states, DC, Puerto Rico, and DoD schools will participate. Grade 4 and Grade 8 assessments in math and reading are mandatory for states receiving Title I funds; Grade 8 U.S. history and civics will also be administered nationally. The National Assessment Governing Board separately voted on April 21 to pare back voluntary assessments (12th grade reading and math, long-term trend) after 2026 due to capacity constraints. NAEP results are expected in early 2027.</p>
+ 
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">NAEP participation in grades 4 and 8 in reading and math is not optional for Title I recipients: states that do not participate lose Title I funding eligibility. Districts selected for the 2026 window must prepare operationally regardless of uncertainty about the Department's broader restructuring. The January 26 to March 20, 2026 window is tighter than the "mid-January to mid-March" characterization sometimes cited, and conflicts with many districts' high-stakes state testing seasons. The 2026 assessments also carry additional complexity: they are the first administered using updated math and reading frameworks, and the first offering a school-device administration option (in addition to NAEP-provided devices). Districts should begin coordination now to avoid scheduling conflicts and ensure accurate student roster preparation.</div>
+ 
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>If your district is selected for NAEP 2026 participation, confirm the specific assessment dates assigned to your school. The national window runs January 26 to March 20, 2026, but individual school dates are assigned by NCES and will be communicated through your state's NAEP coordinator.</li>
+            <li>Check whether your district qualifies to use school-owned devices for the 2026 administration. NCES is offering school-based device administration for the first time, which can reduce logistics burden, but schools must meet technical specifications. Contact your state NAEP coordinator for eligibility details.</li>
+            <li>Review your state testing calendar for conflicts with the NAEP window. Grade 4 and Grade 8 are both included; if your state administers spring assessments in those grades during January through March, coordinate early to minimize student burden and ensure NAEP participation rates meet federal requirements.</li>
+            <li>Verify that your district's Title I-funded programs are aware that NAEP participation is a Title I funding condition. Federal programs directors should confirm with the Title I coordinator that any district selected will cooperate fully with NAEP administration requirements.</li>
+          </ul>
+        </div>
+ 
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.ed.gov/about/news/press-release/us-department-of-education-releases-statement-2026-naep-schedule" target="_blank">ED Press Release, April 17, 2025 ↗</a> ·
+          <a href="https://nces.ed.gov/nationsreportcard/about/calendar.aspx" target="_blank">NAEP Assessment Schedule, NCES ↗</a> ·
+          <a href="https://www.nagb.gov/naep/assessment-schedule.html" target="_blank">NAGB Assessment Schedule (approved April 21, 2025) ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ======================== PERKINS ======================== -->
+    <div class="cal-section-label" data-section="perkins">Perkins</div>
+ 
+    <!-- ENTRY 6: Skilled Trades EO -->
+    <div class="cal-entry perkins" data-program="perkins">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Perkins / Workforce</div>
+          <div class="entry-type-badge">Executive Order</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Executive Order 14278: Preparing Americans for High-Paying Skilled Trade Jobs of the Future</div>
+            <div class="entry-date">White House · April 23, 2025 · EO 14278 · 90 FR 17525 · 90-day report due; 120-day apprenticeship plan due</div>
+          </div>
+        </div>
+ 
+        <div class="entry-sublabel">What it says</div>
+        <p class="entry-body">President Trump signed Executive Order 14278 on April 23, 2025, directing the Secretaries of Labor, Commerce, and Education to: (1) within 90 days, review all federal workforce development programs and submit a report addressing integration opportunities, effectiveness, credential alternatives to four-year degrees, and strategies to upskill incumbent workers; and (2) within 120 days, submit a plan to reach and surpass one million new active registered apprentices per year. The EO specifically identifies the Carl D. Perkins Career and Technical Education Act (Perkins V) as a mechanism for enhancing connections between the education system and registered apprenticeships. The White House fact sheet accompanying the EO states that Perkins funds ($1.4 billion annually) are "not structured to promote apprenticeships or have incentives to meet workforce training needs," framing the EO as a mandate for restructuring. The fact sheet also notes the federal government spends $700 billion annually on higher education while investing only $4.1 billion on WIOA and $1.4 billion on Perkins CTE. The 90-day report was due by approximately July 22, 2025; the apprenticeship plan by approximately August 21, 2025.</p>
+ 
+        <div class="entry-sublabel">TLF Interpretation</div>
+        <div class="entry-tlf-note">The EO's explicit criticism of Perkins as not structured to promote apprenticeships is a direct signal that the interagency review may recommend changes to Perkins program priorities, allowable uses, or performance measures. The 120-day plan to reach one million apprentices specifically identifies Perkins V and federal student aid as levers. Districts receiving Perkins funds should anticipate that future Perkins guidance or reauthorization proposals may require stronger alignment between CTE programs and registered apprenticeship frameworks. Work-based learning and registered apprenticeship participation, already Perkins V performance indicators, are likely to receive increased emphasis. The EO also signals that the administration views workforce development as requiring interagency consolidation and streamlining, which could affect how Perkins interacts with WIOA and other programs at the state and local level.</div>
+ 
+        <div class="entry-action">
+          <div class="entry-action-label">Your Action</div>
+          <ul>
+            <li>Review your district's current Perkins local application and CTE program of study to identify existing registered apprenticeship partnerships or work-based learning components. Quantify what percentage of your CTE students participate in registered apprenticeships and document any employer partnerships that support pre-apprenticeship or apprenticeship pathways.</li>
+            <li>Monitor the interagency report and apprenticeship plan required by this EO. The 90-day report (due approximately July 22, 2025) and 120-day plan (due approximately August 21, 2025) may include recommendations that affect Perkins local plan requirements, allowable activities, or performance measure targets for the next program year.</li>
+            <li>Assess whether your CTE consortia agreements or regional planning processes already address apprenticeship alignment. If not, begin conversations with your state CTE director and regional business partners about how registered apprenticeship frameworks might be integrated into existing CTE pathways before new federal guidance formalizes this expectation.</li>
+            <li>Review your Perkins secondary and postsecondary program performance data on work-based learning participation. If your district is underperforming on this indicator, address the gap proactively rather than waiting for new guidance to require it.</li>
+          </ul>
+        </div>
+ 
+        <div class="entry-source">
+          <strong>Sources:</strong>
+          <a href="https://www.whitehouse.gov/presidential-actions/2025/04/preparing-americans-for-high-paying-skilled-trade-jobs-of-the-future/" target="_blank">EO 14278 full text, whitehouse.gov ↗</a> ·
+          <a href="https://www.federalregister.gov/documents/2025/04/28/2025-07369/preparing-americans-for-high-paying-skilled-trade-jobs-of-the-future" target="_blank">Federal Register, 90 FR 17525, April 28, 2025 ↗</a> ·
+          <a href="https://www.whitehouse.gov/fact-sheets/2025/04/fact-sheet-president-donald-j-trump-modernizes-american-workforce-programs-for-the-high-paying-skilled-trade-jobs-of-the-future/" target="_blank">White House Fact Sheet ↗</a>
+        </div>
+      </div>
+    </div>
+ 
+  </div><!-- end entries -->
+ 
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">6 findings</div>
+      <div class="cal-stat-lbl">Federal documents reviewed and interpreted for April 2025</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">3 programs</div>
+      <div class="cal-stat-lbl">OCR, Title I / NAEP, and Perkins covered this month</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">2 vacated</div>
+      <div class="cal-stat-lbl">DCL and certification requirement vacated August 14, 2025</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">Source-cited</div>
+      <div class="cal-stat-lbl">Direct links to primary White House and ED documents</div>
+    </div>
+  </div>
+ 
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> Several corrections were made from the original draft. (1) The original characterized all three April 24 court orders as "collectively blocking enforcement in any way across the country": this overstates the uniformity; the three orders had different plaintiffs, legal theories, and geographic scopes, and only the DC court's order was nationwide. (2) The original dated the NAEP window as "mid-January to mid-March": confirmed dates from the NCES letter to states are January 26 to March 20, 2026. The mandatory Title I funding link for NAEP participation was absent from the original and has been added. (3) The Perkins EO entry's claim of "at least 1 million new active apprenticeships" has been corrected: the EO directs submission of a plan to reach one million, not creation of that number directly. Federal Register citations for both EOs are included. (4) The Maine entry's characterization of "10 days vs. standard 90 days" has been clarified: 10 days was the initial post-findings resolution window, and the investigation itself was completed in approximately 26 days without interviews, not the deadline figure. (5) Both the Title VI certification documents and the DCL have been updated with vacatur status (August 14, 2025) and the January 22, 2026 appeal dismissal. (6) The original placed the Title VI court orders entry under "Title I": it has been moved to the OCR / Civil Rights section. This digest does not constitute legal advice. Verify all findings against original source documents before taking compliance action.
+    <br><br>
+    The Language Firm · languagefirm.org · Federal Integrity Track · April 2025
+  </div>
+ 
+</div>
+ 
+<script>
+  function filterProgram(filter) {
+    document.querySelectorAll('.f-pill').forEach(p => p.classList.toggle('active', p.dataset.filter === filter));
+    let delay = 0;
+    document.querySelectorAll('.cal-entry').forEach(entry => {
+      const show = filter === 'all' || entry.dataset.program === filter;
+      entry.classList.toggle('hidden', !show);
+      if (show) {
+        entry.style.animationDelay = (delay * 0.06) + 's';
+        entry.style.animation = 'none';
+        void entry.offsetHeight;
+        entry.style.animation = '';
+        delay++;
+      }
+    });
+    document.querySelectorAll('.cal-section-label').forEach(label => {
+      const section = label.dataset.section;
+      label.style.display = (filter === 'all' || section === filter || filter === 'all') ? '' : 'none';
+      if (filter !== 'all' && section !== filter) label.style.display = 'none';
+    });
+  }
+</script>
+</body>
+</html>
