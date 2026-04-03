@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>March 2026 | Federal AI Movement Digest for K-12</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--dark:#1B3A4B;--accent:#1A5FA0;--amber:#A85D1A;--green:#2E5E4A;--green-bg:#D4EDE4;--amber-bg:#F5E0C8;--blue-bg:#D4E6F5;--red:#8B1A2A;--red-bg:#F0D4D8;--purple:#4A2E7A;--purple-bg:#EDE4F5;--gray:#6B7C8A;--gray-lt:#E8EDF1;--body:#333333;--bg:#F2F4F6;--white:#FFFFFF}
+  *{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);font-family:'DM Sans',sans-serif;color:var(--body);line-height:1.6}
+  .cal-band{background:var(--dark);padding:13px 40px;overflow:hidden;white-space:nowrap}.cal-band-inner{display:inline-block;animation:calMarquee 32s linear infinite}@keyframes calMarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}.cal-band-inner span{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.35);padding:0 32px}.cal-band-inner span.hi{color:rgba(255,255,255,0.85)}
+  .cal-wrap{max-width:960px;margin:0 auto;padding:48px 24px 64px}.cal-header{margin-bottom:36px;animation:fadeUp .5s ease both .05s}.cal-eyebrow{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:10px;margin-bottom:14px}.cal-eyebrow::before{content:'';display:inline-block;width:22px;height:2px;background:var(--accent)}.cal-title{font-family:'Fraunces',serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--dark);line-height:1.15;margin-bottom:12px}.cal-title em{font-style:italic;font-weight:300;color:var(--accent)}.cal-desc{font-size:14.5px;color:var(--gray);max-width:680px;line-height:1.7}
+  .cal-month-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;animation:fadeUp .5s ease both .1s}.month-pill{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px 18px;border-radius:3px;border:2px solid var(--gray-lt);cursor:pointer;transition:all .2s;background:var(--white);color:var(--gray)}.month-pill.active{background:var(--dark);color:var(--white);border-color:var(--dark)}.month-pill:hover:not(.active){border-color:var(--accent);color:var(--accent)}.month-pill.disabled{opacity:.4;pointer-events:none}
+  .cal-context{background:var(--white);border-left:4px solid var(--purple);border-radius:0 6px 6px 0;padding:18px 20px;margin-bottom:28px;font-size:13.5px;color:var(--gray);line-height:1.65;animation:fadeUp .5s ease both .15s}.cal-context strong{color:var(--dark)}
+  .cal-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;animation:fadeUp .5s ease both .2s}.leg-item{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.3px;padding:8px 16px;border-radius:4px;cursor:pointer;transition:opacity .2s,box-shadow .2s;user-select:none;border:2px solid transparent}.leg-item.active{opacity:1;box-shadow:0 2px 8px rgba(0,0,0,.12)}.leg-item.inactive{opacity:.55}.leg-item:hover{opacity:1}.leg-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}.leg-item.type-exec{background:#FADADD;color:#7A0E1E;border-color:#F0B8BE}.leg-item.type-agency{background:#FAE4CC;color:#7A3E0A;border-color:#F0C89A}.leg-item.type-signal{background:#E8DEFA;color:#3A1A7A;border-color:#C4AEFA}.leg-item.type-all{background:var(--dark);color:var(--white);border-color:var(--dark)}.leg-item.type-all.inactive{background:var(--gray-lt);color:var(--dark);border-color:var(--gray-lt)}.leg-dot.exec{background:#C01030}.leg-dot.agency{background:#A05010}.leg-dot.signal{background:#4A2E7A}.leg-dot.all{background:var(--white)}
+  .cal-section-label{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);padding:6px 0;border-bottom:1px solid var(--gray-lt);margin-bottom:16px;margin-top:8px}
+  .cal-entries{display:flex;flex-direction:column;gap:16px}.cal-entry{background:var(--white);border-radius:6px;overflow:hidden;box-shadow:0 1px 6px rgba(27,58,75,.07);transition:box-shadow .2s,transform .2s;animation:fadeUp .4s ease both}.cal-entry:hover{box-shadow:0 4px 20px rgba(27,58,75,.12);transform:translateY(-1px)}.cal-entry.exec{border-left:5px solid var(--red)}.cal-entry.agency{border-left:5px solid var(--amber)}.cal-entry.signal{border-left:5px solid var(--purple)}.cal-entry.hidden{display:none}
+  .entry-inner{padding:22px 26px}.entry-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;flex-wrap:wrap}.entry-badge{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:2px;flex-shrink:0;margin-top:2px}.exec .entry-badge{background:var(--red-bg);color:var(--red)}.agency .entry-badge{background:var(--amber-bg);color:var(--amber)}.signal .entry-badge{background:var(--purple-bg);color:var(--purple)}.entry-title-block{flex:1;min-width:200px}.entry-title{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--dark);line-height:1.25;margin-bottom:3px}.entry-date{font-size:12px;font-weight:700;letter-spacing:.3px}.exec .entry-date{color:var(--red)}.agency .entry-date{color:var(--amber)}.signal .entry-date{color:var(--purple)}
+  .entry-body{font-size:13.5px;line-height:1.65;color:#555;margin-bottom:14px}.entry-tlf-note{font-size:12.5px;color:var(--purple);background:var(--purple-bg);border-radius:3px;padding:10px 14px;margin-bottom:14px;line-height:1.55}.entry-tlf-note strong{color:var(--dark)}
+  .entry-ready{background:var(--gray-lt);border-radius:4px;padding:14px 16px;margin-bottom:12px}.entry-ready-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin-bottom:8px}.entry-ready ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:5px}.entry-ready ul li{font-size:13px;color:var(--body);padding-left:18px;position:relative}.entry-ready ul li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-size:11px;top:1px}
+  .entry-source{font-size:11.5px;color:var(--gray);display:flex;align-items:flex-start;gap:5px;flex-wrap:wrap;line-height:1.5}.entry-source strong{color:var(--dark);font-weight:700}.entry-source a{color:var(--accent);text-decoration:none;font-weight:500}.entry-source a:hover{text-decoration:underline}
+  .cal-statbar{display:flex;background:var(--dark);border-radius:6px;overflow:hidden;margin-top:40px;animation:fadeUp .5s ease both .3s}.cal-stat{flex:1;padding:22px 28px;border-right:1px solid rgba(255,255,255,.1)}.cal-stat:last-child{border-right:none}.cal-stat-val{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:var(--white);margin-bottom:4px}.cal-stat-lbl{font-size:12px;color:rgba(255,255,255,.5);line-height:1.4}
+  .cal-footer-note{margin-top:32px;padding:20px 24px;background:var(--white);border-radius:6px;border-left:4px solid var(--amber);font-size:13px;color:var(--gray);line-height:1.65;animation:fadeUp .5s ease both .35s}.cal-footer-note strong{color:var(--dark)}.cal-footer-note a{color:var(--accent);text-decoration:none;font-weight:500}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  @media(max-width:600px){.cal-wrap{padding:32px 16px 48px}.cal-statbar{flex-direction:column}.cal-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1)}.cal-stat:last-child{border-bottom:none}.cal-band{padding:12px 20px}}
+</style>
+</head>
+<body>
+<div class="cal-band"><div class="cal-band-inner">
+  <span>Federal AI Movement</span><span>&#x3030;</span><span class="hi">K-12 Intelligence Digest</span><span>&#x3030;</span><span>Executive Orders &middot; Agency Directives &middot; Preemption Signals</span><span>&#x3030;</span><span class="hi">March 2026</span><span>&#x3030;</span><span>The Language Firm</span><span>&#x3030;</span>
+  <span>Federal AI Movement</span><span>&#x3030;</span><span class="hi">K-12 Intelligence Digest</span><span>&#x3030;</span><span>Executive Orders &middot; Agency Directives &middot; Preemption Signals</span><span>&#x3030;</span><span class="hi">March 2026</span><span>&#x3030;</span><span>The Language Firm</span><span>&#x3030;</span>
+</div></div>
+
+<div class="cal-wrap">
+  <div class="cal-header">
+    <div class="cal-eyebrow">The Language Firm | Federal AI Movement Digest</div>
+    <h1 class="cal-title">March 2026<br><em>Federal AI Digest</em></h1>
+    <p class="cal-desc">What the federal government did on AI this month, documented for K-12 leaders. Every entry cites a primary source. Every K-12 implication is grounded in the action that triggered it. This is not speculation. It is the record.</p>
+    <p style="font-size:12px;color:var(--gray);margin-top:8px;letter-spacing:.3px;">Version: Spring 2026 &nbsp;&middot;&nbsp; For practitioners and policy students</p>
+  </div>
+
+  <div class="cal-month-nav">
+    <div class="month-pill">Dec 2025</div>
+    <div class="month-pill">Jan 2026</div>
+    <div class="month-pill">Feb 2026</div>
+    <div class="month-pill active">Mar 2026</div>
+    <div class="month-pill disabled">Apr 2026</div>
+  </div>
+
+  <div class="cal-context">
+    <strong>How this digest works.</strong> Each month documents verified federal actions (executive orders, agency directives, task force formations, rulemaking proceedings, and legislative signals) that affect K-12 AI governance. Entries are classified by type: <em>Executive Action</em> (signed orders with force of law), <em>Agency Directive</em> (required agency deliverables with deadlines), and <em>K-12 Signal</em> (downstream implications that have not yet produced a compliance obligation but will shape the environment districts operate in). No entry is invented. Every date is sourced. <strong>K-12 implications labeled "TLF analysis"</strong> represent The Language Firm's interpretation of what each federal action means for district governance. They are grounded in the source material but are not sourced claims. They reflect professional judgment, not regulatory mandate.
+  </div>
+
+  <div class="cal-legend">
+    <div class="leg-item type-all active" data-filter="all" onclick="filterType('all')"><div class="leg-dot all"></div>All entries</div>
+    <div class="leg-item type-exec inactive" data-filter="exec" onclick="filterType('exec')"><div class="leg-dot exec"></div>Executive action, verified</div>
+    <div class="leg-item type-agency inactive" data-filter="agency" onclick="filterType('agency')"><div class="leg-dot agency"></div>Agency directive, deadline set</div>
+    <div class="leg-item type-signal inactive" data-filter="signal" onclick="filterType('signal')"><div class="leg-dot signal"></div>K-12 signal, monitor</div>
+  </div>
+
+  <div class="cal-entries" id="entries">
+
+    <div class="cal-section-label">Week of March 2 to 8</div>
+
+    <div class="cal-entry exec" data-type="exec">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Executive Action</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Executive Order 14390: Combating Cybercrime, Fraud, and Predatory Schemes Against American Citizens</div>
+            <div class="entry-date">March 6, 2026 &middot; The White House</div>
+          </div>
+        </div>
+        <p class="entry-body">President Trump signed Executive Order 14390 on March 6, 2026, directing federal agencies to develop coordinated strategies for combating transnational cyber-enabled fraud, including AI-powered impersonation scams and deepfake-driven schemes. The EO was published in the Federal Register on March 11, 2026. The order requires the Attorney General and the Secretaries of State, Treasury, Defense, and Homeland Security to submit an action plan to the President within 120 days. That plan must identify transnational criminal organizations responsible for scam operations, propose strategies for disrupting them, and establish a dedicated operational cell within the National Coordination Center. The EO also directs the Attorney General to prioritize prosecutions of cyber-enabled fraud and to recommend a Victims Restoration Program funded from seized and forfeited assets. The White House fact sheet noted that American consumers lost over $12.5 billion to cyber-enabled fraud in 2024, with seniors losing the most on average, and that one in seven young people who experienced sextortion as a minor reported self-harm.</p>
+        <div class="entry-ready">
+          <div class="entry-ready-label">K-12 action items (TLF analysis)</div>
+          <ul>
+            <li>This EO does not create direct obligations for districts but it establishes the federal enforcement posture districts should prepare for</li>
+            <li>AI-generated voice cloning and deepfake impersonation are now a named federal enforcement priority. Districts using AI tools that generate synthetic voice or visual content, or whose vendors offer such capabilities, should document what safeguards are in place</li>
+            <li>If a district's communications platform, phone system, or parent-facing tools rely on AI-generated voice or media, those tools should be reviewed for impersonation risk</li>
+            <li>The Weekly Incident Bulletin will track enforcement actions that follow from this EO as they develop</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.whitehouse.gov/presidential-actions/2026/03/combating-cybercrime-fraud-and-predatory-schemes-against-american-citizens/" target="_blank">Executive Order 14390, White House, March 6, 2026</a> &middot; <a href="https://www.whitehouse.gov/fact-sheets/2026/03/fact-sheet-president-donald-j-trump-combats-cybercrime-fraud-and-predatory-schemes-against-american-citizens/" target="_blank">White House Fact Sheet, March 6, 2026</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-section-label">Week of March 9 to 15</div>
+
+    <div class="cal-entry agency" data-type="agency">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Agency Directive</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OMB M-26-04 Procurement Deadline: Federal Agencies Must Update AI Contract Policies</div>
+            <div class="entry-date">March 11, 2026 &middot; Office of Management and Budget</div>
+          </div>
+        </div>
+        <p class="entry-body">March 11, 2026 was the compliance deadline for OMB Memorandum M-26-04, "Increasing Public Trust in Artificial Intelligence Through Unbiased AI Principles," issued December 11, 2025. By this date, all executive agencies were required to update their procurement policies to ensure that contracts for large language models include requirements addressing compliance with the Unbiased AI Principles established by Executive Order 14319 (July 2025). The two Unbiased AI Principles are "truth-seeking" (LLM outputs must be truthful, prioritize historical and scientific accuracy, and acknowledge uncertainty) and "ideological neutrality" (LLMs must not integrate partisan or ideological judgments). Updated agency policies must include processes for users to report LLM outputs that violate these principles. Agencies must also, to the extent practicable, modify existing LLM contracts to include these requirements before exercising any contract options. The memo establishes two tiers of transparency: minimum transparency (acceptable use policies, model or system cards, end-user resources, feedback mechanisms) and enhanced transparency (pre-training and post-training activity disclosures, bias evaluation results, enterprise-level controls, third-party modification disclosures). The guidance expires December 11, 2027 unless the OMB Director extends it.</p>
+        <div class="entry-tlf-note">
+          <strong>Federal procurement standards ripple into education markets.</strong> When the federal government changes what it requires from AI vendors, those vendors adjust their products and documentation for all customers, not just federal ones. Districts using AI tools that also serve federal agencies may see changes to terms of service, model behavior, or data practices in the months following this deadline. The question is not whether the changes happen. It is whether someone in the building notices when they do.
+        </div>
+        <div class="entry-ready">
+          <div class="entry-ready-label">K-12 monitoring actions (TLF analysis)</div>
+          <ul>
+            <li>This directive applies to federal agencies, not directly to districts. But the downstream effect matters</li>
+            <li>If a district uses an AI tool that also serves federal agencies, the vendor is now subject to new contractual transparency requirements for that federal relationship</li>
+            <li>Districts should monitor whether any AI tools in their stack change their terms of service, privacy policies, or model behavior in the months following this deadline</li>
+            <li>The District Filing tracks these vendor-level shifts as they surface</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.whitehouse.gov/wp-content/uploads/2025/12/M-26-04-Increasing-Public-Trust-in-Artificial-Intelligence-Through-Unbiased-AI-Principles-1.pdf" target="_blank">OMB M-26-04, December 11, 2025</a> &middot; <a href="https://www.crowell.com/en/insights/client-alerts/in-bid-to-ban-woke-ai-white-house-imposes-transparency-requirements-on-contractors" target="_blank">Crowell &amp; Moring analysis, December 19, 2025</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-entry agency" data-type="agency">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Agency Directive</div>
+          <div class="entry-title-block">
+            <div class="entry-title">Commerce Department Evaluation of State AI Laws: Deadline Passed Without Public Release</div>
+            <div class="entry-date">March 11, 2026 (deadline) &middot; U.S. Department of Commerce</div>
+          </div>
+        </div>
+        <p class="entry-body">Executive Order 14365 (December 11, 2025) required the Secretary of Commerce to publish, by March 11, 2026, an evaluation identifying state AI laws that are "onerous" and that conflict with the federal policy of maintaining AI dominance through a minimally burdensome national framework. The evaluation was required, at minimum, to identify state laws that require AI models to alter their truthful outputs or that compel disclosures violating the First Amendment. The Commerce Department was also required, by the same date, to send a Policy Notice to any state identified as having onerous AI laws, declaring that state ineligible for non-deployment funds under the Broadband Equity Access and Deployment (BEAD) Program. The BEAD Program controls approximately $42 billion in broadband funding. As of late March 2026, the Commerce Department had not publicly released this evaluation. Holland &amp; Knight noted the delay and observed that it introduces uncertainty about the administration's near-term posture on state preemption enforcement, even as the White House National Policy Framework (released March 20) reinforced a clear preference for federal uniformity.</p>
+        <div class="entry-ready">
+          <div class="entry-ready-label">K-12 action items (TLF analysis)</div>
+          <ul>
+            <li>The delay matters for districts in states with active AI legislation, particularly Colorado, California, and Texas</li>
+            <li>Until this evaluation is published, no state has been formally identified as "onerous" and no BEAD funding has been conditioned on AI law changes. State AI laws remain in full force</li>
+            <li>Districts should confirm with their state broadband office whether BEAD-funded projects serving their buildings are at risk</li>
+            <li>The Weekly Incident Bulletin will flag the Commerce evaluation the moment it is published</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/" target="_blank">Executive Order 14365, Sections 4 and 5, December 11, 2025</a> &middot; <a href="https://www.hklaw.com/en/insights/publications/2026/03/white-house-releases-a-national-policy-framework-for-artificial" target="_blank">Holland &amp; Knight analysis, March 2026</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-entry agency" data-type="agency">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Agency Directive</div>
+          <div class="entry-title-block">
+            <div class="entry-title">FTC AI and Section 5 Policy Statement: March 11 Deadline Arrived, Full Text Not Yet Published on FTC Website</div>
+            <div class="entry-date">March 11, 2026 (deadline) &middot; Federal Trade Commission</div>
+          </div>
+        </div>
+        <p class="entry-body">Executive Order 14365 (December 11, 2025), Section 7, directed the FTC Chairman to issue a policy statement within 90 days explaining how the FTC Act's prohibition on unfair and deceptive practices applies to AI, and the circumstances under which state laws requiring alterations to the truthful outputs of AI models are preempted by federal law. That 90-day deadline fell on March 11, 2026. On March 10, TechFreedom released an open letter calling on the FTC to take public comments before finalizing the statement, noting that the Commission was operating with only two Commissioners (both Republican) and that public input would strengthen the statement's legal standing under Skidmore deference. As of the March 11 deadline, at least one source reported the FTC had not yet released the statement. The Language Firm was unable to locate the full text of this policy statement on ftc.gov as of the publication date of this digest. No major law firm has published an analysis of the statement's actual content, which would be expected if a significant FTC policy statement had been publicly released. This entry will be updated when the statement is published or when its status is clarified. The underlying legal question remains significant: the administration's theory is that state laws requiring AI developers to adjust model outputs to prevent algorithmic discrimination could compel the production of "deceptive" outputs under Section 5. Legal analysts have described this theory as untested. Colorado's AI Act (effective June 30, 2026) requires algorithmic discrimination prevention measures, which could be directly affected if the FTC adopts this position in a finalized statement.</p>
+        <div class="entry-tlf-note">
+          <strong>The legal theory matters even without a finalized statement.</strong> The administration's position that bias mitigation equals deception under Section 5 is now part of the policy record through EO 14365 itself. Vendors serving K-12 districts may begin adjusting their practices in anticipation, regardless of whether the FTC has finalized its statement. The question for districts is whether vendor agreements reference specific compliance commitments that could shift if this theory gains enforcement traction.
+        </div>
+        <div class="entry-ready">
+          <div class="entry-ready-label">K-12 monitoring actions (TLF analysis)</div>
+          <ul>
+            <li>No compliance action is required from this entry. The FTC statement, if and when finalized, would apply to vendors, not districts directly</li>
+            <li>Districts should monitor whether this statement is published. When it is, its preemption position will affect the legal environment around AI tools used in schools, particularly in states with active AI legislation</li>
+            <li>The administration's theory that bias mitigation equals deception is already influencing vendor behavior. Districts should document whether any AI vendors in their stack change their bias mitigation, output filtering, or content moderation practices</li>
+            <li>The Weekly Incident Bulletin will flag the FTC statement the moment it is published</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/" target="_blank">EO 14365, Section 7 (directing FTC statement), December 11, 2025</a> &middot; <a href="https://techfreedom.org/ftcs-ai-policy-statement-no-substitute-for-rulemaking/" target="_blank">TechFreedom open letter calling for public comments, March 10, 2026</a> &middot; <a href="https://ourtake.bakerbotts.com/post/102mirs/march-2026-federal-deadlines-that-will-reshape-the-ai-regulatory-landscape" target="_blank">Baker Botts analysis of March 11 deadlines, March 3, 2026</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-section-label">Week of March 16 to 22</div>
+
+    <div class="cal-entry signal" data-type="signal">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">K-12 Signal</div>
+          <div class="entry-title-block">
+            <div class="entry-title">TRUMP AMERICA AI Act: Sen. Blackburn Releases 291-Page Discussion Draft</div>
+            <div class="entry-date">March 18, 2026 &middot; U.S. Senate</div>
+          </div>
+        </div>
+        <p class="entry-body">On March 18, 2026, Senator Marsha Blackburn (R-TN) released an updated discussion draft of the TRUMP AMERICA AI Act (formally titled the Republic Unifying Meritocratic Performance Advancing Machine Intelligence by Eliminating Regulatory Interstate Chaos Across American Industry Act). The 291-page draft is organized into 17 titles and represents the most comprehensive federal AI legislation proposed in the United States to date. The bill is built around protecting children, creators, conservatives, and communities. It incorporates the Kids Online Safety Act (KOSA) and the NO FAKES Act. Key provisions include a duty of care requiring AI developers to take reasonable steps to mitigate foreseeable harms from their products; a sunset of Section 230 of the Communications Act; chatbot safety provisions under the GUARD Act with age verification for accounts belonging to minors under 18; mandatory third-party audits for bias and discrimination; registration requirements for foreign AI developers; and broad federal preemption of state AI laws that regulate inherently interstate AI development. On copyright, the draft establishes that training AI on copyrighted works is per se not fair use. Blackburn has been working with the White House on the draft and shared a copy with Senate Commerce Chair Ted Cruz before its release.</p>
+        <div class="entry-ready">
+          <div class="entry-ready-label">K-12 action items (TLF analysis)</div>
+          <ul>
+            <li>This is a discussion draft, not enacted law. It creates no compliance obligations today</li>
+            <li>The KOSA provisions would require platforms to implement safeguards reducing risks of exploitation and self-harm for minors. The GUARD Act provisions would impose age verification requirements on AI chatbots interacting with minors under 18</li>
+            <li>If any version of these provisions becomes law, districts will need to document that every AI tool accessible to students either complies with federal chatbot safety requirements or has been restricted from student access</li>
+            <li>Districts should begin inventorying which AI tools in their buildings interact directly with students through conversational interfaces. That inventory becomes the compliance baseline if this legislation advances</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.blackburn.senate.gov/2026/3/technology/blackburn-releases-discussion-draft-of-national-policy-framework-for-artificial-intelligence/3b3b6458-b6c7-478b-9859-374949586765" target="_blank">Sen. Blackburn press release, March 18, 2026</a> &middot; <a href="https://www.alstonprivacy.com/u-s-senator-marsha-blackburn-proposes-national-ai-legislative-framework/" target="_blank">Alston &amp; Bird analysis, March 23, 2026</a> &middot; <a href="https://www.axios.com/2026/03/18/blackburn-updated-ai-plan-trump" target="_blank">Axios, March 18, 2026</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-entry signal" data-type="signal">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">K-12 Signal</div>
+          <div class="entry-title-block">
+            <div class="entry-title">White House Releases National Policy Framework for Artificial Intelligence</div>
+            <div class="entry-date">March 20, 2026 &middot; The White House</div>
+          </div>
+        </div>
+        <p class="entry-body">On March 20, 2026, the White House released its National Policy Framework for Artificial Intelligence, a four-page document outlining legislative recommendations for Congress. The Framework was required by Executive Order 14365 (December 11, 2025). It organizes its recommendations around six areas: protecting children and empowering parents; safeguarding communities from AI-enabled harms; respecting intellectual property rights; preventing AI-driven censorship; enabling innovation; and developing an AI-ready workforce. On child safety, it calls for Congress to mandate age-assurance requirements, give parents tools to control privacy settings and content exposure, and clarify that existing child privacy laws apply to AI systems. On preemption, it supports broad federal override of state AI laws while preserving state authority to enforce generally applicable child protection, consumer protection, and fraud laws. It explicitly opposes creating any new federal regulatory body for AI. The Framework is not binding and does not itself create legal obligations. On copyright, it defers to the courts. On workforce, it calls for non-regulatory methods and further study of job displacement trends. Legal analysts at GovTech noted the Framework is silent on algorithmic accountability, adult data privacy, transparency and explainability requirements, and enforcement mechanisms.</p>
+        <div class="entry-ready">
+          <div class="entry-ready-label">K-12 action items (TLF analysis)</div>
+          <ul>
+            <li>The child safety section signals that any federal AI legislation is likely to include requirements for platforms to implement parental controls, age assurance, and protections against exploitation when AI tools interact with minors</li>
+            <li>Districts that are already documenting which AI tools interact with students and what parental notification or consent processes are in place will be positioned ahead of whatever compliance requirements emerge</li>
+            <li>The Framework's silence on algorithmic accountability and adult data privacy means districts cannot rely on forthcoming federal law to address those gaps. State laws covering those areas remain the operative standard</li>
+            <li>The preemption language should be monitored but not acted on yet: until Congress passes legislation, no state law is preempted by this Framework alone</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf" target="_blank">National Policy Framework for AI, White House, March 20, 2026</a> &middot; <a href="https://www.whitehouse.gov/releases/2026/03/president-donald-j-trump-unveils-national-ai-legislative-framework/" target="_blank">White House announcement, March 20, 2026</a> &middot; <a href="https://www.govtech.com/voices/new-national-ai-framework-what-state-and-local-leaders-need-to-know" target="_blank">GovTech analysis, April 2026</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-entry signal" data-type="signal">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">K-12 Signal</div>
+          <div class="entry-title-block">
+            <div class="entry-title">GUARDRAILS Act Introduced to Block Federal Preemption of State AI Laws</div>
+            <div class="entry-date">March 20, 2026 &middot; U.S. House and Senate</div>
+          </div>
+        </div>
+        <p class="entry-body">On March 20, 2026, the same day the White House released its National Policy Framework, Rep. Don Beyer (D-VA) and Reps. Doris Matsui (D-CA), Ted Lieu (D-CA), Sara Jacobs (D-CA), and April McClain Delaney (D-MD) introduced the Guaranteeing and Upholding Americans' Right to Decide Responsible AI Laws and Standards (GUARDRAILS) Act in the House. Senator Brian Schatz (D-HI) announced companion legislation in the Senate, formally introduced on March 26 as S.4216, cosponsored by Senators Chris Coons (D-DE), Chris Murphy (D-CT), Tammy Duckworth (D-IL), Lisa Blunt Rochester (D-DE), and Andy Kim (D-NJ). The bill would repeal Executive Order 14365 and prohibit the order from taking effect. Its stated purpose is to ensure states can continue to enact AI safeguards without risk of losing federal funds. The GUARDRAILS Act is not expected to advance under the current Republican congressional majority. Its significance is as a marker of the political fault line: the preemption debate is now formalized in competing legislative vehicles.</p>
+        <div class="entry-ready">
+          <div class="entry-ready-label">K-12 action items (TLF analysis)</div>
+          <ul>
+            <li>No compliance action required. The GUARDRAILS Act is unlikely to become law in its current form</li>
+            <li>It confirms that state AI laws will remain the primary compliance environment for districts for the foreseeable future. Federal preemption is politically contested, not settled</li>
+            <li>Districts should continue building governance infrastructure against current state requirements, not against the possibility that those requirements may be preempted</li>
+            <li>If a district is in a state with active AI legislation (Colorado, California, Texas, Illinois, among others), the compliance obligation has not changed. The District Filing incorporates state-level tracking for this reason</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://beyer.house.gov/news/documentsingle.aspx?DocumentID=9009" target="_blank">Rep. Beyer press release, March 20, 2026</a> &middot; <a href="https://sarajacobs.house.gov/news/press-releases/jacobs-beyer-matsui-lieu-mcclain-delaney-introduce-legislation-to-repeal-white-house-ai-moratorium" target="_blank">Rep. Jacobs press release, March 20, 2026</a> &middot; <a href="https://www.benton.org/headlines/lawmakers-introduce-legislation-repeal-trump%E2%80%99s-ai-moratorium" target="_blank">Benton Institute, March 2026</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cal-section-label">Week of March 30 to 31</div>
+
+    <div class="cal-entry agency" data-type="agency">
+      <div class="entry-inner">
+        <div class="entry-top">
+          <div class="entry-badge">Agency Directive</div>
+          <div class="entry-title-block">
+            <div class="entry-title">OMB M-26-10: Reinforcing Transparency, Accountability, and Oversight of Federal Technology</div>
+            <div class="entry-date">March 31, 2026 &middot; Office of Management and Budget</div>
+          </div>
+        </div>
+        <p class="entry-body">On March 31, 2026, OMB issued Memorandum M-26-10, "Reinforcing Transparency, Accountability, and Oversight of Federal Technology," signed by OMB Director Russell Vought. The memo directs federal agencies to centralize IT contract oversight under their Chief Information Officers and to treat information technology as a core component of government operations. Beginning May 2026, CIOs at CFO Act agencies must submit monthly reports to OMB detailing approved IT contracts and agreements, including those tied to public-facing digital services. The policy requires all future solicitations and contracts to disclose utilization and pricing information to the government without limiting how that information can be shared across agencies. The reporting requirements run through October 2026 with potential extension. Federal CIO Greg Barbaccia described the goal as ending situations where agencies pay different prices for the same tools without cross-agency visibility.</p>
+        <div class="entry-ready">
+          <div class="entry-ready-label">K-12 relevance (TLF analysis)</div>
+          <ul>
+            <li>This memo applies to federal agencies, not K-12 districts. But it has an indirect effect worth tracking</li>
+            <li>If AI vendors selling to the federal government are now required to disclose pricing and utilization data across agencies, that transparency pressure may ripple into the education market</li>
+            <li>Vendors that serve both federal and K-12 customers may face questions about pricing consistency. Districts negotiating AI tool contracts should be aware that the federal government is now requiring the kind of pricing transparency districts have historically lacked the leverage to demand</li>
+            <li>This is context for future procurement conversations, not an action item with a deadline</li>
+          </ul>
+        </div>
+        <div class="entry-source">
+          <strong>Source:</strong> <a href="https://www.whitehouse.gov/omb/information-resources/guidance/memoranda/" target="_blank">OMB Memoranda page, listing M-26-10, March 31, 2026</a> &middot; <a href="https://www.hstoday.us/subject-matter-areas/information-technology/omb-issues-new-policy-to-strengthen-oversight-and-transparency-in-federal-technology/" target="_blank">HSToday analysis, March 31, 2026</a> &middot; <a href="https://govciomedia.com/white-house-memo-centralizes-it-contract-oversight-under-cios/" target="_blank">GovCIO Media, April 1, 2026</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cal-statbar">
+    <div class="cal-stat">
+      <div class="cal-stat-val">1 executive</div>
+      <div class="cal-stat-lbl">EO 14390 on cybercrime and AI-enabled fraud</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">4 directives</div>
+      <div class="cal-stat-lbl">OMB procurement, Commerce evaluation, FTC statement, OMB IT oversight</div>
+    </div>
+    <div class="cal-stat">
+      <div class="cal-stat-val">3 signals</div>
+      <div class="cal-stat-lbl">TRUMP AMERICA AI Act, White House Framework, GUARDRAILS Act</div>
+    </div>
+  </div>
+
+  <div class="cal-footer-note">
+    <strong>About this digest's accuracy standards.</strong> Every entry cites a primary source: an executive order, a Federal Register publication, an agency memorandum, or a congressional record. K-12 implications are derived from those sources, not invented. Where an entry describes a downstream effect that has not yet materialized (a "signal"), it is labeled as such. This digest does not constitute legal advice. Verify all requirements with district legal counsel and your state education agency. March 2026 was the densest month in this series: three EO 14365 deadlines, a 291-page federal AI bill, a White House legislative framework, a cybercrime executive order, and a new OMB technology oversight memo. April may be lighter depending on what federal actions follow. The District Filing and Weekly Incident Bulletin track these developments weekly. Both are free. Start at <a href="https://www.languagefirm.org/toolvault" target="_blank">languagefirm.org/toolvault</a>.
+  </div>
+</div>
+
+<script>
+  let activeType='all';
+  function filterType(type){activeType=type;document.querySelectorAll('.leg-item').forEach(l=>{l.classList.toggle('active',l.dataset.filter===type);l.classList.toggle('inactive',l.dataset.filter!==type)});render()}
+  function render(){let delay=0;document.querySelectorAll('.cal-entry').forEach(entry=>{const show=(activeType==='all'||entry.dataset.type===activeType);entry.classList.toggle('hidden',!show);if(show){entry.style.animationDelay=(delay*.06)+'s';entry.style.animation='none';void entry.offsetHeight;entry.style.animation='';delay++}});document.querySelectorAll('.cal-section-label').forEach(label=>{let next=label.nextElementSibling,hasVisible=false;while(next&&!next.classList.contains('cal-section-label')){if(next.classList.contains('cal-entry')&&!next.classList.contains('hidden'))hasVisible=true;next=next.nextElementSibling}label.style.display=hasVisible?'':'none'})}
+</script>
+</body>
+</html>
